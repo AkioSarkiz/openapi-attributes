@@ -18,7 +18,7 @@ use OpenApiGenerator\Types\SchemaType;
  * This represents an OpenAPI path which has a route with only ONE method (GET, POST, PUT or PATCH)
  * Paths are merged in the generator
  */
-class PathMethodBuilder
+class PathBuilder
 {
     private ?Route $currentRoute = null;
     private ?Schema $currentSchema = null;
@@ -70,12 +70,12 @@ class PathMethodBuilder
         if (!$this->currentSchema) {
             if ($this->currentProperty instanceof Property) {
                 if ($this->currentProperty->getType() === PropertyType::ARRAY) {
-                    $this->addSchema(new Schema(SchemaType::ARRAY));
+                    $this->addSchema(new Schema(type: SchemaType::ARRAY));
                 } else {
-                    $this->addSchema(new Schema(SchemaType::OBJECT));
+                    $this->addSchema(new Schema(type: SchemaType::OBJECT));
                 }
             } elseif ($this->currentProperty instanceof MediaProperty) {
-                $this->addSchema(new Schema(SchemaType::OBJECT));
+                $this->addSchema(new Schema(type: SchemaType::OBJECT));
             }
         }
 

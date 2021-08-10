@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace OpenApiGenerator\Attributes;
 
 use Attribute;
-use OpenApiGenerator\Types\PropertyType;
 use JsonSerializable;
+use OpenApiGenerator\Types\PropertyType;
 
 /**
  * This represents an open api property.
@@ -26,43 +26,14 @@ class Property implements PropertyInterface, JsonSerializable
         private ?string $format = null,
         private ?array $enum = null,
         private mixed $properties = null,
-    ) {
-    }
-
-    public function createFromArray(array $data): self
+    )
     {
-        $args = [];
-        $format = [
-            'type' => '',
-            'property' => '',
-            'description' => '',
-            'example' => null,
-            'format' => null,
-            'enum' => null,
-            'properties' => null,
-        ];
-
-        foreach ($format as $key => $default) {
-            $args[] = array_key_exists($key, $data) ? $data[$key] : $default;
-        }
-
-        return new self(...$args);
     }
 
     public function setPropertyItems(PropertyItems $propertyItems): void
     {
         $this->propertyItems = $propertyItems;
         $this->propertyItems->setExample($this->example);
-    }
-
-    public function getType(): string
-    {
-        return $this->properties ? PropertyType::OBJECT : $this->property;
-    }
-
-    public function getProperty(): ?string
-    {
-        return $this->property;
     }
 
     public function jsonSerialize(): array
@@ -91,12 +62,17 @@ class Property implements PropertyInterface, JsonSerializable
         return removeEmptyValues($data);
     }
 
+    public function getType(): string
+    {
+        return $this->properties ? PropertyType::OBJECT : $this->property;
+    }
+
     private function formatProperties(): array
     {
         $format = [];
 
-        foreach($this->properties as $name => $property) {
-            $data =  [
+        foreach ($this->properties as $name => $property) {
+            $data = [
                 'property' => $name,
             ];
 
@@ -110,5 +86,30 @@ class Property implements PropertyInterface, JsonSerializable
         }
 
         return $format;
+    }
+
+    public function createFromArray(array $data): self
+    {
+        $args = [];
+        $format = [
+            'type' => '',
+            'property' => '',
+            'description' => '',
+            'example' => null,
+            'format' => null,
+            'enum' => null,
+            'properties' => null,
+        ];
+
+        foreach ($format as $key => $default) {
+            $args[] = array_key_exists($key, $data) ? $data[$key] : $default;
+        }
+
+        return new self(...$args);
+    }
+
+    public function getProperty(): ?string
+    {
+        return $this->property;
     }
 }

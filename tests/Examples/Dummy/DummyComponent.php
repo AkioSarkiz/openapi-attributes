@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace OpenApiGenerator\Tests\Examples\Dummy;
 
+use OpenApiGenerator\Attributes\Info;
 use OpenApiGenerator\Attributes\Property;
 use OpenApiGenerator\Attributes\PropertyItems;
 use OpenApiGenerator\Attributes\Schema;

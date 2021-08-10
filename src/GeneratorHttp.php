@@ -11,10 +11,15 @@ use OpenApiGenerator\Attributes\PropertyItems;
 use OpenApiGenerator\Attributes\RequestBody;
 use OpenApiGenerator\Attributes\Response;
 use OpenApiGenerator\Attributes\Route;
+use OpenApiGenerator\Attributes\Route\Delete;
+use OpenApiGenerator\Attributes\Route\Get;
+use OpenApiGenerator\Attributes\Route\Patch;
+use OpenApiGenerator\Attributes\Route\Post;
+use OpenApiGenerator\Attributes\Route\Put;
 use ReflectionAttribute;
 use ReflectionClass;
 use ReflectionParameter;
-use Symfony\Component\HttpFoundation\Request;
+use Throwable;
 
 class GeneratorHttp
 {
@@ -25,7 +30,11 @@ class GeneratorHttp
         foreach ($reflectionClass->getMethods() as $method) {
             $methodAttributes = $method->getAttributes();
 
-            $route = array_filter($methodAttributes, fn(ReflectionAttribute $attribute) => $attribute->getName() === Route::class);
+            try {
+                $route = array_filter($methodAttributes, fn($attribute) => $attribute->newInstance() instanceof Route);
+            } catch (Throwable) {
+                continue;
+            }
 
             if (count($route) < 1) {
                 continue;
@@ -33,7 +42,7 @@ class GeneratorHttp
 
             $parameters = $this->getParameters($method->getParameters());
 
-            $pathBuilder = new PathMethodBuilder();
+            $pathBuilder = new PathBuilder();
             $pathBuilder->setRequestBody(new RequestBody());
 
             // Add method Attributes to the builder
@@ -41,18 +50,39 @@ class GeneratorHttp
                 $name = $attribute->getName();
                 $instance = $attribute->newInstance();
 
-                match ($name) {
-                    Route::class => $pathBuilder->setRoute($instance, $parameters),
-                    RequestBody::class => $pathBuilder->setRequestBody($instance),
-                    Property::class => $pathBuilder->addProperty($instance),
-                    PropertyItems::class => $pathBuilder->setPropertyItems($instance),
-                    MediaProperty::class => $pathBuilder->setMediaProperty($instance),
-                    Response::class => $pathBuilder->setResponse($instance),
-                };
+                switch ($name) {
+                    case Route::class:
+                    case Get::class:
+                    case Post::class:
+                    case Patch::class:
+                    case Put::class:
+                    case Delete::class:
+                        $pathBuilder->setRoute($instance, $parameters);
+                        break;
+
+                    case RequestBody::class:
+                        $pathBuilder->setRequestBody($instance);
+                        break;
+
+                    case Property::class:
+                        $pathBuilder->addProperty($instance);
+                        break;
+
+                    case PropertyItems::class:
+                        $pathBuilder->setPropertyItems($instance);
+                        break;
+
+                    case MediaProperty::class:
+                        $pathBuilder->setMediaProperty($instance);
+                        break;
+
+                    case Response::class:
+                        $pathBuilder->setResponse($instance);
+                        break;
+                }
             }
 
-            $route = $pathBuilder->getRoute();
-            if ($route) {
+            if ($route = $pathBuilder->getRoute()) {
                 $this->paths[] = $route;
             }
         }
@@ -66,7 +96,7 @@ class GeneratorHttp
                     function (ReflectionAttribute $attribute) use ($param) {
                         $instance = $attribute->newInstance();
                         $instance->setName($param->getName());
-                        $instance->setParamType((string) $param->getType());
+                        $instance->setParamType((string)$param->getType());
 
                         return $instance;
                     },

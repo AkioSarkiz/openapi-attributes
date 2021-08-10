@@ -1,0 +1,1348 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://example.com/Controller.json",
+  "type": "object",
+  "examples": [
+    {
+      "openapi": "3.0.0",
+      "info": {
+        "title": "title",
+        "version": "1.0.0",
+        "description": "description",
+        "termsOfService": "url terms Of Service",
+        "contact": {
+          "name": "API Support",
+          "url": "https://www.output.json.com/support",
+          "email": "support@output.json.com"
+        },
+        "license": {
+          "name": "Apache 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+      },
+      "servers": [
+        {
+          "url": "same server1",
+          "description": "same url1"
+        },
+        {
+          "url": "same server2",
+          "description": "same url2"
+        }
+      ],
+      "paths": {
+        "/path/{id}": {
+          "get": {
+            "tags": [
+              "Dummy"
+            ],
+            "summary": "Dummy path",
+            "parameters": [
+              {
+                "name": "id",
+                "in": "path",
+                "schema": {
+                  "type": "number",
+                  "example": "2"
+                },
+                "required": true
+              }
+            ],
+            "requestBody": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "test": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "string"
+                          },
+                          "item": {
+                            "type": "string"
+                          },
+                          "anotherObject": {
+                            "type": "object",
+                            "properties": {
+                              "output.json": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": ""
+              }
+            }
+          }
+        }
+      },
+      "components": {
+        "securitySchemes": {
+          "bearerAuth": {
+            "type": "http",
+            "name": "bearerAuth",
+            "in": "header",
+            "scheme": "JWT",
+            "description": "bearer"
+          }
+        },
+        "schemas": []
+      }
+    }
+  ],
+  "required": [
+    "openapi",
+    "info",
+    "servers",
+    "paths",
+    "components"
+  ],
+  "properties": {
+    "openapi": {
+      "$id": "#/properties/openapi",
+      "type": "string",
+      "title": "The openapi schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": "",
+      "examples": [
+        "3.0.0"
+      ]
+    },
+    "info": {
+      "$id": "#/properties/info",
+      "type": "object",
+      "title": "The info schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": {},
+      "examples": [
+        {
+          "title": "title",
+          "version": "1.0.0",
+          "description": "description",
+          "termsOfService": "url terms Of Service",
+          "contact": {
+            "name": "API Support",
+            "url": "https://www.output.json.com/support",
+            "email": "support@output.json.com"
+          },
+          "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+          }
+        }
+      ],
+      "required": [
+        "title",
+        "version",
+        "description",
+        "termsOfService",
+        "contact",
+        "license"
+      ],
+      "properties": {
+        "title": {
+          "$id": "#/properties/info/properties/title",
+          "type": "string",
+          "title": "The title schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "title"
+          ]
+        },
+        "version": {
+          "$id": "#/properties/info/properties/version",
+          "type": "string",
+          "title": "The version schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "1.0.0"
+          ]
+        },
+        "description": {
+          "$id": "#/properties/info/properties/description",
+          "type": "string",
+          "title": "The description schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "description"
+          ]
+        },
+        "termsOfService": {
+          "$id": "#/properties/info/properties/termsOfService",
+          "type": "string",
+          "title": "The termsOfService schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "url terms Of Service"
+          ]
+        },
+        "contact": {
+          "$id": "#/properties/info/properties/contact",
+          "type": "object",
+          "title": "The contact schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": {},
+          "examples": [
+            {
+              "name": "API Support",
+              "url": "https://www.output.json.com/support",
+              "email": "support@output.json.com"
+            }
+          ],
+          "required": [
+            "name",
+            "url",
+            "email"
+          ],
+          "properties": {
+            "name": {
+              "$id": "#/properties/info/properties/contact/properties/name",
+              "type": "string",
+              "title": "The name schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": "",
+              "examples": [
+                "API Support"
+              ]
+            },
+            "url": {
+              "$id": "#/properties/info/properties/contact/properties/url",
+              "type": "string",
+              "title": "The url schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": "",
+              "examples": [
+                "https://www.output.json.com/support"
+              ]
+            },
+            "email": {
+              "$id": "#/properties/info/properties/contact/properties/email",
+              "type": "string",
+              "title": "The email schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": "",
+              "examples": [
+                "support@output.json.com"
+              ]
+            }
+          },
+          "additionalProperties": true
+        },
+        "license": {
+          "$id": "#/properties/info/properties/license",
+          "type": "object",
+          "title": "The license schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": {},
+          "examples": [
+            {
+              "name": "Apache 2.0",
+              "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+            }
+          ],
+          "required": [
+            "name",
+            "url"
+          ],
+          "properties": {
+            "name": {
+              "$id": "#/properties/info/properties/license/properties/name",
+              "type": "string",
+              "title": "The name schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": "",
+              "examples": [
+                "Apache 2.0"
+              ]
+            },
+            "url": {
+              "$id": "#/properties/info/properties/license/properties/url",
+              "type": "string",
+              "title": "The url schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": "",
+              "examples": [
+                "https://www.apache.org/licenses/LICENSE-2.0.html"
+              ]
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "servers": {
+      "$id": "#/properties/servers",
+      "type": "array",
+      "title": "The servers schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": [],
+      "examples": [
+        [
+          {
+            "url": "same server1",
+            "description": "same url1"
+          },
+          {
+            "url": "same server2",
+            "description": "same url2"
+          }
+        ]
+      ],
+      "additionalItems": true,
+      "items": {
+        "$id": "#/properties/servers/items",
+        "anyOf": [
+          {
+            "$id": "#/properties/servers/items/anyOf/0",
+            "type": "object",
+            "title": "The first anyOf schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+              {
+                "url": "same server1",
+                "description": "same url1"
+              }
+            ],
+            "required": [
+              "url",
+              "description"
+            ],
+            "properties": {
+              "url": {
+                "$id": "#/properties/servers/items/anyOf/0/properties/url",
+                "type": "string",
+                "title": "The url schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "same server1"
+                ]
+              },
+              "description": {
+                "$id": "#/properties/servers/items/anyOf/0/properties/description",
+                "type": "string",
+                "title": "The description schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "same url1"
+                ]
+              }
+            },
+            "additionalProperties": true
+          }
+        ]
+      }
+    },
+    "paths": {
+      "$id": "#/properties/paths",
+      "type": "object",
+      "title": "The paths schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": {},
+      "examples": [
+        {
+          "/path/{id}": {
+            "get": {
+              "tags": [
+                "Dummy"
+              ],
+              "summary": "Dummy path",
+              "parameters": [
+                {
+                  "name": "id",
+                  "in": "path",
+                  "schema": {
+                    "type": "number",
+                    "example": "2"
+                  },
+                  "required": true
+                }
+              ],
+              "requestBody": {
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "test": {
+                          "type": "object",
+                          "properties": {
+                            "data": {
+                              "type": "string"
+                            },
+                            "item": {
+                              "type": "string"
+                            },
+                            "anotherObject": {
+                              "type": "object",
+                              "properties": {
+                                "output.json": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "responses": {
+                "200": {
+                  "description": ""
+                }
+              }
+            }
+          }
+        }
+      ],
+      "required": [
+        "/path/{id}"
+      ],
+      "properties": {
+        "/path/{id}": {
+          "$id": "#/properties/paths/properties//path/%7Bid%7D",
+          "type": "object",
+          "title": "The /path/{id} schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": {},
+          "examples": [
+            {
+              "get": {
+                "tags": [
+                  "Dummy"
+                ],
+                "summary": "Dummy path",
+                "parameters": [
+                  {
+                    "name": "id",
+                    "in": "path",
+                    "schema": {
+                      "type": "number",
+                      "example": "2"
+                    },
+                    "required": true
+                  }
+                ],
+                "requestBody": {
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "test": {
+                            "type": "object",
+                            "properties": {
+                              "data": {
+                                "type": "string"
+                              },
+                              "item": {
+                                "type": "string"
+                              },
+                              "anotherObject": {
+                                "type": "object",
+                                "properties": {
+                                  "output.json": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "responses": {
+                  "200": {
+                    "description": ""
+                  }
+                }
+              }
+            }
+          ],
+          "required": [
+            "get"
+          ],
+          "properties": {
+            "get": {
+              "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get",
+              "type": "object",
+              "title": "The get schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": {},
+              "examples": [
+                {
+                  "tags": [
+                    "Dummy"
+                  ],
+                  "summary": "Dummy path",
+                  "parameters": [
+                    {
+                      "name": "id",
+                      "in": "path",
+                      "schema": {
+                        "type": "number",
+                        "example": "2"
+                      },
+                      "required": true
+                    }
+                  ],
+                  "requestBody": {
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "type": "object",
+                          "properties": {
+                            "test": {
+                              "type": "object",
+                              "properties": {
+                                "data": {
+                                  "type": "string"
+                                },
+                                "item": {
+                                  "type": "string"
+                                },
+                                "anotherObject": {
+                                  "type": "object",
+                                  "properties": {
+                                    "output.json": {
+                                      "type": "string"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "responses": {
+                    "200": {
+                      "description": ""
+                    }
+                  }
+                }
+              ],
+              "required": [
+                "tags",
+                "summary",
+                "parameters",
+                "requestBody",
+                "responses"
+              ],
+              "properties": {
+                "tags": {
+                  "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/tags",
+                  "type": "array",
+                  "title": "The tags schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": [],
+                  "examples": [
+                    [
+                      "Dummy"
+                    ]
+                  ],
+                  "additionalItems": true,
+                  "items": {
+                    "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/tags/items",
+                    "anyOf": [
+                      {
+                        "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/tags/items/anyOf/0",
+                        "type": "string",
+                        "title": "The first anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": [
+                          "Dummy"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "summary": {
+                  "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/summary",
+                  "type": "string",
+                  "title": "The summary schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                    "Dummy path"
+                  ]
+                },
+                "parameters": {
+                  "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/parameters",
+                  "type": "array",
+                  "title": "The parameters schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": [],
+                  "examples": [
+                    [
+                      {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                          "type": "number",
+                          "example": "2"
+                        },
+                        "required": true
+                      }
+                    ]
+                  ],
+                  "additionalItems": true,
+                  "items": {
+                    "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/parameters/items",
+                    "anyOf": [
+                      {
+                        "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/parameters/items/anyOf/0",
+                        "type": "object",
+                        "title": "The first anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": {},
+                        "examples": [
+                          {
+                            "name": "id",
+                            "in": "path",
+                            "schema": {
+                              "type": "number",
+                              "example": "2"
+                            },
+                            "required": true
+                          }
+                        ],
+                        "required": [
+                          "name",
+                          "in",
+                          "schema",
+                          "required"
+                        ],
+                        "properties": {
+                          "name": {
+                            "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/parameters/items/anyOf/0/properties/name",
+                            "type": "string",
+                            "title": "The name schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                              "id"
+                            ]
+                          },
+                          "in": {
+                            "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/parameters/items/anyOf/0/properties/in",
+                            "type": "string",
+                            "title": "The in schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                              "path"
+                            ]
+                          },
+                          "schema": {
+                            "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/parameters/items/anyOf/0/properties/schema",
+                            "type": "object",
+                            "title": "The schema schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": {},
+                            "examples": [
+                              {
+                                "type": "number",
+                                "example": "2"
+                              }
+                            ],
+                            "required": [
+                              "type",
+                              "example"
+                            ],
+                            "properties": {
+                              "type": {
+                                "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/parameters/items/anyOf/0/properties/schema/properties/type",
+                                "type": "string",
+                                "title": "The type schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                  "number"
+                                ]
+                              },
+                              "example": {
+                                "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/parameters/items/anyOf/0/properties/schema/properties/example",
+                                "type": "string",
+                                "title": "The example schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                  "2"
+                                ]
+                              }
+                            },
+                            "additionalProperties": true
+                          },
+                          "required": {
+                            "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/parameters/items/anyOf/0/properties/required",
+                            "type": "boolean",
+                            "title": "The required schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": false,
+                            "examples": [
+                              true
+                            ]
+                          }
+                        },
+                        "additionalProperties": true
+                      }
+                    ]
+                  }
+                },
+                "requestBody": {
+                  "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/requestBody",
+                  "type": "object",
+                  "title": "The requestBody schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": {},
+                  "examples": [
+                    {
+                      "content": {
+                        "application/json": {
+                          "schema": {
+                            "type": "object",
+                            "properties": {
+                              "test": {
+                                "type": "object",
+                                "properties": {
+                                  "data": {
+                                    "type": "string"
+                                  },
+                                  "item": {
+                                    "type": "string"
+                                  },
+                                  "anotherObject": {
+                                    "type": "object",
+                                    "properties": {
+                                      "output.json": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "required": [
+                    "content"
+                  ],
+                  "properties": {
+                    "content": {
+                      "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/requestBody/properties/content",
+                      "type": "object",
+                      "title": "The content schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "application/json": {
+                            "schema": {
+                              "type": "object",
+                              "properties": {
+                                "test": {
+                                  "type": "object",
+                                  "properties": {
+                                    "data": {
+                                      "type": "string"
+                                    },
+                                    "item": {
+                                      "type": "string"
+                                    },
+                                    "anotherObject": {
+                                      "type": "object",
+                                      "properties": {
+                                        "output.json": {
+                                          "type": "string"
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      ],
+                      "required": [
+                        "application/json"
+                      ],
+                      "properties": {
+                        "application/json": {
+                          "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/requestBody/properties/content/properties/application/json",
+                          "type": "object",
+                          "title": "The application/json schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": {},
+                          "examples": [
+                            {
+                              "schema": {
+                                "type": "object",
+                                "properties": {
+                                  "test": {
+                                    "type": "object",
+                                    "properties": {
+                                      "data": {
+                                        "type": "string"
+                                      },
+                                      "item": {
+                                        "type": "string"
+                                      },
+                                      "anotherObject": {
+                                        "type": "object",
+                                        "properties": {
+                                          "output.json": {
+                                            "type": "string"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "required": [
+                            "schema"
+                          ],
+                          "properties": {
+                            "schema": {
+                              "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/requestBody/properties/content/properties/application/json/properties/schema",
+                              "type": "object",
+                              "title": "The schema schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": {},
+                              "examples": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "test": {
+                                      "type": "object",
+                                      "properties": {
+                                        "data": {
+                                          "type": "string"
+                                        },
+                                        "item": {
+                                          "type": "string"
+                                        },
+                                        "anotherObject": {
+                                          "type": "object",
+                                          "properties": {
+                                            "output.json": {
+                                              "type": "string"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              ],
+                              "required": [
+                                "type",
+                                "properties"
+                              ],
+                              "properties": {
+                                "type": {
+                                  "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/requestBody/properties/content/properties/application/json/properties/schema/properties/type",
+                                  "type": "string",
+                                  "title": "The type schema",
+                                  "description": "An explanation about the purpose of this instance.",
+                                  "default": "",
+                                  "examples": [
+                                    "object"
+                                  ]
+                                },
+                                "properties": {
+                                  "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/requestBody/properties/content/properties/application/json/properties/schema/properties/properties",
+                                  "type": "object",
+                                  "title": "The properties schema",
+                                  "description": "An explanation about the purpose of this instance.",
+                                  "default": {},
+                                  "examples": [
+                                    {
+                                      "test": {
+                                        "type": "object",
+                                        "properties": {
+                                          "data": {
+                                            "type": "string"
+                                          },
+                                          "item": {
+                                            "type": "string"
+                                          },
+                                          "anotherObject": {
+                                            "type": "object",
+                                            "properties": {
+                                              "output.json": {
+                                                "type": "string"
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  ],
+                                  "required": [
+                                    "test"
+                                  ],
+                                  "properties": {
+                                    "test": {
+                                      "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/requestBody/properties/content/properties/application/json/properties/schema/properties/properties/properties/test",
+                                      "type": "object",
+                                      "title": "The test schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": {},
+                                      "examples": [
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "data": {
+                                              "type": "string"
+                                            },
+                                            "item": {
+                                              "type": "string"
+                                            },
+                                            "anotherObject": {
+                                              "type": "object",
+                                              "properties": {
+                                                "output.json": {
+                                                  "type": "string"
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      ],
+                                      "required": [
+                                        "type",
+                                        "properties"
+                                      ],
+                                      "properties": {
+                                        "type": {
+                                          "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/requestBody/properties/content/properties/application/json/properties/schema/properties/properties/properties/test/properties/type",
+                                          "type": "string",
+                                          "title": "The type schema",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "default": "",
+                                          "examples": [
+                                            "object"
+                                          ]
+                                        },
+                                        "properties": {
+                                          "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/requestBody/properties/content/properties/application/json/properties/schema/properties/properties/properties/test/properties/properties",
+                                          "type": "object",
+                                          "title": "The properties schema",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "default": {},
+                                          "examples": [
+                                            {
+                                              "data": {
+                                                "type": "string"
+                                              },
+                                              "item": {
+                                                "type": "string"
+                                              },
+                                              "anotherObject": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "output.json": {
+                                                    "type": "string"
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          ],
+                                          "required": [
+                                            "data",
+                                            "item",
+                                            "anotherObject"
+                                          ],
+                                          "properties": {
+                                            "data": {
+                                              "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/requestBody/properties/content/properties/application/json/properties/schema/properties/properties/properties/test/properties/properties/properties/data",
+                                              "type": "object",
+                                              "title": "The data schema",
+                                              "description": "An explanation about the purpose of this instance.",
+                                              "default": {},
+                                              "examples": [
+                                                {
+                                                  "type": "string"
+                                                }
+                                              ],
+                                              "required": [
+                                                "type"
+                                              ],
+                                              "properties": {
+                                                "type": {
+                                                  "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/requestBody/properties/content/properties/application/json/properties/schema/properties/properties/properties/test/properties/properties/properties/data/properties/type",
+                                                  "type": "string",
+                                                  "title": "The type schema",
+                                                  "description": "An explanation about the purpose of this instance.",
+                                                  "default": "",
+                                                  "examples": [
+                                                    "string"
+                                                  ]
+                                                }
+                                              },
+                                              "additionalProperties": true
+                                            },
+                                            "item": {
+                                              "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/requestBody/properties/content/properties/application/json/properties/schema/properties/properties/properties/test/properties/properties/properties/item",
+                                              "type": "object",
+                                              "title": "The item schema",
+                                              "description": "An explanation about the purpose of this instance.",
+                                              "default": {},
+                                              "examples": [
+                                                {
+                                                  "type": "string"
+                                                }
+                                              ],
+                                              "required": [
+                                                "type"
+                                              ],
+                                              "properties": {
+                                                "type": {
+                                                  "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/requestBody/properties/content/properties/application/json/properties/schema/properties/properties/properties/test/properties/properties/properties/item/properties/type",
+                                                  "type": "string",
+                                                  "title": "The type schema",
+                                                  "description": "An explanation about the purpose of this instance.",
+                                                  "default": "",
+                                                  "examples": [
+                                                    "string"
+                                                  ]
+                                                }
+                                              },
+                                              "additionalProperties": true
+                                            },
+                                            "anotherObject": {
+                                              "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/requestBody/properties/content/properties/application/json/properties/schema/properties/properties/properties/test/properties/properties/properties/anotherObject",
+                                              "type": "object",
+                                              "title": "The anotherObject schema",
+                                              "description": "An explanation about the purpose of this instance.",
+                                              "default": {},
+                                              "examples": [
+                                                {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "output.json": {
+                                                      "type": "string"
+                                                    }
+                                                  }
+                                                }
+                                              ],
+                                              "required": [
+                                                "type",
+                                                "properties"
+                                              ],
+                                              "properties": {
+                                                "type": {
+                                                  "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/requestBody/properties/content/properties/application/json/properties/schema/properties/properties/properties/test/properties/properties/properties/anotherObject/properties/type",
+                                                  "type": "string",
+                                                  "title": "The type schema",
+                                                  "description": "An explanation about the purpose of this instance.",
+                                                  "default": "",
+                                                  "examples": [
+                                                    "object"
+                                                  ]
+                                                },
+                                                "properties": {
+                                                  "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/requestBody/properties/content/properties/application/json/properties/schema/properties/properties/properties/test/properties/properties/properties/anotherObject/properties/properties",
+                                                  "type": "object",
+                                                  "title": "The properties schema",
+                                                  "description": "An explanation about the purpose of this instance.",
+                                                  "default": {},
+                                                  "examples": [
+                                                    {
+                                                      "output.json": {
+                                                        "type": "string"
+                                                      }
+                                                    }
+                                                  ],
+                                                  "required": [
+                                                    "output.json"
+                                                  ],
+                                                  "properties": {
+                                                    "output.json": {
+                                                      "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/requestBody/properties/content/properties/application/json/properties/schema/properties/properties/properties/test/properties/properties/properties/anotherObject/properties/properties/properties/output.json",
+                                                      "type": "object",
+                                                      "title": "The output.json schema",
+                                                      "description": "An explanation about the purpose of this instance.",
+                                                      "default": {},
+                                                      "examples": [
+                                                        {
+                                                          "type": "string"
+                                                        }
+                                                      ],
+                                                      "required": [
+                                                        "type"
+                                                      ],
+                                                      "properties": {
+                                                        "type": {
+                                                          "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/requestBody/properties/content/properties/application/json/properties/schema/properties/properties/properties/test/properties/properties/properties/anotherObject/properties/properties/properties/output.json/properties/type",
+                                                          "type": "string",
+                                                          "title": "The type schema",
+                                                          "description": "An explanation about the purpose of this instance.",
+                                                          "default": "",
+                                                          "examples": [
+                                                            "string"
+                                                          ]
+                                                        }
+                                                      },
+                                                      "additionalProperties": true
+                                                    }
+                                                  },
+                                                  "additionalProperties": true
+                                                }
+                                              },
+                                              "additionalProperties": true
+                                            }
+                                          },
+                                          "additionalProperties": true
+                                        }
+                                      },
+                                      "additionalProperties": true
+                                    }
+                                  },
+                                  "additionalProperties": true
+                                }
+                              },
+                              "additionalProperties": true
+                            }
+                          },
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                "responses": {
+                  "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/responses",
+                  "type": "object",
+                  "title": "The responses schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": {},
+                  "examples": [
+                    {
+                      "200": {
+                        "description": ""
+                      }
+                    }
+                  ],
+                  "required": [
+                    "200"
+                  ],
+                  "properties": {
+                    "200": {
+                      "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/responses/properties/200",
+                      "type": "object",
+                      "title": "The 200 schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "description": ""
+                        }
+                      ],
+                      "required": [
+                        "description"
+                      ],
+                      "properties": {
+                        "description": {
+                          "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/get/properties/responses/properties/200/properties/description",
+                          "type": "string",
+                          "title": "The description schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            ""
+                          ]
+                        }
+                      },
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "components": {
+      "$id": "#/properties/components",
+      "type": "object",
+      "title": "The components schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": {},
+      "examples": [
+        {
+          "securitySchemes": {
+            "bearerAuth": {
+              "type": "http",
+              "name": "bearerAuth",
+              "in": "header",
+              "scheme": "JWT",
+              "description": "bearer"
+            }
+          },
+          "schemas": []
+        }
+      ],
+      "required": [
+        "securitySchemes",
+        "schemas"
+      ],
+      "properties": {
+        "securitySchemes": {
+          "$id": "#/properties/components/properties/securitySchemes",
+          "type": "object",
+          "title": "The securitySchemes schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": {},
+          "examples": [
+            {
+              "bearerAuth": {
+                "type": "http",
+                "name": "bearerAuth",
+                "in": "header",
+                "scheme": "JWT",
+                "description": "bearer"
+              }
+            }
+          ],
+          "required": [
+            "bearerAuth"
+          ],
+          "properties": {
+            "bearerAuth": {
+              "$id": "#/properties/components/properties/securitySchemes/properties/bearerAuth",
+              "type": "object",
+              "title": "The bearerAuth schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": {},
+              "examples": [
+                {
+                  "type": "http",
+                  "name": "bearerAuth",
+                  "in": "header",
+                  "scheme": "JWT",
+                  "description": "bearer"
+                }
+              ],
+              "required": [
+                "type",
+                "name",
+                "in",
+                "scheme",
+                "description"
+              ],
+              "properties": {
+                "type": {
+                  "$id": "#/properties/components/properties/securitySchemes/properties/bearerAuth/properties/type",
+                  "type": "string",
+                  "title": "The type schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                    "http"
+                  ]
+                },
+                "name": {
+                  "$id": "#/properties/components/properties/securitySchemes/properties/bearerAuth/properties/name",
+                  "type": "string",
+                  "title": "The name schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                    "bearerAuth"
+                  ]
+                },
+                "in": {
+                  "$id": "#/properties/components/properties/securitySchemes/properties/bearerAuth/properties/in",
+                  "type": "string",
+                  "title": "The in schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                    "header"
+                  ]
+                },
+                "scheme": {
+                  "$id": "#/properties/components/properties/securitySchemes/properties/bearerAuth/properties/scheme",
+                  "type": "string",
+                  "title": "The scheme schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                    "JWT"
+                  ]
+                },
+                "description": {
+                  "$id": "#/properties/components/properties/securitySchemes/properties/bearerAuth/properties/description",
+                  "type": "string",
+                  "title": "The description schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                    "bearer"
+                  ]
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": true
+        },
+        "schemas": {
+          "$id": "#/properties/components/properties/schemas",
+          "type": "array",
+          "title": "The schemas schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": [],
+          "examples": [
+            []
+          ],
+          "additionalItems": true,
+          "items": {
+            "$id": "#/properties/components/properties/schemas/items"
+          }
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

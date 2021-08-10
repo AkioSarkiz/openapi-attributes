@@ -8,15 +8,16 @@ use Attribute;
 use JsonSerializable;
 
 /**
- * Root node for the paths part of the Open API definition
+ * Define path object.
  *
- * On top of the normal route info, there are all parameters, the request body and the response.
+ * @see https://swagger.io/specification/#paths-object
  */
 #[Attribute]
 class Route implements JsonSerializable
 {
     public const GET = 'get';
     public const POST = 'post';
+    public const PATCH = 'patch';
     public const PUT = 'put';
     public const DELETE = 'delete';
 
@@ -31,7 +32,8 @@ class Route implements JsonSerializable
         private string $summary = '',
         private string $description = '',
         private mixed $security = null,
-    ) {
+    )
+    {
         //
     }
 
@@ -48,16 +50,6 @@ class Route implements JsonSerializable
     public function getMethod(): string
     {
         return $this->method;
-    }
-
-    public function getRoute(): string
-    {
-        // all routes must starting with /.
-        if (substr($this->route, 0, 1) !== '/') {
-            return '/' . $this->route;
-        }
-
-        return $this->route;
     }
 
     public function getGetParams(): array
@@ -109,6 +101,16 @@ class Route implements JsonSerializable
         }
 
         return $array;
+    }
+
+    public function getRoute(): string
+    {
+        // all routes must starting with /.
+        if (substr($this->route, 0, 1) !== '/') {
+            return '/' . $this->route;
+        }
+
+        return $this->route;
     }
 
     public function setRequestBody(RequestBody $requestBody)

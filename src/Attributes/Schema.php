@@ -5,11 +5,13 @@ declare(strict_types=1);
 namespace OpenApiGenerator\Attributes;
 
 use Attribute;
-use OpenApiGenerator\Types\SchemaType;
 use JsonSerializable;
+use OpenApiGenerator\Types\SchemaType;
 
 /**
- * A schema represents a list of properties
+ * Define schema item.
+ *
+ * @see https://swagger.io/specification/#schema-object
  */
 #[Attribute(Attribute::TARGET_CLASS)]
 class Schema implements JsonSerializable
@@ -17,11 +19,19 @@ class Schema implements JsonSerializable
     private array $properties = [];
     private bool $noMedia = false;
 
+    /**
+     * Schema constructor.
+     *
+     * @param string|null $name
+     * @param array|null $required
+     * @param string $type
+     */
     public function __construct(
-        private string $schemaType,
+        private ?string $name = null,
         private ?array $required = null,
-        private ?string $name = null
-    ) {
+        private string $type = SchemaType::OBJECT,
+    )
+    {
         //
     }
 
@@ -30,32 +40,15 @@ class Schema implements JsonSerializable
         return $this->name;
     }
 
-    private function getMediaType(): string
-    {
-        $hasMediaProp = array_filter(
-            $this->properties,
-            fn(?PropertyInterface $property): bool => $property instanceof MediaProperty
-        );
-
-        // Has a MediaProperty object, get the first - and normally only on - property
-        if (count($hasMediaProp) > 0) {
-            $property = reset($this->properties);
-            return $property->getContentMediaType();
-        }
-
-        // By default, return json type
-        return 'application/json';
-    }
-
     public function jsonSerialize(): array
     {
-       $schema = [
-           'type' => $this->schemaType
-       ];
+        $schema = [
+            'type' => $this->type
+        ];
 
-        if ($this->schemaType === SchemaType::ARRAY) {
+        if ($this->type === SchemaType::ARRAY) {
             $schema += json_decode(json_encode(reset($this->properties)), true);
-        } elseif ($this->schemaType === SchemaType::OBJECT) {
+        } elseif ($this->type === SchemaType::OBJECT) {
             $firstProperty = reset($this->properties);
 
             if ($firstProperty instanceof RefProperty || $firstProperty instanceof MediaProperty) {
@@ -87,6 +80,23 @@ class Schema implements JsonSerializable
                 'schema' => $schema
             ]
         ];
+    }
+
+    private function getMediaType(): string
+    {
+        $hasMediaProp = array_filter(
+            $this->properties,
+            fn(?PropertyInterface $property): bool => $property instanceof MediaProperty
+        );
+
+        // Has a MediaProperty object, get the first - and normally only on - property
+        if (count($hasMediaProp) > 0) {
+            $property = reset($this->properties);
+            return $property->getContentMediaType();
+        }
+
+        // By default, return json type
+        return 'application/json';
     }
 
     public function addProperty(PropertyInterface $property): void

@@ -1,5 +1,8 @@
-#!/usr/bin/env php
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
+use Symfony\Component\Finder\Finder;
 
 $autoload_path = null;
 
@@ -11,12 +14,11 @@ foreach ([__DIR__ . '/../../autoload.php', __DIR__ . '/vendor/autoload.php'] as 
 }
 
 if (!$autoload_path) {
+    echo 'Not found autoload file. Please, check composer packages.';
     die;
 }
 
 require $autoload_path;
-
-use Symfony\Component\Finder\Finder;
 
 $files = Finder::create()->files()->name('*.php')->in($argv[1]);
 

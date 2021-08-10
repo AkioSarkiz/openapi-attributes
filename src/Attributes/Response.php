@@ -5,16 +5,14 @@ declare(strict_types=1);
 namespace OpenApiGenerator\Attributes;
 
 use Attribute;
-use OpenApiGenerator\Types\ItemsType;
-use OpenApiGenerator\Types\PropertyType;
-use OpenApiGenerator\Types\ResponseType;
-use OpenApiGenerator\Types\SchemaType;
 use JsonSerializable;
+use OpenApiGenerator\Types\ItemsType;
+use OpenApiGenerator\Types\SchemaType;
 
 /**
- * A response is composed of a code, a description and a response type
- * Additionally, a schema type can be added (array or object) and a ref which will return any other property
- * Consider the ref parameter like a shortcut
+ * Define response object.
+ *
+ * @see https://swagger.io/specification/#response-object
  */
 #[Attribute]
 class Response implements JsonSerializable
@@ -24,12 +22,13 @@ class Response implements JsonSerializable
     public function __construct(
         private int $code = 200,
         private string $description = '',
-        private ?string $responseType = null,
-        private ?string $schemaType = SchemaType::OBJECT,
-        private ?string $ref = null
-    ) {
+        private string $responseType = '',
+        private string $schemaType = SchemaType::OBJECT,
+        private ?string $ref = null,
+    )
+    {
         if ($ref) {
-            $this->schema = new Schema($schemaType);
+            $this->schema = new Schema(type: $schemaType);
 
             if ($schemaType === SchemaType::OBJECT) {
                 $this->schema->addProperty(new RefProperty($ref));
@@ -44,7 +43,7 @@ class Response implements JsonSerializable
         return $this->responseType;
     }
 
-    public function setResponseType(?string $responseType): void
+    public function setResponseType(string $responseType): void
     {
         $this->responseType = $responseType;
     }

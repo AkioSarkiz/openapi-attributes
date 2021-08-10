@@ -20,12 +20,8 @@ class MediaProperty implements PropertyInterface, JsonSerializable
     public function __construct(
         private string $contentMediaType,
         private string $contentEncoding,
-    ) {
-    }
-
-    public function getContentMediaType(): string
+    )
     {
-        return $this->contentMediaType;
     }
 
     #[ArrayShape([
@@ -47,6 +43,11 @@ class MediaProperty implements PropertyInterface, JsonSerializable
     public function getType(): string
     {
         return $this->getContentMediaType();
+    }
+
+    public function getContentMediaType(): string
+    {
+        return $this->contentMediaType;
     }
 
     /**

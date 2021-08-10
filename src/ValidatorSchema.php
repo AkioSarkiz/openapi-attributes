@@ -30,7 +30,7 @@ class ValidatorSchema
             throw DefinitionCheckerException::missingField('openapi');
         }
 
-        if (!preg_match('/^[3-9]{1}\.[0-9]{1}\.[0-9]{1}$/', $this->definition["openapi"])) {
+        if (!preg_match('/^[3-9]{1}\.[0-9]{1}\.[0-9]{1}$/', $this->definition['openapi'])) {
             throw DefinitionCheckerException::wrongFormat('openapi', '[>=3].x.x');
         }
     }

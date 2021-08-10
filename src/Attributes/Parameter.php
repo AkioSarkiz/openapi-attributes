@@ -9,9 +9,12 @@ use JetBrains\PhpStorm\ArrayShape;
 use JsonSerializable;
 
 /**
- * Represents a parameter (e.g. /route/{id} where id is the parameter)
+ * Define parameter object.
  *
+ * Represents a parameter (e.g. /route/{id} where id is the parameter)
  * A schema is automatically set to generate the parameter type
+ *
+ * @see https://swagger.io/specification/#parameter-object.
  */
 #[Attribute]
 class Parameter implements JsonSerializable
@@ -25,7 +28,8 @@ class Parameter implements JsonSerializable
         private ?bool $required = null,
         private mixed $example = '',
         private mixed $format = ''
-    ) {
+    )
+    {
         if ($in === 'path') {
             $this->required = true;
         }
@@ -75,15 +79,9 @@ class Parameter implements JsonSerializable
     private function formatSchema(): array
     {
         $schema = $this->schema;
+        $schema['format'] = $this->format ?? $schema['format'];
+        $schema['example'] = $this->example;
 
-        if ($format = $this->format ?? $schema['format']) {
-            $schema['format'] = $format;
-        }
-
-        if ($this->example) {
-            $schema['example'] = $this->example;
-        }
-
-        return $schema;
+        return removeEmptyValues($schema);
     }
 }

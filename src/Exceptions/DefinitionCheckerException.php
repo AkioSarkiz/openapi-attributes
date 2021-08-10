@@ -4,20 +4,24 @@ declare(strict_types=1);
 
 namespace OpenApiGenerator\Exceptions;
 
-use Exception;
 use JetBrains\PhpStorm\Pure;
 
-class DefinitionCheckerException extends Exception
+class DefinitionCheckerException extends OpenapiException
 {
     #[Pure]
-    public static function missingField(string $field): static
+    public static function missingField(
+        string $field
+    ): self
     {
-        return new static("[Error] Missing field: $field");
+        return new self("[Error] Missing field: $field");
     }
 
     #[Pure]
-    public static function wrongFormat(string $field, string $expectingFormat): static
+    public static function wrongFormat(
+        string $field,
+        string $expectingFormat
+    ): self
     {
-        return new static("[Error] Wrong format for the field: $field. Expecting format: $expectingFormat");
+        return new self("[Error] Wrong format for the field: $field. Expecting format: $expectingFormat");
     }
 }

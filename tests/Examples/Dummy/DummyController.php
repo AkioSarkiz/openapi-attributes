@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace OpenApiGenerator\Tests\Examples\Dummy;
 
-use OpenApiGenerator\Attributes\Controller;
 use OpenApiGenerator\Attributes\Info;
 use OpenApiGenerator\Attributes\MediaProperty;
 use OpenApiGenerator\Attributes\Parameter;
@@ -16,7 +15,6 @@ use OpenApiGenerator\Types\PropertyType;
 use OpenApiGenerator\Types\SchemaType;
 
 #[Info("title", "1.0.0")]
-#[Controller]
 class DummyController
 {
     #[
@@ -31,7 +29,7 @@ class DummyController
     }
 
     #[
-        Route(Route::GET, "/path/entity/{id}", ["Dummy"], "Get an entity with a ref"),
+        Route(Route::GET, "/path/entity/{id}", ['Dummy'], 'Get an entity with a ref'),
         Response(ref: DummyComponent::class)
     ]
     public function getEntity(#[Parameter] int $id): void
@@ -62,7 +60,7 @@ class DummyController
         Route(Route::POST, "/path", ["Dummy"], "Dummy post"),
         Property(PropertyType::STRING, "prop1"),
         Property(PropertyType::STRING, "prop2", "Prop2 description"),
-        Property(PropertyType::STRING, "prop3", "Prop3 description", "Value 3 example"),
+        Property(PropertyType::STRING, "prop3", "Prop3 description", "Value 3 output.json"),
         Response(201)
     ]
     public function post(): void

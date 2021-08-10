@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Helper. Removing empty values (null, '')
+ * Removing empty values (null, '').
  *
  * @param array $associatedValues
  * @return array

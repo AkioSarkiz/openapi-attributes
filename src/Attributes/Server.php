@@ -5,23 +5,35 @@ declare(strict_types=1);
 namespace OpenApiGenerator\Attributes;
 
 use Attribute;
-use JetBrains\PhpStorm\ArrayShape;
 use JsonSerializable;
 
+/**
+ * Define server item.
+ *
+ * @see https://swagger.io/specification/#server-object
+ */
 #[Attribute(Attribute::TARGET_CLASS | Attribute::IS_REPEATABLE)]
 class Server implements JsonSerializable
 {
+    /**
+     * Server constructor.
+     *
+     * @param string $url A URL to the target host.
+     *      This URL supports Server Variables and MAY be relative,
+     *      to indicate that the host location is relative to the location where the OpenAPI document is being served.
+     *      Variable substitutions will be made when a variable is named in {brackets}.
+     *
+     * @param string $description An optional string describing the host designated by the URL.
+     *      CommonMark syntax MAY be used for rich text representation.
+     */
     public function __construct(
         private string $url,
         private string $description = '',
-    ) {
+    )
+    {
         //
     }
 
-    /**
-     * @inheritDoc
-     */
-    #[ArrayShape(['url' => 'string', 'description' => 'string'])]
     public function jsonSerialize(): array
     {
         $data = [

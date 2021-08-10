@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace OpenApiGenerator\Attributes;
 
 use Attribute;
-use OpenApiGenerator\Types\ItemsType;
 use JsonSerializable;
+use OpenApiGenerator\Types\ItemsType;
 
 /**
  * Describe items of a property (an array)
@@ -19,7 +19,8 @@ class PropertyItems implements PropertyInterface, JsonSerializable
         private string $type,
         private ?string $ref = null,
         private mixed $example = '',
-    ) {
+    )
+    {
         if ($this->ref) {
             $ref = explode('\\', $this->ref);
             $this->ref = end($ref);
@@ -36,11 +37,6 @@ class PropertyItems implements PropertyInterface, JsonSerializable
         return $this->type;
     }
 
-    public function getRef(): string
-    {
-        return $this->ref;
-    }
-
     public function setExample(mixed $example): void
     {
         $this->example = $example;
@@ -53,5 +49,10 @@ class PropertyItems implements PropertyInterface, JsonSerializable
                 ? ['$ref' => "#/components/schemas/{$this->getRef()}"]
                 : ['type' => $this->type, 'example' => $this->example]
         ];
+    }
+
+    public function getRef(): string
+    {
+        return $this->ref;
     }
 }

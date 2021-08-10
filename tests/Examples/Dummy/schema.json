@@ -1,0 +1,3205 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://example.com/dummy.json",
+  "type": "object",
+  "examples": [
+    {
+      "openapi": "3.0.0",
+      "info": {
+        "title": "title",
+        "version": "1.0.0"
+      },
+      "servers": [],
+      "paths": {
+        "/path": {
+          "get": {
+            "tags": [
+              "Dummy"
+            ],
+            "summary": "Dummy get path",
+            "responses": {
+              "200": {
+                "description": "",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "prop1": {
+                          "type": "string",
+                          "description": "Prop 1"
+                        },
+                        "prop2": {
+                          "type": "string",
+                          "description": "Prop 2"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "post": {
+            "tags": [
+              "Dummy"
+            ],
+            "summary": "Dummy post",
+            "requestBody": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "prop1": {
+                        "type": "string"
+                      },
+                      "prop2": {
+                        "type": "string",
+                        "description": "Prop2 description"
+                      },
+                      "prop3": {
+                        "type": "string",
+                        "description": "Prop3 description"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "responses": {
+              "201": {
+                "description": ""
+              }
+            }
+          }
+        },
+        "/path/entity/{id}": {
+          "get": {
+            "tags": [
+              "Dummy"
+            ],
+            "summary": "Get an entity with a ref",
+            "parameters": [
+              {
+                "name": "id",
+                "in": "path",
+                "schema": {
+                  "type": "integer"
+                },
+                "required": true
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/DummyComponent"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "/path/entities": {
+          "get": {
+            "tags": [
+              "Dummy"
+            ],
+            "summary": "Get a list",
+            "responses": {
+              "200": {
+                "description": "",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/DummyComponent"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "/path/image/{prop1}": {
+          "get": {
+            "tags": [
+              "Dummy"
+            ],
+            "summary": "Dummy image path",
+            "parameters": [
+              {
+                "name": "prop1",
+                "in": "path",
+                "schema": {
+                  "type": "integer"
+                },
+                "required": true,
+                "description": "prop1"
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "",
+                "content": {
+                  "image/png": {
+                    "schema": {
+                      "type": "string",
+                      "format": "base64"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "/path/{id}": {
+          "put": {
+            "tags": [
+              "Dummy"
+            ],
+            "summary": "Dummy put",
+            "parameters": [
+              {
+                "name": "id",
+                "in": "path",
+                "schema": {
+                  "type": "integer"
+                },
+                "required": true
+              }
+            ],
+            "requestBody": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "prop1": {
+                        "type": "string"
+                      },
+                      "prop2": {
+                        "type": "integer"
+                      },
+                      "prop3": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "responses": {
+              "204": {
+                "description": ""
+              }
+            }
+          }
+        }
+      },
+      "components": {
+        "schemas": {
+          "object": {
+            "type": "object",
+            "properties": {
+              "prop1": {
+                "type": "string",
+                "description": "Prop1 description"
+              },
+              "prop2": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "required": [
+    "openapi",
+    "info",
+    "servers",
+    "paths",
+    "components"
+  ],
+  "properties": {
+    "openapi": {
+      "$id": "#/properties/openapi",
+      "type": "string",
+      "title": "The openapi schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": "",
+      "examples": [
+        "3.0.0"
+      ]
+    },
+    "info": {
+      "$id": "#/properties/info",
+      "type": "object",
+      "title": "The info schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": {},
+      "examples": [
+        {
+          "title": "title",
+          "version": "1.0.0"
+        }
+      ],
+      "required": [
+        "title",
+        "version"
+      ],
+      "properties": {
+        "title": {
+          "$id": "#/properties/info/properties/title",
+          "type": "string",
+          "title": "The title schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "title"
+          ]
+        },
+        "version": {
+          "$id": "#/properties/info/properties/version",
+          "type": "string",
+          "title": "The version schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "1.0.0"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "servers": {
+      "$id": "#/properties/servers",
+      "type": "array",
+      "title": "The servers schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": [],
+      "examples": [
+        []
+      ],
+      "additionalItems": true,
+      "items": {
+        "$id": "#/properties/servers/items"
+      }
+    },
+    "paths": {
+      "$id": "#/properties/paths",
+      "type": "object",
+      "title": "The paths schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": {},
+      "examples": [
+        {
+          "/path": {
+            "get": {
+              "tags": [
+                "Dummy"
+              ],
+              "summary": "Dummy get path",
+              "responses": {
+                "200": {
+                  "description": "",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "prop1": {
+                            "type": "string",
+                            "description": "Prop 1"
+                          },
+                          "prop2": {
+                            "type": "string",
+                            "description": "Prop 2"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "post": {
+              "tags": [
+                "Dummy"
+              ],
+              "summary": "Dummy post",
+              "requestBody": {
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "prop1": {
+                          "type": "string"
+                        },
+                        "prop2": {
+                          "type": "string",
+                          "description": "Prop2 description"
+                        },
+                        "prop3": {
+                          "type": "string",
+                          "description": "Prop3 description"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "responses": {
+                "201": {
+                  "description": ""
+                }
+              }
+            }
+          },
+          "/path/entity/{id}": {
+            "get": {
+              "tags": [
+                "Dummy"
+              ],
+              "summary": "Get an entity with a ref",
+              "parameters": [
+                {
+                  "name": "id",
+                  "in": "path",
+                  "schema": {
+                    "type": "integer"
+                  },
+                  "required": true
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/DummyComponent"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/path/entities": {
+            "get": {
+              "tags": [
+                "Dummy"
+              ],
+              "summary": "Get a list",
+              "responses": {
+                "200": {
+                  "description": "",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/DummyComponent"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/path/image/{prop1}": {
+            "get": {
+              "tags": [
+                "Dummy"
+              ],
+              "summary": "Dummy image path",
+              "parameters": [
+                {
+                  "name": "prop1",
+                  "in": "path",
+                  "schema": {
+                    "type": "integer"
+                  },
+                  "required": true,
+                  "description": "prop1"
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "",
+                  "content": {
+                    "image/png": {
+                      "schema": {
+                        "type": "string",
+                        "format": "base64"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/path/{id}": {
+            "put": {
+              "tags": [
+                "Dummy"
+              ],
+              "summary": "Dummy put",
+              "parameters": [
+                {
+                  "name": "id",
+                  "in": "path",
+                  "schema": {
+                    "type": "integer"
+                  },
+                  "required": true
+                }
+              ],
+              "requestBody": {
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "prop1": {
+                          "type": "string"
+                        },
+                        "prop2": {
+                          "type": "integer"
+                        },
+                        "prop3": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "responses": {
+                "204": {
+                  "description": ""
+                }
+              }
+            }
+          }
+        }
+      ],
+      "required": [
+        "/path",
+        "/path/entity/{id}",
+        "/path/entities",
+        "/path/image/{prop1}",
+        "/path/{id}"
+      ],
+      "properties": {
+        "/path": {
+          "$id": "#/properties/paths/properties//path",
+          "type": "object",
+          "title": "The /path schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": {},
+          "examples": [
+            {
+              "get": {
+                "tags": [
+                  "Dummy"
+                ],
+                "summary": "Dummy get path",
+                "responses": {
+                  "200": {
+                    "description": "",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "type": "object",
+                          "properties": {
+                            "prop1": {
+                              "type": "string",
+                              "description": "Prop 1"
+                            },
+                            "prop2": {
+                              "type": "string",
+                              "description": "Prop 2"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "post": {
+                "tags": [
+                  "Dummy"
+                ],
+                "summary": "Dummy post",
+                "requestBody": {
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "prop1": {
+                            "type": "string"
+                          },
+                          "prop2": {
+                            "type": "string",
+                            "description": "Prop2 description"
+                          },
+                          "prop3": {
+                            "type": "string",
+                            "description": "Prop3 description"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "responses": {
+                  "201": {
+                    "description": ""
+                  }
+                }
+              }
+            }
+          ],
+          "required": [
+            "get",
+            "post"
+          ],
+          "properties": {
+            "get": {
+              "$id": "#/properties/paths/properties//path/properties/get",
+              "type": "object",
+              "title": "The get schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": {},
+              "examples": [
+                {
+                  "tags": [
+                    "Dummy"
+                  ],
+                  "summary": "Dummy get path",
+                  "responses": {
+                    "200": {
+                      "description": "",
+                      "content": {
+                        "application/json": {
+                          "schema": {
+                            "type": "object",
+                            "properties": {
+                              "prop1": {
+                                "type": "string",
+                                "description": "Prop 1"
+                              },
+                              "prop2": {
+                                "type": "string",
+                                "description": "Prop 2"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "required": [
+                "tags",
+                "summary",
+                "responses"
+              ],
+              "properties": {
+                "tags": {
+                  "$id": "#/properties/paths/properties//path/properties/get/properties/tags",
+                  "type": "array",
+                  "title": "The tags schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": [],
+                  "examples": [
+                    [
+                      "Dummy"
+                    ]
+                  ],
+                  "additionalItems": true,
+                  "items": {
+                    "$id": "#/properties/paths/properties//path/properties/get/properties/tags/items",
+                    "anyOf": [
+                      {
+                        "$id": "#/properties/paths/properties//path/properties/get/properties/tags/items/anyOf/0",
+                        "type": "string",
+                        "title": "The first anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": [
+                          "Dummy"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "summary": {
+                  "$id": "#/properties/paths/properties//path/properties/get/properties/summary",
+                  "type": "string",
+                  "title": "The summary schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                    "Dummy get path"
+                  ]
+                },
+                "responses": {
+                  "$id": "#/properties/paths/properties//path/properties/get/properties/responses",
+                  "type": "object",
+                  "title": "The responses schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": {},
+                  "examples": [
+                    {
+                      "200": {
+                        "description": "",
+                        "content": {
+                          "application/json": {
+                            "schema": {
+                              "type": "object",
+                              "properties": {
+                                "prop1": {
+                                  "type": "string",
+                                  "description": "Prop 1"
+                                },
+                                "prop2": {
+                                  "type": "string",
+                                  "description": "Prop 2"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "required": [
+                    "200"
+                  ],
+                  "properties": {
+                    "200": {
+                      "$id": "#/properties/paths/properties//path/properties/get/properties/responses/properties/200",
+                      "type": "object",
+                      "title": "The 200 schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "description": "",
+                          "content": {
+                            "application/json": {
+                              "schema": {
+                                "type": "object",
+                                "properties": {
+                                  "prop1": {
+                                    "type": "string",
+                                    "description": "Prop 1"
+                                  },
+                                  "prop2": {
+                                    "type": "string",
+                                    "description": "Prop 2"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      ],
+                      "required": [
+                        "description",
+                        "content"
+                      ],
+                      "properties": {
+                        "description": {
+                          "$id": "#/properties/paths/properties//path/properties/get/properties/responses/properties/200/properties/description",
+                          "type": "string",
+                          "title": "The description schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            ""
+                          ]
+                        },
+                        "content": {
+                          "$id": "#/properties/paths/properties//path/properties/get/properties/responses/properties/200/properties/content",
+                          "type": "object",
+                          "title": "The content schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": {},
+                          "examples": [
+                            {
+                              "application/json": {
+                                "schema": {
+                                  "type": "object",
+                                  "properties": {
+                                    "prop1": {
+                                      "type": "string",
+                                      "description": "Prop 1"
+                                    },
+                                    "prop2": {
+                                      "type": "string",
+                                      "description": "Prop 2"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "required": [
+                            "application/json"
+                          ],
+                          "properties": {
+                            "application/json": {
+                              "$id": "#/properties/paths/properties//path/properties/get/properties/responses/properties/200/properties/content/properties/application/json",
+                              "type": "object",
+                              "title": "The application/json schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": {},
+                              "examples": [
+                                {
+                                  "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                      "prop1": {
+                                        "type": "string",
+                                        "description": "Prop 1"
+                                      },
+                                      "prop2": {
+                                        "type": "string",
+                                        "description": "Prop 2"
+                                      }
+                                    }
+                                  }
+                                }
+                              ],
+                              "required": [
+                                "schema"
+                              ],
+                              "properties": {
+                                "schema": {
+                                  "$id": "#/properties/paths/properties//path/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema",
+                                  "type": "object",
+                                  "title": "The schema schema",
+                                  "description": "An explanation about the purpose of this instance.",
+                                  "default": {},
+                                  "examples": [
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "prop1": {
+                                          "type": "string",
+                                          "description": "Prop 1"
+                                        },
+                                        "prop2": {
+                                          "type": "string",
+                                          "description": "Prop 2"
+                                        }
+                                      }
+                                    }
+                                  ],
+                                  "required": [
+                                    "type",
+                                    "properties"
+                                  ],
+                                  "properties": {
+                                    "type": {
+                                      "$id": "#/properties/paths/properties//path/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema/properties/type",
+                                      "type": "string",
+                                      "title": "The type schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": "",
+                                      "examples": [
+                                        "object"
+                                      ]
+                                    },
+                                    "properties": {
+                                      "$id": "#/properties/paths/properties//path/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema/properties/properties",
+                                      "type": "object",
+                                      "title": "The properties schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": {},
+                                      "examples": [
+                                        {
+                                          "prop1": {
+                                            "type": "string",
+                                            "description": "Prop 1"
+                                          },
+                                          "prop2": {
+                                            "type": "string",
+                                            "description": "Prop 2"
+                                          }
+                                        }
+                                      ],
+                                      "required": [
+                                        "prop1",
+                                        "prop2"
+                                      ],
+                                      "properties": {
+                                        "prop1": {
+                                          "$id": "#/properties/paths/properties//path/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema/properties/properties/properties/prop1",
+                                          "type": "object",
+                                          "title": "The prop1 schema",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "default": {},
+                                          "examples": [
+                                            {
+                                              "type": "string",
+                                              "description": "Prop 1"
+                                            }
+                                          ],
+                                          "required": [
+                                            "type",
+                                            "description"
+                                          ],
+                                          "properties": {
+                                            "type": {
+                                              "$id": "#/properties/paths/properties//path/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema/properties/properties/properties/prop1/properties/type",
+                                              "type": "string",
+                                              "title": "The type schema",
+                                              "description": "An explanation about the purpose of this instance.",
+                                              "default": "",
+                                              "examples": [
+                                                "string"
+                                              ]
+                                            },
+                                            "description": {
+                                              "$id": "#/properties/paths/properties//path/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema/properties/properties/properties/prop1/properties/description",
+                                              "type": "string",
+                                              "title": "The description schema",
+                                              "description": "An explanation about the purpose of this instance.",
+                                              "default": "",
+                                              "examples": [
+                                                "Prop 1"
+                                              ]
+                                            }
+                                          },
+                                          "additionalProperties": true
+                                        },
+                                        "prop2": {
+                                          "$id": "#/properties/paths/properties//path/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema/properties/properties/properties/prop2",
+                                          "type": "object",
+                                          "title": "The prop2 schema",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "default": {},
+                                          "examples": [
+                                            {
+                                              "type": "string",
+                                              "description": "Prop 2"
+                                            }
+                                          ],
+                                          "required": [
+                                            "type",
+                                            "description"
+                                          ],
+                                          "properties": {
+                                            "type": {
+                                              "$id": "#/properties/paths/properties//path/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema/properties/properties/properties/prop2/properties/type",
+                                              "type": "string",
+                                              "title": "The type schema",
+                                              "description": "An explanation about the purpose of this instance.",
+                                              "default": "",
+                                              "examples": [
+                                                "string"
+                                              ]
+                                            },
+                                            "description": {
+                                              "$id": "#/properties/paths/properties//path/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema/properties/properties/properties/prop2/properties/description",
+                                              "type": "string",
+                                              "title": "The description schema",
+                                              "description": "An explanation about the purpose of this instance.",
+                                              "default": "",
+                                              "examples": [
+                                                "Prop 2"
+                                              ]
+                                            }
+                                          },
+                                          "additionalProperties": true
+                                        }
+                                      },
+                                      "additionalProperties": true
+                                    }
+                                  },
+                                  "additionalProperties": true
+                                }
+                              },
+                              "additionalProperties": true
+                            }
+                          },
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              },
+              "additionalProperties": true
+            },
+            "post": {
+              "$id": "#/properties/paths/properties//path/properties/post",
+              "type": "object",
+              "title": "The post schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": {},
+              "examples": [
+                {
+                  "tags": [
+                    "Dummy"
+                  ],
+                  "summary": "Dummy post",
+                  "requestBody": {
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "type": "object",
+                          "properties": {
+                            "prop1": {
+                              "type": "string"
+                            },
+                            "prop2": {
+                              "type": "string",
+                              "description": "Prop2 description"
+                            },
+                            "prop3": {
+                              "type": "string",
+                              "description": "Prop3 description"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "responses": {
+                    "201": {
+                      "description": ""
+                    }
+                  }
+                }
+              ],
+              "required": [
+                "tags",
+                "summary",
+                "requestBody",
+                "responses"
+              ],
+              "properties": {
+                "tags": {
+                  "$id": "#/properties/paths/properties//path/properties/post/properties/tags",
+                  "type": "array",
+                  "title": "The tags schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": [],
+                  "examples": [
+                    [
+                      "Dummy"
+                    ]
+                  ],
+                  "additionalItems": true,
+                  "items": {
+                    "$id": "#/properties/paths/properties//path/properties/post/properties/tags/items",
+                    "anyOf": [
+                      {
+                        "$id": "#/properties/paths/properties//path/properties/post/properties/tags/items/anyOf/0",
+                        "type": "string",
+                        "title": "The first anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": [
+                          "Dummy"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "summary": {
+                  "$id": "#/properties/paths/properties//path/properties/post/properties/summary",
+                  "type": "string",
+                  "title": "The summary schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                    "Dummy post"
+                  ]
+                },
+                "requestBody": {
+                  "$id": "#/properties/paths/properties//path/properties/post/properties/requestBody",
+                  "type": "object",
+                  "title": "The requestBody schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": {},
+                  "examples": [
+                    {
+                      "content": {
+                        "application/json": {
+                          "schema": {
+                            "type": "object",
+                            "properties": {
+                              "prop1": {
+                                "type": "string"
+                              },
+                              "prop2": {
+                                "type": "string",
+                                "description": "Prop2 description"
+                              },
+                              "prop3": {
+                                "type": "string",
+                                "description": "Prop3 description"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "required": [
+                    "content"
+                  ],
+                  "properties": {
+                    "content": {
+                      "$id": "#/properties/paths/properties//path/properties/post/properties/requestBody/properties/content",
+                      "type": "object",
+                      "title": "The content schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "application/json": {
+                            "schema": {
+                              "type": "object",
+                              "properties": {
+                                "prop1": {
+                                  "type": "string"
+                                },
+                                "prop2": {
+                                  "type": "string",
+                                  "description": "Prop2 description"
+                                },
+                                "prop3": {
+                                  "type": "string",
+                                  "description": "Prop3 description"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      ],
+                      "required": [
+                        "application/json"
+                      ],
+                      "properties": {
+                        "application/json": {
+                          "$id": "#/properties/paths/properties//path/properties/post/properties/requestBody/properties/content/properties/application/json",
+                          "type": "object",
+                          "title": "The application/json schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": {},
+                          "examples": [
+                            {
+                              "schema": {
+                                "type": "object",
+                                "properties": {
+                                  "prop1": {
+                                    "type": "string"
+                                  },
+                                  "prop2": {
+                                    "type": "string",
+                                    "description": "Prop2 description"
+                                  },
+                                  "prop3": {
+                                    "type": "string",
+                                    "description": "Prop3 description"
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "required": [
+                            "schema"
+                          ],
+                          "properties": {
+                            "schema": {
+                              "$id": "#/properties/paths/properties//path/properties/post/properties/requestBody/properties/content/properties/application/json/properties/schema",
+                              "type": "object",
+                              "title": "The schema schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": {},
+                              "examples": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "prop1": {
+                                      "type": "string"
+                                    },
+                                    "prop2": {
+                                      "type": "string",
+                                      "description": "Prop2 description"
+                                    },
+                                    "prop3": {
+                                      "type": "string",
+                                      "description": "Prop3 description"
+                                    }
+                                  }
+                                }
+                              ],
+                              "required": [
+                                "type",
+                                "properties"
+                              ],
+                              "properties": {
+                                "type": {
+                                  "$id": "#/properties/paths/properties//path/properties/post/properties/requestBody/properties/content/properties/application/json/properties/schema/properties/type",
+                                  "type": "string",
+                                  "title": "The type schema",
+                                  "description": "An explanation about the purpose of this instance.",
+                                  "default": "",
+                                  "examples": [
+                                    "object"
+                                  ]
+                                },
+                                "properties": {
+                                  "$id": "#/properties/paths/properties//path/properties/post/properties/requestBody/properties/content/properties/application/json/properties/schema/properties/properties",
+                                  "type": "object",
+                                  "title": "The properties schema",
+                                  "description": "An explanation about the purpose of this instance.",
+                                  "default": {},
+                                  "examples": [
+                                    {
+                                      "prop1": {
+                                        "type": "string"
+                                      },
+                                      "prop2": {
+                                        "type": "string",
+                                        "description": "Prop2 description"
+                                      },
+                                      "prop3": {
+                                        "type": "string",
+                                        "description": "Prop3 description"
+                                      }
+                                    }
+                                  ],
+                                  "required": [
+                                    "prop1",
+                                    "prop2",
+                                    "prop3"
+                                  ],
+                                  "properties": {
+                                    "prop1": {
+                                      "$id": "#/properties/paths/properties//path/properties/post/properties/requestBody/properties/content/properties/application/json/properties/schema/properties/properties/properties/prop1",
+                                      "type": "object",
+                                      "title": "The prop1 schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": {},
+                                      "examples": [
+                                        {
+                                          "type": "string"
+                                        }
+                                      ],
+                                      "required": [
+                                        "type"
+                                      ],
+                                      "properties": {
+                                        "type": {
+                                          "$id": "#/properties/paths/properties//path/properties/post/properties/requestBody/properties/content/properties/application/json/properties/schema/properties/properties/properties/prop1/properties/type",
+                                          "type": "string",
+                                          "title": "The type schema",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "default": "",
+                                          "examples": [
+                                            "string"
+                                          ]
+                                        }
+                                      },
+                                      "additionalProperties": true
+                                    },
+                                    "prop2": {
+                                      "$id": "#/properties/paths/properties//path/properties/post/properties/requestBody/properties/content/properties/application/json/properties/schema/properties/properties/properties/prop2",
+                                      "type": "object",
+                                      "title": "The prop2 schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": {},
+                                      "examples": [
+                                        {
+                                          "type": "string",
+                                          "description": "Prop2 description"
+                                        }
+                                      ],
+                                      "required": [
+                                        "type",
+                                        "description"
+                                      ],
+                                      "properties": {
+                                        "type": {
+                                          "$id": "#/properties/paths/properties//path/properties/post/properties/requestBody/properties/content/properties/application/json/properties/schema/properties/properties/properties/prop2/properties/type",
+                                          "type": "string",
+                                          "title": "The type schema",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "default": "",
+                                          "examples": [
+                                            "string"
+                                          ]
+                                        },
+                                        "description": {
+                                          "$id": "#/properties/paths/properties//path/properties/post/properties/requestBody/properties/content/properties/application/json/properties/schema/properties/properties/properties/prop2/properties/description",
+                                          "type": "string",
+                                          "title": "The description schema",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "default": "",
+                                          "examples": [
+                                            "Prop2 description"
+                                          ]
+                                        }
+                                      },
+                                      "additionalProperties": true
+                                    },
+                                    "prop3": {
+                                      "$id": "#/properties/paths/properties//path/properties/post/properties/requestBody/properties/content/properties/application/json/properties/schema/properties/properties/properties/prop3",
+                                      "type": "object",
+                                      "title": "The prop3 schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": {},
+                                      "examples": [
+                                        {
+                                          "type": "string",
+                                          "description": "Prop3 description"
+                                        }
+                                      ],
+                                      "required": [
+                                        "type",
+                                        "description"
+                                      ],
+                                      "properties": {
+                                        "type": {
+                                          "$id": "#/properties/paths/properties//path/properties/post/properties/requestBody/properties/content/properties/application/json/properties/schema/properties/properties/properties/prop3/properties/type",
+                                          "type": "string",
+                                          "title": "The type schema",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "default": "",
+                                          "examples": [
+                                            "string"
+                                          ]
+                                        },
+                                        "description": {
+                                          "$id": "#/properties/paths/properties//path/properties/post/properties/requestBody/properties/content/properties/application/json/properties/schema/properties/properties/properties/prop3/properties/description",
+                                          "type": "string",
+                                          "title": "The description schema",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "default": "",
+                                          "examples": [
+                                            "Prop3 description"
+                                          ]
+                                        }
+                                      },
+                                      "additionalProperties": true
+                                    }
+                                  },
+                                  "additionalProperties": true
+                                }
+                              },
+                              "additionalProperties": true
+                            }
+                          },
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                "responses": {
+                  "$id": "#/properties/paths/properties//path/properties/post/properties/responses",
+                  "type": "object",
+                  "title": "The responses schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": {},
+                  "examples": [
+                    {
+                      "201": {
+                        "description": ""
+                      }
+                    }
+                  ],
+                  "required": [
+                    "201"
+                  ],
+                  "properties": {
+                    "201": {
+                      "$id": "#/properties/paths/properties//path/properties/post/properties/responses/properties/201",
+                      "type": "object",
+                      "title": "The 201 schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "description": ""
+                        }
+                      ],
+                      "required": [
+                        "description"
+                      ],
+                      "properties": {
+                        "description": {
+                          "$id": "#/properties/paths/properties//path/properties/post/properties/responses/properties/201/properties/description",
+                          "type": "string",
+                          "title": "The description schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            ""
+                          ]
+                        }
+                      },
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": true
+        },
+        "/path/entity/{id}": {
+          "$id": "#/properties/paths/properties//path/entity/%7Bid%7D",
+          "type": "object",
+          "title": "The /path/entity/{id} schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": {},
+          "examples": [
+            {
+              "get": {
+                "tags": [
+                  "Dummy"
+                ],
+                "summary": "Get an entity with a ref",
+                "parameters": [
+                  {
+                    "name": "id",
+                    "in": "path",
+                    "schema": {
+                      "type": "integer"
+                    },
+                    "required": true
+                  }
+                ],
+                "responses": {
+                  "200": {
+                    "description": "",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "$ref": "#/components/schemas/DummyComponent"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "required": [
+            "get"
+          ],
+          "properties": {
+            "get": {
+              "$id": "#/properties/paths/properties//path/entity/%7Bid%7D/properties/get",
+              "type": "object",
+              "title": "The get schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": {},
+              "examples": [
+                {
+                  "tags": [
+                    "Dummy"
+                  ],
+                  "summary": "Get an entity with a ref",
+                  "parameters": [
+                    {
+                      "name": "id",
+                      "in": "path",
+                      "schema": {
+                        "type": "integer"
+                      },
+                      "required": true
+                    }
+                  ],
+                  "responses": {
+                    "200": {
+                      "description": "",
+                      "content": {
+                        "application/json": {
+                          "schema": {
+                            "$ref": "#/components/schemas/DummyComponent"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "required": [
+                "tags",
+                "summary",
+                "parameters",
+                "responses"
+              ],
+              "properties": {
+                "tags": {
+                  "$id": "#/properties/paths/properties//path/entity/%7Bid%7D/properties/get/properties/tags",
+                  "type": "array",
+                  "title": "The tags schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": [],
+                  "examples": [
+                    [
+                      "Dummy"
+                    ]
+                  ],
+                  "additionalItems": true,
+                  "items": {
+                    "$id": "#/properties/paths/properties//path/entity/%7Bid%7D/properties/get/properties/tags/items",
+                    "anyOf": [
+                      {
+                        "$id": "#/properties/paths/properties//path/entity/%7Bid%7D/properties/get/properties/tags/items/anyOf/0",
+                        "type": "string",
+                        "title": "The first anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": [
+                          "Dummy"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "summary": {
+                  "$id": "#/properties/paths/properties//path/entity/%7Bid%7D/properties/get/properties/summary",
+                  "type": "string",
+                  "title": "The summary schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                    "Get an entity with a ref"
+                  ]
+                },
+                "parameters": {
+                  "$id": "#/properties/paths/properties//path/entity/%7Bid%7D/properties/get/properties/parameters",
+                  "type": "array",
+                  "title": "The parameters schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": [],
+                  "examples": [
+                    [
+                      {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                          "type": "integer"
+                        },
+                        "required": true
+                      }
+                    ]
+                  ],
+                  "additionalItems": true,
+                  "items": {
+                    "$id": "#/properties/paths/properties//path/entity/%7Bid%7D/properties/get/properties/parameters/items",
+                    "anyOf": [
+                      {
+                        "$id": "#/properties/paths/properties//path/entity/%7Bid%7D/properties/get/properties/parameters/items/anyOf/0",
+                        "type": "object",
+                        "title": "The first anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": {},
+                        "examples": [
+                          {
+                            "name": "id",
+                            "in": "path",
+                            "schema": {
+                              "type": "integer"
+                            },
+                            "required": true
+                          }
+                        ],
+                        "required": [
+                          "name",
+                          "in",
+                          "schema",
+                          "required"
+                        ],
+                        "properties": {
+                          "name": {
+                            "$id": "#/properties/paths/properties//path/entity/%7Bid%7D/properties/get/properties/parameters/items/anyOf/0/properties/name",
+                            "type": "string",
+                            "title": "The name schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                              "id"
+                            ]
+                          },
+                          "in": {
+                            "$id": "#/properties/paths/properties//path/entity/%7Bid%7D/properties/get/properties/parameters/items/anyOf/0/properties/in",
+                            "type": "string",
+                            "title": "The in schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                              "path"
+                            ]
+                          },
+                          "schema": {
+                            "$id": "#/properties/paths/properties//path/entity/%7Bid%7D/properties/get/properties/parameters/items/anyOf/0/properties/schema",
+                            "type": "object",
+                            "title": "The schema schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": {},
+                            "examples": [
+                              {
+                                "type": "integer"
+                              }
+                            ],
+                            "required": [
+                              "type"
+                            ],
+                            "properties": {
+                              "type": {
+                                "$id": "#/properties/paths/properties//path/entity/%7Bid%7D/properties/get/properties/parameters/items/anyOf/0/properties/schema/properties/type",
+                                "type": "string",
+                                "title": "The type schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                  "integer"
+                                ]
+                              }
+                            },
+                            "additionalProperties": true
+                          },
+                          "required": {
+                            "$id": "#/properties/paths/properties//path/entity/%7Bid%7D/properties/get/properties/parameters/items/anyOf/0/properties/required",
+                            "type": "boolean",
+                            "title": "The required schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": false,
+                            "examples": [
+                              true
+                            ]
+                          }
+                        },
+                        "additionalProperties": true
+                      }
+                    ]
+                  }
+                },
+                "responses": {
+                  "$id": "#/properties/paths/properties//path/entity/%7Bid%7D/properties/get/properties/responses",
+                  "type": "object",
+                  "title": "The responses schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": {},
+                  "examples": [
+                    {
+                      "200": {
+                        "description": "",
+                        "content": {
+                          "application/json": {
+                            "schema": {
+                              "$ref": "#/components/schemas/DummyComponent"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "required": [
+                    "200"
+                  ],
+                  "properties": {
+                    "200": {
+                      "$id": "#/properties/paths/properties//path/entity/%7Bid%7D/properties/get/properties/responses/properties/200",
+                      "type": "object",
+                      "title": "The 200 schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "description": "",
+                          "content": {
+                            "application/json": {
+                              "schema": {
+                                "$ref": "#/components/schemas/DummyComponent"
+                              }
+                            }
+                          }
+                        }
+                      ],
+                      "required": [
+                        "description",
+                        "content"
+                      ],
+                      "properties": {
+                        "description": {
+                          "$id": "#/properties/paths/properties//path/entity/%7Bid%7D/properties/get/properties/responses/properties/200/properties/description",
+                          "type": "string",
+                          "title": "The description schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            ""
+                          ]
+                        },
+                        "content": {
+                          "$id": "#/properties/paths/properties//path/entity/%7Bid%7D/properties/get/properties/responses/properties/200/properties/content",
+                          "type": "object",
+                          "title": "The content schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": {},
+                          "examples": [
+                            {
+                              "application/json": {
+                                "schema": {
+                                  "$ref": "#/components/schemas/DummyComponent"
+                                }
+                              }
+                            }
+                          ],
+                          "required": [
+                            "application/json"
+                          ],
+                          "properties": {
+                            "application/json": {
+                              "$id": "#/properties/paths/properties//path/entity/%7Bid%7D/properties/get/properties/responses/properties/200/properties/content/properties/application/json",
+                              "type": "object",
+                              "title": "The application/json schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": {},
+                              "examples": [
+                                {
+                                  "schema": {
+                                    "$ref": "#/components/schemas/DummyComponent"
+                                  }
+                                }
+                              ],
+                              "required": [
+                                "schema"
+                              ],
+                              "properties": {
+                                "schema": {
+                                  "$id": "#/properties/paths/properties//path/entity/%7Bid%7D/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema",
+                                  "type": "object",
+                                  "title": "The schema schema",
+                                  "description": "An explanation about the purpose of this instance.",
+                                  "default": {},
+                                  "examples": [
+                                    {
+                                      "$ref": "#/components/schemas/DummyComponent"
+                                    }
+                                  ],
+                                  "required": [
+                                    "$ref"
+                                  ],
+                                  "properties": {
+                                    "$ref": {
+                                      "$id": "#/properties/paths/properties//path/entity/%7Bid%7D/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema/properties/%24ref",
+                                      "type": "string",
+                                      "title": "The $ref schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": "",
+                                      "examples": [
+                                        "#/components/schemas/DummyComponent"
+                                      ]
+                                    }
+                                  },
+                                  "additionalProperties": true
+                                }
+                              },
+                              "additionalProperties": true
+                            }
+                          },
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": true
+        },
+        "/path/entities": {
+          "$id": "#/properties/paths/properties//path/entities",
+          "type": "object",
+          "title": "The /path/entities schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": {},
+          "examples": [
+            {
+              "get": {
+                "tags": [
+                  "Dummy"
+                ],
+                "summary": "Get a list",
+                "responses": {
+                  "200": {
+                    "description": "",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/DummyComponent"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "required": [
+            "get"
+          ],
+          "properties": {
+            "get": {
+              "$id": "#/properties/paths/properties//path/entities/properties/get",
+              "type": "object",
+              "title": "The get schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": {},
+              "examples": [
+                {
+                  "tags": [
+                    "Dummy"
+                  ],
+                  "summary": "Get a list",
+                  "responses": {
+                    "200": {
+                      "description": "",
+                      "content": {
+                        "application/json": {
+                          "schema": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/components/schemas/DummyComponent"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "required": [
+                "tags",
+                "summary",
+                "responses"
+              ],
+              "properties": {
+                "tags": {
+                  "$id": "#/properties/paths/properties//path/entities/properties/get/properties/tags",
+                  "type": "array",
+                  "title": "The tags schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": [],
+                  "examples": [
+                    [
+                      "Dummy"
+                    ]
+                  ],
+                  "additionalItems": true,
+                  "items": {
+                    "$id": "#/properties/paths/properties//path/entities/properties/get/properties/tags/items",
+                    "anyOf": [
+                      {
+                        "$id": "#/properties/paths/properties//path/entities/properties/get/properties/tags/items/anyOf/0",
+                        "type": "string",
+                        "title": "The first anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": [
+                          "Dummy"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "summary": {
+                  "$id": "#/properties/paths/properties//path/entities/properties/get/properties/summary",
+                  "type": "string",
+                  "title": "The summary schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                    "Get a list"
+                  ]
+                },
+                "responses": {
+                  "$id": "#/properties/paths/properties//path/entities/properties/get/properties/responses",
+                  "type": "object",
+                  "title": "The responses schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": {},
+                  "examples": [
+                    {
+                      "200": {
+                        "description": "",
+                        "content": {
+                          "application/json": {
+                            "schema": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/DummyComponent"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "required": [
+                    "200"
+                  ],
+                  "properties": {
+                    "200": {
+                      "$id": "#/properties/paths/properties//path/entities/properties/get/properties/responses/properties/200",
+                      "type": "object",
+                      "title": "The 200 schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "description": "",
+                          "content": {
+                            "application/json": {
+                              "schema": {
+                                "type": "array",
+                                "items": {
+                                  "$ref": "#/components/schemas/DummyComponent"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      ],
+                      "required": [
+                        "description",
+                        "content"
+                      ],
+                      "properties": {
+                        "description": {
+                          "$id": "#/properties/paths/properties//path/entities/properties/get/properties/responses/properties/200/properties/description",
+                          "type": "string",
+                          "title": "The description schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            ""
+                          ]
+                        },
+                        "content": {
+                          "$id": "#/properties/paths/properties//path/entities/properties/get/properties/responses/properties/200/properties/content",
+                          "type": "object",
+                          "title": "The content schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": {},
+                          "examples": [
+                            {
+                              "application/json": {
+                                "schema": {
+                                  "type": "array",
+                                  "items": {
+                                    "$ref": "#/components/schemas/DummyComponent"
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "required": [
+                            "application/json"
+                          ],
+                          "properties": {
+                            "application/json": {
+                              "$id": "#/properties/paths/properties//path/entities/properties/get/properties/responses/properties/200/properties/content/properties/application/json",
+                              "type": "object",
+                              "title": "The application/json schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": {},
+                              "examples": [
+                                {
+                                  "schema": {
+                                    "type": "array",
+                                    "items": {
+                                      "$ref": "#/components/schemas/DummyComponent"
+                                    }
+                                  }
+                                }
+                              ],
+                              "required": [
+                                "schema"
+                              ],
+                              "properties": {
+                                "schema": {
+                                  "$id": "#/properties/paths/properties//path/entities/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema",
+                                  "type": "object",
+                                  "title": "The schema schema",
+                                  "description": "An explanation about the purpose of this instance.",
+                                  "default": {},
+                                  "examples": [
+                                    {
+                                      "type": "array",
+                                      "items": {
+                                        "$ref": "#/components/schemas/DummyComponent"
+                                      }
+                                    }
+                                  ],
+                                  "required": [
+                                    "type",
+                                    "items"
+                                  ],
+                                  "properties": {
+                                    "type": {
+                                      "$id": "#/properties/paths/properties//path/entities/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema/properties/type",
+                                      "type": "string",
+                                      "title": "The type schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": "",
+                                      "examples": [
+                                        "array"
+                                      ]
+                                    },
+                                    "items": {
+                                      "$id": "#/properties/paths/properties//path/entities/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema/properties/items",
+                                      "type": "object",
+                                      "title": "The items schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": {},
+                                      "examples": [
+                                        {
+                                          "$ref": "#/components/schemas/DummyComponent"
+                                        }
+                                      ],
+                                      "required": [
+                                        "$ref"
+                                      ],
+                                      "properties": {
+                                        "$ref": {
+                                          "$id": "#/properties/paths/properties//path/entities/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema/properties/items/properties/%24ref",
+                                          "type": "string",
+                                          "title": "The $ref schema",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "default": "",
+                                          "examples": [
+                                            "#/components/schemas/DummyComponent"
+                                          ]
+                                        }
+                                      },
+                                      "additionalProperties": true
+                                    }
+                                  },
+                                  "additionalProperties": true
+                                }
+                              },
+                              "additionalProperties": true
+                            }
+                          },
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": true
+        },
+        "/path/image/{prop1}": {
+          "$id": "#/properties/paths/properties//path/image/%7Bprop1%7D",
+          "type": "object",
+          "title": "The /path/image/{prop1} schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": {},
+          "examples": [
+            {
+              "get": {
+                "tags": [
+                  "Dummy"
+                ],
+                "summary": "Dummy image path",
+                "parameters": [
+                  {
+                    "name": "prop1",
+                    "in": "path",
+                    "schema": {
+                      "type": "integer"
+                    },
+                    "required": true,
+                    "description": "prop1"
+                  }
+                ],
+                "responses": {
+                  "200": {
+                    "description": "",
+                    "content": {
+                      "image/png": {
+                        "schema": {
+                          "type": "string",
+                          "format": "base64"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "required": [
+            "get"
+          ],
+          "properties": {
+            "get": {
+              "$id": "#/properties/paths/properties//path/image/%7Bprop1%7D/properties/get",
+              "type": "object",
+              "title": "The get schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": {},
+              "examples": [
+                {
+                  "tags": [
+                    "Dummy"
+                  ],
+                  "summary": "Dummy image path",
+                  "parameters": [
+                    {
+                      "name": "prop1",
+                      "in": "path",
+                      "schema": {
+                        "type": "integer"
+                      },
+                      "required": true,
+                      "description": "prop1"
+                    }
+                  ],
+                  "responses": {
+                    "200": {
+                      "description": "",
+                      "content": {
+                        "image/png": {
+                          "schema": {
+                            "type": "string",
+                            "format": "base64"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "required": [
+                "tags",
+                "summary",
+                "parameters",
+                "responses"
+              ],
+              "properties": {
+                "tags": {
+                  "$id": "#/properties/paths/properties//path/image/%7Bprop1%7D/properties/get/properties/tags",
+                  "type": "array",
+                  "title": "The tags schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": [],
+                  "examples": [
+                    [
+                      "Dummy"
+                    ]
+                  ],
+                  "additionalItems": true,
+                  "items": {
+                    "$id": "#/properties/paths/properties//path/image/%7Bprop1%7D/properties/get/properties/tags/items",
+                    "anyOf": [
+                      {
+                        "$id": "#/properties/paths/properties//path/image/%7Bprop1%7D/properties/get/properties/tags/items/anyOf/0",
+                        "type": "string",
+                        "title": "The first anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": [
+                          "Dummy"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "summary": {
+                  "$id": "#/properties/paths/properties//path/image/%7Bprop1%7D/properties/get/properties/summary",
+                  "type": "string",
+                  "title": "The summary schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                    "Dummy image path"
+                  ]
+                },
+                "parameters": {
+                  "$id": "#/properties/paths/properties//path/image/%7Bprop1%7D/properties/get/properties/parameters",
+                  "type": "array",
+                  "title": "The parameters schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": [],
+                  "examples": [
+                    [
+                      {
+                        "name": "prop1",
+                        "in": "path",
+                        "schema": {
+                          "type": "integer"
+                        },
+                        "required": true,
+                        "description": "prop1"
+                      }
+                    ]
+                  ],
+                  "additionalItems": true,
+                  "items": {
+                    "$id": "#/properties/paths/properties//path/image/%7Bprop1%7D/properties/get/properties/parameters/items",
+                    "anyOf": [
+                      {
+                        "$id": "#/properties/paths/properties//path/image/%7Bprop1%7D/properties/get/properties/parameters/items/anyOf/0",
+                        "type": "object",
+                        "title": "The first anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": {},
+                        "examples": [
+                          {
+                            "name": "prop1",
+                            "in": "path",
+                            "schema": {
+                              "type": "integer"
+                            },
+                            "required": true,
+                            "description": "prop1"
+                          }
+                        ],
+                        "required": [
+                          "name",
+                          "in",
+                          "schema",
+                          "required",
+                          "description"
+                        ],
+                        "properties": {
+                          "name": {
+                            "$id": "#/properties/paths/properties//path/image/%7Bprop1%7D/properties/get/properties/parameters/items/anyOf/0/properties/name",
+                            "type": "string",
+                            "title": "The name schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                              "prop1"
+                            ]
+                          },
+                          "in": {
+                            "$id": "#/properties/paths/properties//path/image/%7Bprop1%7D/properties/get/properties/parameters/items/anyOf/0/properties/in",
+                            "type": "string",
+                            "title": "The in schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                              "path"
+                            ]
+                          },
+                          "schema": {
+                            "$id": "#/properties/paths/properties//path/image/%7Bprop1%7D/properties/get/properties/parameters/items/anyOf/0/properties/schema",
+                            "type": "object",
+                            "title": "The schema schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": {},
+                            "examples": [
+                              {
+                                "type": "integer"
+                              }
+                            ],
+                            "required": [
+                              "type"
+                            ],
+                            "properties": {
+                              "type": {
+                                "$id": "#/properties/paths/properties//path/image/%7Bprop1%7D/properties/get/properties/parameters/items/anyOf/0/properties/schema/properties/type",
+                                "type": "string",
+                                "title": "The type schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                  "integer"
+                                ]
+                              }
+                            },
+                            "additionalProperties": true
+                          },
+                          "required": {
+                            "$id": "#/properties/paths/properties//path/image/%7Bprop1%7D/properties/get/properties/parameters/items/anyOf/0/properties/required",
+                            "type": "boolean",
+                            "title": "The required schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": false,
+                            "examples": [
+                              true
+                            ]
+                          },
+                          "description": {
+                            "$id": "#/properties/paths/properties//path/image/%7Bprop1%7D/properties/get/properties/parameters/items/anyOf/0/properties/description",
+                            "type": "string",
+                            "title": "The description schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                              "prop1"
+                            ]
+                          }
+                        },
+                        "additionalProperties": true
+                      }
+                    ]
+                  }
+                },
+                "responses": {
+                  "$id": "#/properties/paths/properties//path/image/%7Bprop1%7D/properties/get/properties/responses",
+                  "type": "object",
+                  "title": "The responses schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": {},
+                  "examples": [
+                    {
+                      "200": {
+                        "description": "",
+                        "content": {
+                          "image/png": {
+                            "schema": {
+                              "type": "string",
+                              "format": "base64"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "required": [
+                    "200"
+                  ],
+                  "properties": {
+                    "200": {
+                      "$id": "#/properties/paths/properties//path/image/%7Bprop1%7D/properties/get/properties/responses/properties/200",
+                      "type": "object",
+                      "title": "The 200 schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "description": "",
+                          "content": {
+                            "image/png": {
+                              "schema": {
+                                "type": "string",
+                                "format": "base64"
+                              }
+                            }
+                          }
+                        }
+                      ],
+                      "required": [
+                        "description",
+                        "content"
+                      ],
+                      "properties": {
+                        "description": {
+                          "$id": "#/properties/paths/properties//path/image/%7Bprop1%7D/properties/get/properties/responses/properties/200/properties/description",
+                          "type": "string",
+                          "title": "The description schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            ""
+                          ]
+                        },
+                        "content": {
+                          "$id": "#/properties/paths/properties//path/image/%7Bprop1%7D/properties/get/properties/responses/properties/200/properties/content",
+                          "type": "object",
+                          "title": "The content schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": {},
+                          "examples": [
+                            {
+                              "image/png": {
+                                "schema": {
+                                  "type": "string",
+                                  "format": "base64"
+                                }
+                              }
+                            }
+                          ],
+                          "required": [
+                            "image/png"
+                          ],
+                          "properties": {
+                            "image/png": {
+                              "$id": "#/properties/paths/properties//path/image/%7Bprop1%7D/properties/get/properties/responses/properties/200/properties/content/properties/image/png",
+                              "type": "object",
+                              "title": "The image/png schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": {},
+                              "examples": [
+                                {
+                                  "schema": {
+                                    "type": "string",
+                                    "format": "base64"
+                                  }
+                                }
+                              ],
+                              "required": [
+                                "schema"
+                              ],
+                              "properties": {
+                                "schema": {
+                                  "$id": "#/properties/paths/properties//path/image/%7Bprop1%7D/properties/get/properties/responses/properties/200/properties/content/properties/image/png/properties/schema",
+                                  "type": "object",
+                                  "title": "The schema schema",
+                                  "description": "An explanation about the purpose of this instance.",
+                                  "default": {},
+                                  "examples": [
+                                    {
+                                      "type": "string",
+                                      "format": "base64"
+                                    }
+                                  ],
+                                  "required": [
+                                    "type",
+                                    "format"
+                                  ],
+                                  "properties": {
+                                    "type": {
+                                      "$id": "#/properties/paths/properties//path/image/%7Bprop1%7D/properties/get/properties/responses/properties/200/properties/content/properties/image/png/properties/schema/properties/type",
+                                      "type": "string",
+                                      "title": "The type schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": "",
+                                      "examples": [
+                                        "string"
+                                      ]
+                                    },
+                                    "format": {
+                                      "$id": "#/properties/paths/properties//path/image/%7Bprop1%7D/properties/get/properties/responses/properties/200/properties/content/properties/image/png/properties/schema/properties/format",
+                                      "type": "string",
+                                      "title": "The format schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": "",
+                                      "examples": [
+                                        "base64"
+                                      ]
+                                    }
+                                  },
+                                  "additionalProperties": true
+                                }
+                              },
+                              "additionalProperties": true
+                            }
+                          },
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": true
+        },
+        "/path/{id}": {
+          "$id": "#/properties/paths/properties//path/%7Bid%7D",
+          "type": "object",
+          "title": "The /path/{id} schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": {},
+          "examples": [
+            {
+              "put": {
+                "tags": [
+                  "Dummy"
+                ],
+                "summary": "Dummy put",
+                "parameters": [
+                  {
+                    "name": "id",
+                    "in": "path",
+                    "schema": {
+                      "type": "integer"
+                    },
+                    "required": true
+                  }
+                ],
+                "requestBody": {
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "prop1": {
+                            "type": "string"
+                          },
+                          "prop2": {
+                            "type": "integer"
+                          },
+                          "prop3": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "responses": {
+                  "204": {
+                    "description": ""
+                  }
+                }
+              }
+            }
+          ],
+          "required": [
+            "put"
+          ],
+          "properties": {
+            "put": {
+              "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/put",
+              "type": "object",
+              "title": "The put schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": {},
+              "examples": [
+                {
+                  "tags": [
+                    "Dummy"
+                  ],
+                  "summary": "Dummy put",
+                  "parameters": [
+                    {
+                      "name": "id",
+                      "in": "path",
+                      "schema": {
+                        "type": "integer"
+                      },
+                      "required": true
+                    }
+                  ],
+                  "requestBody": {
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "type": "object",
+                          "properties": {
+                            "prop1": {
+                              "type": "string"
+                            },
+                            "prop2": {
+                              "type": "integer"
+                            },
+                            "prop3": {
+                              "type": "boolean"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "responses": {
+                    "204": {
+                      "description": ""
+                    }
+                  }
+                }
+              ],
+              "required": [
+                "tags",
+                "summary",
+                "parameters",
+                "requestBody",
+                "responses"
+              ],
+              "properties": {
+                "tags": {
+                  "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/put/properties/tags",
+                  "type": "array",
+                  "title": "The tags schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": [],
+                  "examples": [
+                    [
+                      "Dummy"
+                    ]
+                  ],
+                  "additionalItems": true,
+                  "items": {
+                    "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/put/properties/tags/items",
+                    "anyOf": [
+                      {
+                        "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/put/properties/tags/items/anyOf/0",
+                        "type": "string",
+                        "title": "The first anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": [
+                          "Dummy"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "summary": {
+                  "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/put/properties/summary",
+                  "type": "string",
+                  "title": "The summary schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                    "Dummy put"
+                  ]
+                },
+                "parameters": {
+                  "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/put/properties/parameters",
+                  "type": "array",
+                  "title": "The parameters schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": [],
+                  "examples": [
+                    [
+                      {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                          "type": "integer"
+                        },
+                        "required": true
+                      }
+                    ]
+                  ],
+                  "additionalItems": true,
+                  "items": {
+                    "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/put/properties/parameters/items",
+                    "anyOf": [
+                      {
+                        "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/put/properties/parameters/items/anyOf/0",
+                        "type": "object",
+                        "title": "The first anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": {},
+                        "examples": [
+                          {
+                            "name": "id",
+                            "in": "path",
+                            "schema": {
+                              "type": "integer"
+                            },
+                            "required": true
+                          }
+                        ],
+                        "required": [
+                          "name",
+                          "in",
+                          "schema",
+                          "required"
+                        ],
+                        "properties": {
+                          "name": {
+                            "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/put/properties/parameters/items/anyOf/0/properties/name",
+                            "type": "string",
+                            "title": "The name schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                              "id"
+                            ]
+                          },
+                          "in": {
+                            "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/put/properties/parameters/items/anyOf/0/properties/in",
+                            "type": "string",
+                            "title": "The in schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                              "path"
+                            ]
+                          },
+                          "schema": {
+                            "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/put/properties/parameters/items/anyOf/0/properties/schema",
+                            "type": "object",
+                            "title": "The schema schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": {},
+                            "examples": [
+                              {
+                                "type": "integer"
+                              }
+                            ],
+                            "required": [
+                              "type"
+                            ],
+                            "properties": {
+                              "type": {
+                                "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/put/properties/parameters/items/anyOf/0/properties/schema/properties/type",
+                                "type": "string",
+                                "title": "The type schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                  "integer"
+                                ]
+                              }
+                            },
+                            "additionalProperties": true
+                          },
+                          "required": {
+                            "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/put/properties/parameters/items/anyOf/0/properties/required",
+                            "type": "boolean",
+                            "title": "The required schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": false,
+                            "examples": [
+                              true
+                            ]
+                          }
+                        },
+                        "additionalProperties": true
+                      }
+                    ]
+                  }
+                },
+                "requestBody": {
+                  "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/put/properties/requestBody",
+                  "type": "object",
+                  "title": "The requestBody schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": {},
+                  "examples": [
+                    {
+                      "content": {
+                        "application/json": {
+                          "schema": {
+                            "type": "object",
+                            "properties": {
+                              "prop1": {
+                                "type": "string"
+                              },
+                              "prop2": {
+                                "type": "integer"
+                              },
+                              "prop3": {
+                                "type": "boolean"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "required": [
+                    "content"
+                  ],
+                  "properties": {
+                    "content": {
+                      "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/put/properties/requestBody/properties/content",
+                      "type": "object",
+                      "title": "The content schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "application/json": {
+                            "schema": {
+                              "type": "object",
+                              "properties": {
+                                "prop1": {
+                                  "type": "string"
+                                },
+                                "prop2": {
+                                  "type": "integer"
+                                },
+                                "prop3": {
+                                  "type": "boolean"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      ],
+                      "required": [
+                        "application/json"
+                      ],
+                      "properties": {
+                        "application/json": {
+                          "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/put/properties/requestBody/properties/content/properties/application/json",
+                          "type": "object",
+                          "title": "The application/json schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": {},
+                          "examples": [
+                            {
+                              "schema": {
+                                "type": "object",
+                                "properties": {
+                                  "prop1": {
+                                    "type": "string"
+                                  },
+                                  "prop2": {
+                                    "type": "integer"
+                                  },
+                                  "prop3": {
+                                    "type": "boolean"
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "required": [
+                            "schema"
+                          ],
+                          "properties": {
+                            "schema": {
+                              "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/put/properties/requestBody/properties/content/properties/application/json/properties/schema",
+                              "type": "object",
+                              "title": "The schema schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": {},
+                              "examples": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "prop1": {
+                                      "type": "string"
+                                    },
+                                    "prop2": {
+                                      "type": "integer"
+                                    },
+                                    "prop3": {
+                                      "type": "boolean"
+                                    }
+                                  }
+                                }
+                              ],
+                              "required": [
+                                "type",
+                                "properties"
+                              ],
+                              "properties": {
+                                "type": {
+                                  "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/put/properties/requestBody/properties/content/properties/application/json/properties/schema/properties/type",
+                                  "type": "string",
+                                  "title": "The type schema",
+                                  "description": "An explanation about the purpose of this instance.",
+                                  "default": "",
+                                  "examples": [
+                                    "object"
+                                  ]
+                                },
+                                "properties": {
+                                  "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/put/properties/requestBody/properties/content/properties/application/json/properties/schema/properties/properties",
+                                  "type": "object",
+                                  "title": "The properties schema",
+                                  "description": "An explanation about the purpose of this instance.",
+                                  "default": {},
+                                  "examples": [
+                                    {
+                                      "prop1": {
+                                        "type": "string"
+                                      },
+                                      "prop2": {
+                                        "type": "integer"
+                                      },
+                                      "prop3": {
+                                        "type": "boolean"
+                                      }
+                                    }
+                                  ],
+                                  "required": [
+                                    "prop1",
+                                    "prop2",
+                                    "prop3"
+                                  ],
+                                  "properties": {
+                                    "prop1": {
+                                      "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/put/properties/requestBody/properties/content/properties/application/json/properties/schema/properties/properties/properties/prop1",
+                                      "type": "object",
+                                      "title": "The prop1 schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": {},
+                                      "examples": [
+                                        {
+                                          "type": "string"
+                                        }
+                                      ],
+                                      "required": [
+                                        "type"
+                                      ],
+                                      "properties": {
+                                        "type": {
+                                          "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/put/properties/requestBody/properties/content/properties/application/json/properties/schema/properties/properties/properties/prop1/properties/type",
+                                          "type": "string",
+                                          "title": "The type schema",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "default": "",
+                                          "examples": [
+                                            "string"
+                                          ]
+                                        }
+                                      },
+                                      "additionalProperties": true
+                                    },
+                                    "prop2": {
+                                      "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/put/properties/requestBody/properties/content/properties/application/json/properties/schema/properties/properties/properties/prop2",
+                                      "type": "object",
+                                      "title": "The prop2 schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": {},
+                                      "examples": [
+                                        {
+                                          "type": "integer"
+                                        }
+                                      ],
+                                      "required": [
+                                        "type"
+                                      ],
+                                      "properties": {
+                                        "type": {
+                                          "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/put/properties/requestBody/properties/content/properties/application/json/properties/schema/properties/properties/properties/prop2/properties/type",
+                                          "type": "string",
+                                          "title": "The type schema",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "default": "",
+                                          "examples": [
+                                            "integer"
+                                          ]
+                                        }
+                                      },
+                                      "additionalProperties": true
+                                    },
+                                    "prop3": {
+                                      "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/put/properties/requestBody/properties/content/properties/application/json/properties/schema/properties/properties/properties/prop3",
+                                      "type": "object",
+                                      "title": "The prop3 schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": {},
+                                      "examples": [
+                                        {
+                                          "type": "boolean"
+                                        }
+                                      ],
+                                      "required": [
+                                        "type"
+                                      ],
+                                      "properties": {
+                                        "type": {
+                                          "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/put/properties/requestBody/properties/content/properties/application/json/properties/schema/properties/properties/properties/prop3/properties/type",
+                                          "type": "string",
+                                          "title": "The type schema",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "default": "",
+                                          "examples": [
+                                            "boolean"
+                                          ]
+                                        }
+                                      },
+                                      "additionalProperties": true
+                                    }
+                                  },
+                                  "additionalProperties": true
+                                }
+                              },
+                              "additionalProperties": true
+                            }
+                          },
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                "responses": {
+                  "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/put/properties/responses",
+                  "type": "object",
+                  "title": "The responses schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": {},
+                  "examples": [
+                    {
+                      "204": {
+                        "description": ""
+                      }
+                    }
+                  ],
+                  "required": [
+                    "204"
+                  ],
+                  "properties": {
+                    "204": {
+                      "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/put/properties/responses/properties/204",
+                      "type": "object",
+                      "title": "The 204 schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "description": ""
+                        }
+                      ],
+                      "required": [
+                        "description"
+                      ],
+                      "properties": {
+                        "description": {
+                          "$id": "#/properties/paths/properties//path/%7Bid%7D/properties/put/properties/responses/properties/204/properties/description",
+                          "type": "string",
+                          "title": "The description schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            ""
+                          ]
+                        }
+                      },
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "components": {
+      "$id": "#/properties/components",
+      "type": "object",
+      "title": "The components schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": {},
+      "examples": [
+        {
+          "schemas": {
+            "object": {
+              "type": "object",
+              "properties": {
+                "prop1": {
+                  "type": "string",
+                  "description": "Prop1 description"
+                },
+                "prop2": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "required": [
+        "schemas"
+      ],
+      "properties": {
+        "schemas": {
+          "$id": "#/properties/components/properties/schemas",
+          "type": "object",
+          "title": "The schemas schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": {},
+          "examples": [
+            {
+              "object": {
+                "type": "object",
+                "properties": {
+                  "prop1": {
+                    "type": "string",
+                    "description": "Prop1 description"
+                  },
+                  "prop2": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          ],
+          "required": [
+            "object"
+          ],
+          "properties": {
+            "object": {
+              "$id": "#/properties/components/properties/schemas/properties/object",
+              "type": "object",
+              "title": "The object schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": {},
+              "examples": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "prop1": {
+                      "type": "string",
+                      "description": "Prop1 description"
+                    },
+                    "prop2": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              ],
+              "required": [
+                "type",
+                "properties"
+              ],
+              "properties": {
+                "type": {
+                  "$id": "#/properties/components/properties/schemas/properties/object/properties/type",
+                  "type": "string",
+                  "title": "The type schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                    "object"
+                  ]
+                },
+                "properties": {
+                  "$id": "#/properties/components/properties/schemas/properties/object/properties/properties",
+                  "type": "object",
+                  "title": "The properties schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": {},
+                  "examples": [
+                    {
+                      "prop1": {
+                        "type": "string",
+                        "description": "Prop1 description"
+                      },
+                      "prop2": {
+                        "type": "integer"
+                      }
+                    }
+                  ],
+                  "required": [
+                    "prop1",
+                    "prop2"
+                  ],
+                  "properties": {
+                    "prop1": {
+                      "$id": "#/properties/components/properties/schemas/properties/object/properties/properties/properties/prop1",
+                      "type": "object",
+                      "title": "The prop1 schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "type": "string",
+                          "description": "Prop1 description"
+                        }
+                      ],
+                      "required": [
+                        "type",
+                        "description"
+                      ],
+                      "properties": {
+                        "type": {
+                          "$id": "#/properties/components/properties/schemas/properties/object/properties/properties/properties/prop1/properties/type",
+                          "type": "string",
+                          "title": "The type schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "string"
+                          ]
+                        },
+                        "description": {
+                          "$id": "#/properties/components/properties/schemas/properties/object/properties/properties/properties/prop1/properties/description",
+                          "type": "string",
+                          "title": "The description schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "Prop1 description"
+                          ]
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "prop2": {
+                      "$id": "#/properties/components/properties/schemas/properties/object/properties/properties/properties/prop2",
+                      "type": "object",
+                      "title": "The prop2 schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "type": "integer"
+                        }
+                      ],
+                      "required": [
+                        "type"
+                      ],
+                      "properties": {
+                        "type": {
+                          "$id": "#/properties/components/properties/schemas/properties/object/properties/properties/properties/prop2/properties/type",
+                          "type": "string",
+                          "title": "The type schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "integer"
+                          ]
+                        }
+                      },
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
