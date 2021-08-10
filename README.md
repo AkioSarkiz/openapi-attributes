@@ -1,7 +1,5 @@
 # OpenAPI PHP Attributes
 
----
-
 ## Features
 
 - [x] Generate info
