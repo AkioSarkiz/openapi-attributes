@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OpenApiGenerator\Attributes;
+namespace OpenApiGenerator\Interfaces;
 
 interface PropertyInterface
 {

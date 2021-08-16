@@ -6,7 +6,7 @@ namespace OpenApiGenerator\Exceptions;
 
 use JetBrains\PhpStorm\Pure;
 
-class GeneratorException extends OpenapiException
+class SchemaException extends OpenapiException
 {
     #[Pure]
     public static function duplicateSchemaName(

@@ -16,8 +16,9 @@ class Delete extends Route
         string $summary = '',
         string $description = '',
         mixed $security = null,
+        string $contentType = 'application/json',
     )
     {
-        parent::__construct(Route::DELETE, $route, $tags, $summary, $description, $security);
+        parent::__construct(Route::DELETE, $route, $tags, $summary, $description, $security, $contentType);
     }
 }

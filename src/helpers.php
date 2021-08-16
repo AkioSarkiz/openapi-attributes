@@ -16,3 +16,20 @@ function removeEmptyValues(array $associatedValues): array
 
     return $associatedValues;
 }
+
+/**
+ * @param array $arr
+ * @param string $path
+ * @param mixed $value
+ * @param string $separator
+ */
+function setArrayByPath(array &$arr, string $path, mixed $value, string $separator='.'): void
+{
+    $keys = explode($separator, $path);
+
+    foreach ($keys as $key) {
+        $arr = &$arr[$key];
+    }
+
+    $arr = $value;
+}

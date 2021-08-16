@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace OpenApiGenerator\Attributes;
 
 use Attribute;
+use JetBrains\PhpStorm\Pure;
 use JsonSerializable;
+use OpenApiGenerator\Interfaces\PropertyInterface;
 use OpenApiGenerator\Types\PropertyType;
 
 /**
@@ -14,20 +16,20 @@ use OpenApiGenerator\Types\PropertyType;
  * If the property is an array, a PropertyItems must be set
  */
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_ALL)]
-class Property implements PropertyInterface, JsonSerializable
+class Property implements PropertyInterface, JsonSerializable, PropertyType
 {
     private ?PropertyItems $propertyItems = null;
 
     public function __construct(
-        private string $type,
         private string $property,
+        private string $type,
         private string $description = '',
         private mixed $example = null,
         private ?string $format = null,
         private ?array $enum = null,
         private mixed $properties = null,
-    )
-    {
+    ){
+        //
     }
 
     public function setPropertyItems(PropertyItems $propertyItems): void
@@ -45,10 +47,10 @@ class Property implements PropertyInterface, JsonSerializable
         }
 
         $data = [
-            'type' => $this->type,
+            'type' => $this->getType(),
+            'format' => $this->getFormat(),
             'description' => $this->description,
             'enum' => $this->enum,
-            'format' => $this->format,
         ];
 
         // Create objects properties from array properties. Recursive serialize objects.
@@ -64,7 +66,13 @@ class Property implements PropertyInterface, JsonSerializable
 
     public function getType(): string
     {
-        return $this->properties ? PropertyType::OBJECT : $this->property;
+        if ($this->properties) {
+            return self::OBJECT;
+        } elseif ($this->type === 'file') {
+            return self::STRING;
+        } else {
+            return $this->type;
+        }
     }
 
     private function formatProperties(): array
@@ -92,8 +100,8 @@ class Property implements PropertyInterface, JsonSerializable
     {
         $args = [];
         $format = [
-            'type' => '',
             'property' => '',
+            'type' => '',
             'description' => '',
             'example' => null,
             'format' => null,
@@ -111,5 +119,11 @@ class Property implements PropertyInterface, JsonSerializable
     public function getProperty(): ?string
     {
         return $this->property;
+    }
+
+    #[Pure]
+    private function getFormat(): ?string
+    {
+        return $this->type === 'file' ? 'binary' : $this->format;
     }
 }

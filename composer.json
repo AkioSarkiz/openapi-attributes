@@ -8,6 +8,7 @@
             "role": "Developer"
         }
     ],
+    "bin": ["bin/generate-openapi.php"],
     "require": {
         "php": ">=8.0",
         "symfony/finder": "^5.3",

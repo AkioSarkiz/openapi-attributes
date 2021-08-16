@@ -19,10 +19,11 @@ use JsonSerializable;
 #[Attribute]
 class Parameter implements JsonSerializable
 {
-    private string $name;
-    private array $schema;
+    private array $schema = [];
 
     public function __construct(
+        private string $type,
+        private string $name,
         private ?string $description = null,
         private string $in = 'path',
         private ?bool $required = null,
@@ -33,11 +34,6 @@ class Parameter implements JsonSerializable
         if ($in === 'path') {
             $this->required = true;
         }
-    }
-
-    public function setName(string $name): void
-    {
-        $this->name = $name;
     }
 
     public function setParamType(string $paramType): void
@@ -62,6 +58,7 @@ class Parameter implements JsonSerializable
     {
         $data = [
             'name' => $this->name,
+            'type' => $this->type,
             'in' => $this->in,
             'schema' => $this->formatSchema(),
             'required' => $this->required,

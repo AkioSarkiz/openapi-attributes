@@ -32,8 +32,8 @@ class Route implements JsonSerializable
         private string $summary = '',
         private string $description = '',
         private mixed $security = null,
-    )
-    {
+        private string $contentType = 'application/json',
+    ){
         //
     }
 
@@ -106,15 +106,11 @@ class Route implements JsonSerializable
     public function getRoute(): string
     {
         // all routes must starting with /.
-        if (substr($this->route, 0, 1) !== '/') {
-            return '/' . $this->route;
-        }
-
-        return $this->route;
+        return substr($this->route, 0, 1) !== '/' ? '/' . $this->route : $this->route;
     }
 
-    public function setRequestBody(RequestBody $requestBody)
+    public function getContentType(): string
     {
-        $this->requestBody = $requestBody;
+        return $this->contentType;
     }
 }

@@ -28,9 +28,9 @@ class SimpleController
 ```
 
 #### 3 step: create script & run
-Copy `generate.php` from current repository to your project. Run script.
+ Run script.
 ```bash
-php ./generate.php ./tests/Examples/Controller/ .
+php ./vendor/bin/generate-openapi.php ./tests/Examples/Controller/ .
 ```
 
 ----

@@ -6,6 +6,7 @@ namespace OpenApiGenerator\Attributes;
 
 use Attribute;
 use JsonSerializable;
+use OpenApiGenerator\Interfaces\PropertyInterface;
 use OpenApiGenerator\Types\SchemaType;
 
 /**
@@ -49,25 +50,19 @@ class Schema implements JsonSerializable
         if ($this->type === SchemaType::ARRAY) {
             $schema += json_decode(json_encode(reset($this->properties)), true);
         } elseif ($this->type === SchemaType::OBJECT) {
-            $firstProperty = reset($this->properties);
+            $array = [];
 
-            if ($firstProperty instanceof RefProperty || $firstProperty instanceof MediaProperty) {
-                $schema = $firstProperty;
-            } else {
-                $array = [];
-
-                if ($this->required) {
-                    $array['required'] = $this->required;
-                }
-
-                foreach ($this->properties as $property) {
-                    if ($property instanceof Property) {
-                        $array['properties'][$property->getProperty()] = $property;
-                    }
-                }
-
-                $schema += $array;
+            if ($this->required) {
+                $array['required'] = $this->required;
             }
+
+            foreach ($this->properties as $property) {
+                if ($property instanceof Property) {
+                    $array['properties'][$property->getProperty()] = $property;
+                }
+            }
+
+            $schema += $array;
         }
 
         // This is especially used for parameters which don't have media

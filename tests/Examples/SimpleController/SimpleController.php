@@ -15,7 +15,7 @@ class SimpleController
 {
     #[
         Get('/path', ['Dummy'], 'Dummy path'),
-        Property(PropertyType::STRING, 'test'),
+        Property('test', PropertyType::STRING),
         Response(200),
     ]
     public function get(): void

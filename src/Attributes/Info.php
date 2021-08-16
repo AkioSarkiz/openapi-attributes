@@ -21,16 +21,16 @@ class Info implements JsonSerializable
      *
      * @param string $title The title of the API.
      * @param string $version The version of the OpenAPI document (which is distinct from the OpenAPI Specification version or the API implementation version).
-     * @param string $description A short description of the API. CommonMark syntax MAY be used for rich text representation.
-     * @param string $termsOfService A URL to the Terms of Service for the API. MUST be in the format of a URL.
+     * @param string|null $description A short description of the API. CommonMark syntax MAY be used for rich text representation.
+     * @param string|null $termsOfService A URL to the Terms of Service for the API. MUST be in the format of a URL.
      * @param array|null $contact The contact information for the exposed API. (@see https://swagger.io/specification/#contact-object)
      * @param array|null $license The license information for the exposed API. (@see https://swagger.io/specification/#license-object)
      */
     public function __construct(
         private string $title,
         private string $version = '1.0.0',
-        private string $description = '',
-        private string $termsOfService = '',
+        private ?string $description = null,
+        private ?string $termsOfService = null,
         private ?array $contact = null,
         private ?array $license = null,
     )

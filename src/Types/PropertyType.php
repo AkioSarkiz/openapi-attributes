@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace OpenApiGenerator\Types;
 
-class PropertyType
+interface PropertyType
 {
     public const STRING = 'string';
     public const ARRAY = 'array';
@@ -12,5 +12,5 @@ class PropertyType
     public const REF = 'ref';
     public const BOOLEAN = 'boolean';
     public const OBJECT = 'object';
-    const MEDIA = 'media';
+    public const FILE = 'file';
 }

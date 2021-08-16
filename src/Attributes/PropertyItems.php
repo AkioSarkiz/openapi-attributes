@@ -6,6 +6,7 @@ namespace OpenApiGenerator\Attributes;
 
 use Attribute;
 use JsonSerializable;
+use OpenApiGenerator\Interfaces\PropertyInterface;
 use OpenApiGenerator\Types\ItemsType;
 
 /**

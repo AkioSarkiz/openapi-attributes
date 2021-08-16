@@ -6,7 +6,7 @@ use Symfony\Component\Finder\Finder;
 
 $autoload_path = null;
 
-foreach ([__DIR__ . '/../../autoload.php', __DIR__ . '/vendor/autoload.php'] as $autoload) {
+foreach ([__DIR__ . '/../../../autoload.php', __DIR__ . '/../vendor/autoload.php'] as $autoload) {
     if (file_exists($autoload)) {
         $autoload_path = $autoload;
         break;
@@ -28,6 +28,6 @@ foreach ($files as $autoload) {
 
 $generator = \OpenApiGenerator\Generator::create()->generate();
 
-$schema = stripslashes(json_encode($generator, JSON_PRETTY_PRINT));
+$schema = stripslashes(json_encode($generator->dataArray(), JSON_PRETTY_PRINT));
 
 file_put_contents($argv[2] . '/openapi.json', $schema);
