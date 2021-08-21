@@ -44,7 +44,7 @@ class Controller
 {
     #[
         Get('/path/{id}', ['Dummy'], 'Dummy path'),
-        Parameter('integer', 'id', description: 'id of dummy'),
+        Parameter('id', 'integer', description: 'id of dummy'),
         Property('test', PropertyType::OBJECT, properties: [
             'data' => PropertyType::STRING,
             'item' => [

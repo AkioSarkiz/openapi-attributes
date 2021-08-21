@@ -8,20 +8,21 @@ composer require akiosarkiz/openpapi-attributes
 
 #### 2 step: use attributes
 Write documentation for your code. For example, simple controller:
+
 ```php
-use OpenApiGenerator\Attributes\Parameter;
+use OpenApiGenerator\Attributes\Info;use OpenApiGenerator\Attributes\Parameter;
 use OpenApiGenerator\Attributes\Response;
 use OpenApiGenerator\Attributes\Route\Get;
 
+#[Info('Some title')] // must exists one attribute info in project
 class SimpleController 
 {
     #[
         Get('users/{id}'),
+        Parameter('id', 'integer'),
         Response(200)
     ]    
-    public function show(
-        #[Parameter] int $id
-    ): void {
+    public function show(int $id): void {
         //
     }
 }

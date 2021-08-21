@@ -3,3 +3,5 @@ vendor
 composer.lock
 openapi.json
 tests/Examples/*/out.json
+.phpunit.result.cache
+build
