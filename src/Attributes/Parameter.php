@@ -58,7 +58,6 @@ class Parameter implements JsonSerializable
     {
         $data = [
             'name' => $this->name,
-            'type' => $this->type,
             'in' => $this->in,
             'schema' => $this->formatSchema(),
             'required' => $this->required,
@@ -76,6 +75,7 @@ class Parameter implements JsonSerializable
     private function formatSchema(): array
     {
         $schema = $this->schema;
+        $schema['type'] = $this->type;
         $schema['format'] = $this->format ?? $schema['format'];
         $schema['example'] = $this->example;
 

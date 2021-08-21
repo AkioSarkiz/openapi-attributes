@@ -14,7 +14,7 @@ use OpenApiGenerator\Types\SchemaType;
  *
  * @see https://swagger.io/specification/#response-object
  */
-#[Attribute]
+#[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_METHOD)]
 class Response implements JsonSerializable
 {
     private ?Schema $schema = null;

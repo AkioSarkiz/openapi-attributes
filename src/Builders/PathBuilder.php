@@ -4,16 +4,20 @@ declare(strict_types=1);
 
 namespace OpenApiGenerator\Builders;
 
+use Exception;
 use JetBrains\PhpStorm\ArrayShape;
 use JetBrains\PhpStorm\Pure;
-use OpenApiGenerator\Attributes\Parameter;
-use OpenApiGenerator\Attributes\Property;
-use OpenApiGenerator\Attributes\Response;
+use League\Pipeline\Pipeline;
 use OpenApiGenerator\Attributes\Route;
 use OpenApiGenerator\Attributes\Route\Get;
 use OpenApiGenerator\Attributes\Route\Patch;
 use OpenApiGenerator\Attributes\Route\Post;
 use OpenApiGenerator\Attributes\Route\Put;
+use OpenApiGenerator\Builders\PathBuilder\Exceptions\SkipAnotherPipelines;
+use OpenApiGenerator\Builders\PathBuilder\PathBuilderContext;
+use OpenApiGenerator\Builders\PathBuilder\Pipes\ParameterPipe;
+use OpenApiGenerator\Builders\PathBuilder\Pipes\PropertyPipe;
+use OpenApiGenerator\Builders\PathBuilder\Pipes\ResponsePipe;
 use OpenApiGenerator\Interfaces\BuilderInterface;
 use ReflectionClass;
 use ReflectionMethod;
@@ -21,6 +25,7 @@ use ReflectionMethod;
 class PathBuilder implements BuilderInterface
 {
     private array $stack = [];
+    private PathBuilderContext $context;
 
     /**
      * @inheritDoc
@@ -72,56 +77,38 @@ class PathBuilder implements BuilderInterface
             return [];
         }
 
-        $attributes = $method->getAttributes();
-        $routeInstance = array_shift($attributes)->newInstance();
-        $dataRoute = $routeInstance->jsonSerialize();
-        $properties = [];
-        $responses = [];
-        $parameters = [];
-        $lastResponseData = null;
-        $lastResponseInstance = null;
+        $this->context = new PathBuilderContext();
+        $this->context->attributes = $method->getAttributes();
+        $this->context->routeInstance = array_shift($this->context->attributes)->newInstance();
+        $this->context->routeData = $this->context->routeInstance->jsonSerialize();
+        $pipeline = (new Pipeline())
+            ->pipe(new ParameterPipe($this->context))
+            ->pipe(new ResponsePipe($this->context))
+            ->pipe(new PropertyPipe($this->context));
 
-        foreach ($attributes as $attribute) {
-            if ($attribute->getName() == Parameter::class) {
-                $parameters[] = $attribute->newInstance()->jsonSerialize();
-            } elseif ($attribute->getName() === Response::class) {
-                $responseInstance = $attribute->newInstance();
-                $responses[$responseInstance->getCode()] = $responseInstance->jsonSerialize();
-                $lastResponseData = &$responses[$responseInstance->getCode()];
-                $lastResponseInstance = &$responseInstance;
-            } elseif ($attribute->getName() === Property::class) {
-                $propInstance = $attribute->newInstance();
-
-                if ($lastResponseData) {
-                    $schema = &$lastResponseData['content'][$lastResponseInstance->getContentType()]['schema'];
-
-                    if (!$schema) {
-                        $schema = [
-                            'type' => $lastResponseInstance->getType(),
-                            'properties' => [],
-                        ];
-                    }
-
-                    $schema['properties'][$propInstance->getProperty()] = $propInstance->jsonSerialize();
-                } else {
-                    $properties[$propInstance->getProperty()] = $propInstance->jsonSerialize();
-                }
+        foreach ($this->context->attributes as $attribute) {
+            try {
+                $pipeline->process($attribute);
+            } catch (SkipAnotherPipelines) {
+                continue;
             }
         }
 
-        $root = &$dataRoute[$routeInstance->getRoute()][$routeInstance->getMethod()];
+        $root = &$this->context->routeData[$this->context->routeInstance->getRoute()][$this->context->routeInstance->getMethod()];
 
-        setArrayByPath($root, 'responses', $responses);
-        setArrayByPath($root, 'parameters', $parameters);
-        setArrayByPath($root, "requestBody.content.{$routeInstance->getContentType()}.schema", [
+        setArrayByPath($root, 'responses', $this->context->responses);
+        setArrayByPath($root, 'parameters', $this->context->parameters);
+        setArrayByPath($root, "requestBody.content.{$this->context->routeInstance->getContentType()}.schema", [
             'type' => 'object',
-            'properties' => $properties,
+            'properties' => $this->context->properties,
         ]);
 
-       return $dataRoute;
+       return $this->context->routeData;
     }
 
     /**
+     * Check reflection method. Are supported him or not.
+     *
      * @param ReflectionMethod $method
      * @return bool
      */

@@ -71,6 +71,7 @@ class Route implements JsonSerializable
     public function jsonSerialize(): array
     {
         $array = [];
+        $array[$this->getRoute()][$this->method] = [];
 
         if ($this->tags) {
             $array[$this->getRoute()][$this->method]['tags'] = $this->tags;

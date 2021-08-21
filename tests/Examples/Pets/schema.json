@@ -1,0 +1,1777 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "object",
+  "default": {},
+  "examples": [
+    {
+      "openapi": "3.0.0",
+      "components": {
+        "securitySchemes": [],
+        "schemas": []
+      },
+      "servers": [],
+      "info": {
+        "title": "Pet project",
+        "version": "1.0.0"
+      },
+      "paths": {
+        "/pet/{petId}/uploadImage": {
+          "post": {
+            "tags": [
+              "pet"
+            ],
+            "summary": "uploads an image",
+            "responses": {
+              "200": {
+                "description": "description",
+                "content": {
+                  "multipart/form-data": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "success": {
+                          "type": "boolean"
+                        },
+                        "test": {
+                          "type": "object",
+                          "properties": {
+                            "data": {
+                              "type": "string"
+                            },
+                            "item": {
+                              "type": "string"
+                            },
+                            "anotherObject": {
+                              "type": "object",
+                              "properties": {
+                                "output.json": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "parameters": [
+              {
+                "name": "integer",
+                "in": "path",
+                "schema": {
+                  "type": "petId"
+                },
+                "required": true
+              }
+            ],
+            "requestBody": {
+              "content": {
+                "multipart/form-data": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "filename": {
+                        "type": "string"
+                      },
+                      "file": {
+                        "type": "string",
+                        "format": "binary"
+                      },
+                      "test": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "string"
+                          },
+                          "item": {
+                            "type": "string"
+                          },
+                          "anotherObject": {
+                            "type": "object",
+                            "properties": {
+                              "output.json": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "required": [
+    "openapi",
+    "components",
+    "servers",
+    "info",
+    "paths"
+  ],
+  "properties": {
+    "openapi": {
+      "$id": "#/properties/openapi",
+      "type": "string",
+      "title": "The openapi schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": "",
+      "examples": [
+        "3.0.0"
+      ]
+    },
+    "components": {
+      "$id": "#/properties/components",
+      "type": "object",
+      "title": "The components schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": {},
+      "examples": [
+        {
+          "securitySchemes": [],
+          "schemas": []
+        }
+      ],
+      "required": [
+        "securitySchemes",
+        "schemas"
+      ],
+      "properties": {
+        "securitySchemes": {
+          "$id": "#/properties/components/properties/securitySchemes",
+          "type": "array",
+          "title": "The securitySchemes schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": [],
+          "examples": [
+            []
+          ],
+          "additionalItems": true,
+          "items": {
+            "$id": "#/properties/components/properties/securitySchemes/items"
+          }
+        },
+        "schemas": {
+          "$id": "#/properties/components/properties/schemas",
+          "type": "array",
+          "title": "The schemas schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": [],
+          "examples": [
+            []
+          ],
+          "additionalItems": true,
+          "items": {
+            "$id": "#/properties/components/properties/schemas/items"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "servers": {
+      "$id": "#/properties/servers",
+      "type": "array",
+      "title": "The servers schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": [],
+      "examples": [
+        []
+      ],
+      "additionalItems": true,
+      "items": {
+        "$id": "#/properties/servers/items"
+      }
+    },
+    "info": {
+      "$id": "#/properties/info",
+      "type": "object",
+      "title": "The info schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": {},
+      "examples": [
+        {
+          "title": "Pet project",
+          "version": "1.0.0"
+        }
+      ],
+      "required": [
+        "title",
+        "version"
+      ],
+      "properties": {
+        "title": {
+          "$id": "#/properties/info/properties/title",
+          "type": "string",
+          "title": "The title schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "Pet project"
+          ]
+        },
+        "version": {
+          "$id": "#/properties/info/properties/version",
+          "type": "string",
+          "title": "The version schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "1.0.0"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "paths": {
+      "$id": "#/properties/paths",
+      "type": "object",
+      "title": "The paths schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": {},
+      "examples": [
+        {
+          "/pet/{petId}/uploadImage": {
+            "post": {
+              "tags": [
+                "pet"
+              ],
+              "summary": "uploads an image",
+              "responses": {
+                "200": {
+                  "description": "description",
+                  "content": {
+                    "multipart/form-data": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "success": {
+                            "type": "boolean"
+                          },
+                          "test": {
+                            "type": "object",
+                            "properties": {
+                              "data": {
+                                "type": "string"
+                              },
+                              "item": {
+                                "type": "string"
+                              },
+                              "anotherObject": {
+                                "type": "object",
+                                "properties": {
+                                  "output.json": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "parameters": [
+                {
+                  "name": "integer",
+                  "in": "path",
+                  "schema": {
+                    "type": "petId"
+                  },
+                  "required": true
+                }
+              ],
+              "requestBody": {
+                "content": {
+                  "multipart/form-data": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "filename": {
+                          "type": "string"
+                        },
+                        "file": {
+                          "type": "string",
+                          "format": "binary"
+                        },
+                        "test": {
+                          "type": "object",
+                          "properties": {
+                            "data": {
+                              "type": "string"
+                            },
+                            "item": {
+                              "type": "string"
+                            },
+                            "anotherObject": {
+                              "type": "object",
+                              "properties": {
+                                "output.json": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "required": [
+        "/pet/{petId}/uploadImage"
+      ],
+      "properties": {
+        "/pet/{petId}/uploadImage": {
+          "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage",
+          "type": "object",
+          "title": "The /pet/{petId}/uploadImage schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": {},
+          "examples": [
+            {
+              "post": {
+                "tags": [
+                  "pet"
+                ],
+                "summary": "uploads an image",
+                "responses": {
+                  "200": {
+                    "description": "description",
+                    "content": {
+                      "multipart/form-data": {
+                        "schema": {
+                          "type": "object",
+                          "properties": {
+                            "success": {
+                              "type": "boolean"
+                            },
+                            "test": {
+                              "type": "object",
+                              "properties": {
+                                "data": {
+                                  "type": "string"
+                                },
+                                "item": {
+                                  "type": "string"
+                                },
+                                "anotherObject": {
+                                  "type": "object",
+                                  "properties": {
+                                    "output.json": {
+                                      "type": "string"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "parameters": [
+                  {
+                    "name": "integer",
+                    "in": "path",
+                    "schema": {
+                      "type": "petId"
+                    },
+                    "required": true
+                  }
+                ],
+                "requestBody": {
+                  "content": {
+                    "multipart/form-data": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "filename": {
+                            "type": "string"
+                          },
+                          "file": {
+                            "type": "string",
+                            "format": "binary"
+                          },
+                          "test": {
+                            "type": "object",
+                            "properties": {
+                              "data": {
+                                "type": "string"
+                              },
+                              "item": {
+                                "type": "string"
+                              },
+                              "anotherObject": {
+                                "type": "object",
+                                "properties": {
+                                  "output.json": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "required": [
+            "post"
+          ],
+          "properties": {
+            "post": {
+              "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post",
+              "type": "object",
+              "title": "The post schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": {},
+              "examples": [
+                {
+                  "tags": [
+                    "pet"
+                  ],
+                  "summary": "uploads an image",
+                  "responses": {
+                    "200": {
+                      "description": "description",
+                      "content": {
+                        "multipart/form-data": {
+                          "schema": {
+                            "type": "object",
+                            "properties": {
+                              "success": {
+                                "type": "boolean"
+                              },
+                              "test": {
+                                "type": "object",
+                                "properties": {
+                                  "data": {
+                                    "type": "string"
+                                  },
+                                  "item": {
+                                    "type": "string"
+                                  },
+                                  "anotherObject": {
+                                    "type": "object",
+                                    "properties": {
+                                      "output.json": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "parameters": [
+                    {
+                      "name": "integer",
+                      "in": "path",
+                      "schema": {
+                        "type": "petId"
+                      },
+                      "required": true
+                    }
+                  ],
+                  "requestBody": {
+                    "content": {
+                      "multipart/form-data": {
+                        "schema": {
+                          "type": "object",
+                          "properties": {
+                            "filename": {
+                              "type": "string"
+                            },
+                            "file": {
+                              "type": "string",
+                              "format": "binary"
+                            },
+                            "test": {
+                              "type": "object",
+                              "properties": {
+                                "data": {
+                                  "type": "string"
+                                },
+                                "item": {
+                                  "type": "string"
+                                },
+                                "anotherObject": {
+                                  "type": "object",
+                                  "properties": {
+                                    "output.json": {
+                                      "type": "string"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "required": [
+                "tags",
+                "summary",
+                "responses",
+                "parameters",
+                "requestBody"
+              ],
+              "properties": {
+                "tags": {
+                  "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/tags",
+                  "type": "array",
+                  "title": "The tags schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": [],
+                  "examples": [
+                    [
+                      "pet"
+                    ]
+                  ],
+                  "additionalItems": true,
+                  "items": {
+                    "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/tags/items",
+                    "anyOf": [
+                      {
+                        "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/tags/items/anyOf/0",
+                        "type": "string",
+                        "title": "The first anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": [
+                          "pet"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "summary": {
+                  "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/summary",
+                  "type": "string",
+                  "title": "The summary schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                    "uploads an image"
+                  ]
+                },
+                "responses": {
+                  "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/responses",
+                  "type": "object",
+                  "title": "The responses schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": {},
+                  "examples": [
+                    {
+                      "200": {
+                        "description": "description",
+                        "content": {
+                          "multipart/form-data": {
+                            "schema": {
+                              "type": "object",
+                              "properties": {
+                                "success": {
+                                  "type": "boolean"
+                                },
+                                "test": {
+                                  "type": "object",
+                                  "properties": {
+                                    "data": {
+                                      "type": "string"
+                                    },
+                                    "item": {
+                                      "type": "string"
+                                    },
+                                    "anotherObject": {
+                                      "type": "object",
+                                      "properties": {
+                                        "output.json": {
+                                          "type": "string"
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "required": [
+                    "200"
+                  ],
+                  "properties": {
+                    "200": {
+                      "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/responses/properties/200",
+                      "type": "object",
+                      "title": "The 200 schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "description": "description",
+                          "content": {
+                            "multipart/form-data": {
+                              "schema": {
+                                "type": "object",
+                                "properties": {
+                                  "success": {
+                                    "type": "boolean"
+                                  },
+                                  "test": {
+                                    "type": "object",
+                                    "properties": {
+                                      "data": {
+                                        "type": "string"
+                                      },
+                                      "item": {
+                                        "type": "string"
+                                      },
+                                      "anotherObject": {
+                                        "type": "object",
+                                        "properties": {
+                                          "output.json": {
+                                            "type": "string"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      ],
+                      "required": [
+                        "description",
+                        "content"
+                      ],
+                      "properties": {
+                        "description": {
+                          "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/responses/properties/200/properties/description",
+                          "type": "string",
+                          "title": "The description schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "description"
+                          ]
+                        },
+                        "content": {
+                          "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/responses/properties/200/properties/content",
+                          "type": "object",
+                          "title": "The content schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": {},
+                          "examples": [
+                            {
+                              "multipart/form-data": {
+                                "schema": {
+                                  "type": "object",
+                                  "properties": {
+                                    "success": {
+                                      "type": "boolean"
+                                    },
+                                    "test": {
+                                      "type": "object",
+                                      "properties": {
+                                        "data": {
+                                          "type": "string"
+                                        },
+                                        "item": {
+                                          "type": "string"
+                                        },
+                                        "anotherObject": {
+                                          "type": "object",
+                                          "properties": {
+                                            "output.json": {
+                                              "type": "string"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "required": [
+                            "multipart/form-data"
+                          ],
+                          "properties": {
+                            "multipart/form-data": {
+                              "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/responses/properties/200/properties/content/properties/multipart/form-data",
+                              "type": "object",
+                              "title": "The multipart/form-data schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": {},
+                              "examples": [
+                                {
+                                  "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                      "success": {
+                                        "type": "boolean"
+                                      },
+                                      "test": {
+                                        "type": "object",
+                                        "properties": {
+                                          "data": {
+                                            "type": "string"
+                                          },
+                                          "item": {
+                                            "type": "string"
+                                          },
+                                          "anotherObject": {
+                                            "type": "object",
+                                            "properties": {
+                                              "output.json": {
+                                                "type": "string"
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              ],
+                              "required": [
+                                "schema"
+                              ],
+                              "properties": {
+                                "schema": {
+                                  "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/responses/properties/200/properties/content/properties/multipart/form-data/properties/schema",
+                                  "type": "object",
+                                  "title": "The schema schema",
+                                  "description": "An explanation about the purpose of this instance.",
+                                  "default": {},
+                                  "examples": [
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "success": {
+                                          "type": "boolean"
+                                        },
+                                        "test": {
+                                          "type": "object",
+                                          "properties": {
+                                            "data": {
+                                              "type": "string"
+                                            },
+                                            "item": {
+                                              "type": "string"
+                                            },
+                                            "anotherObject": {
+                                              "type": "object",
+                                              "properties": {
+                                                "output.json": {
+                                                  "type": "string"
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  ],
+                                  "required": [
+                                    "type",
+                                    "properties"
+                                  ],
+                                  "properties": {
+                                    "type": {
+                                      "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/responses/properties/200/properties/content/properties/multipart/form-data/properties/schema/properties/type",
+                                      "type": "string",
+                                      "title": "The type schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": "",
+                                      "examples": [
+                                        "object"
+                                      ]
+                                    },
+                                    "properties": {
+                                      "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/responses/properties/200/properties/content/properties/multipart/form-data/properties/schema/properties/properties",
+                                      "type": "object",
+                                      "title": "The properties schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": {},
+                                      "examples": [
+                                        {
+                                          "success": {
+                                            "type": "boolean"
+                                          },
+                                          "test": {
+                                            "type": "object",
+                                            "properties": {
+                                              "data": {
+                                                "type": "string"
+                                              },
+                                              "item": {
+                                                "type": "string"
+                                              },
+                                              "anotherObject": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "output.json": {
+                                                    "type": "string"
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      ],
+                                      "required": [
+                                        "success",
+                                        "test"
+                                      ],
+                                      "properties": {
+                                        "success": {
+                                          "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/responses/properties/200/properties/content/properties/multipart/form-data/properties/schema/properties/properties/properties/success",
+                                          "type": "object",
+                                          "title": "The success schema",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "default": {},
+                                          "examples": [
+                                            {
+                                              "type": "boolean"
+                                            }
+                                          ],
+                                          "required": [
+                                            "type"
+                                          ],
+                                          "properties": {
+                                            "type": {
+                                              "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/responses/properties/200/properties/content/properties/multipart/form-data/properties/schema/properties/properties/properties/success/properties/type",
+                                              "type": "string",
+                                              "title": "The type schema",
+                                              "description": "An explanation about the purpose of this instance.",
+                                              "default": "",
+                                              "examples": [
+                                                "boolean"
+                                              ]
+                                            }
+                                          },
+                                          "additionalProperties": true
+                                        },
+                                        "test": {
+                                          "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/responses/properties/200/properties/content/properties/multipart/form-data/properties/schema/properties/properties/properties/test",
+                                          "type": "object",
+                                          "title": "The test schema",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "default": {},
+                                          "examples": [
+                                            {
+                                              "type": "object",
+                                              "properties": {
+                                                "data": {
+                                                  "type": "string"
+                                                },
+                                                "item": {
+                                                  "type": "string"
+                                                },
+                                                "anotherObject": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "output.json": {
+                                                      "type": "string"
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          ],
+                                          "required": [
+                                            "type",
+                                            "properties"
+                                          ],
+                                          "properties": {
+                                            "type": {
+                                              "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/responses/properties/200/properties/content/properties/multipart/form-data/properties/schema/properties/properties/properties/test/properties/type",
+                                              "type": "string",
+                                              "title": "The type schema",
+                                              "description": "An explanation about the purpose of this instance.",
+                                              "default": "",
+                                              "examples": [
+                                                "object"
+                                              ]
+                                            },
+                                            "properties": {
+                                              "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/responses/properties/200/properties/content/properties/multipart/form-data/properties/schema/properties/properties/properties/test/properties/properties",
+                                              "type": "object",
+                                              "title": "The properties schema",
+                                              "description": "An explanation about the purpose of this instance.",
+                                              "default": {},
+                                              "examples": [
+                                                {
+                                                  "data": {
+                                                    "type": "string"
+                                                  },
+                                                  "item": {
+                                                    "type": "string"
+                                                  },
+                                                  "anotherObject": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "output.json": {
+                                                        "type": "string"
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              ],
+                                              "required": [
+                                                "data",
+                                                "item",
+                                                "anotherObject"
+                                              ],
+                                              "properties": {
+                                                "data": {
+                                                  "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/responses/properties/200/properties/content/properties/multipart/form-data/properties/schema/properties/properties/properties/test/properties/properties/properties/data",
+                                                  "type": "object",
+                                                  "title": "The data schema",
+                                                  "description": "An explanation about the purpose of this instance.",
+                                                  "default": {},
+                                                  "examples": [
+                                                    {
+                                                      "type": "string"
+                                                    }
+                                                  ],
+                                                  "required": [
+                                                    "type"
+                                                  ],
+                                                  "properties": {
+                                                    "type": {
+                                                      "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/responses/properties/200/properties/content/properties/multipart/form-data/properties/schema/properties/properties/properties/test/properties/properties/properties/data/properties/type",
+                                                      "type": "string",
+                                                      "title": "The type schema",
+                                                      "description": "An explanation about the purpose of this instance.",
+                                                      "default": "",
+                                                      "examples": [
+                                                        "string"
+                                                      ]
+                                                    }
+                                                  },
+                                                  "additionalProperties": true
+                                                },
+                                                "item": {
+                                                  "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/responses/properties/200/properties/content/properties/multipart/form-data/properties/schema/properties/properties/properties/test/properties/properties/properties/item",
+                                                  "type": "object",
+                                                  "title": "The item schema",
+                                                  "description": "An explanation about the purpose of this instance.",
+                                                  "default": {},
+                                                  "examples": [
+                                                    {
+                                                      "type": "string"
+                                                    }
+                                                  ],
+                                                  "required": [
+                                                    "type"
+                                                  ],
+                                                  "properties": {
+                                                    "type": {
+                                                      "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/responses/properties/200/properties/content/properties/multipart/form-data/properties/schema/properties/properties/properties/test/properties/properties/properties/item/properties/type",
+                                                      "type": "string",
+                                                      "title": "The type schema",
+                                                      "description": "An explanation about the purpose of this instance.",
+                                                      "default": "",
+                                                      "examples": [
+                                                        "string"
+                                                      ]
+                                                    }
+                                                  },
+                                                  "additionalProperties": true
+                                                },
+                                                "anotherObject": {
+                                                  "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/responses/properties/200/properties/content/properties/multipart/form-data/properties/schema/properties/properties/properties/test/properties/properties/properties/anotherObject",
+                                                  "type": "object",
+                                                  "title": "The anotherObject schema",
+                                                  "description": "An explanation about the purpose of this instance.",
+                                                  "default": {},
+                                                  "examples": [
+                                                    {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "output.json": {
+                                                          "type": "string"
+                                                        }
+                                                      }
+                                                    }
+                                                  ],
+                                                  "required": [
+                                                    "type",
+                                                    "properties"
+                                                  ],
+                                                  "properties": {
+                                                    "type": {
+                                                      "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/responses/properties/200/properties/content/properties/multipart/form-data/properties/schema/properties/properties/properties/test/properties/properties/properties/anotherObject/properties/type",
+                                                      "type": "string",
+                                                      "title": "The type schema",
+                                                      "description": "An explanation about the purpose of this instance.",
+                                                      "default": "",
+                                                      "examples": [
+                                                        "object"
+                                                      ]
+                                                    },
+                                                    "properties": {
+                                                      "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/responses/properties/200/properties/content/properties/multipart/form-data/properties/schema/properties/properties/properties/test/properties/properties/properties/anotherObject/properties/properties",
+                                                      "type": "object",
+                                                      "title": "The properties schema",
+                                                      "description": "An explanation about the purpose of this instance.",
+                                                      "default": {},
+                                                      "examples": [
+                                                        {
+                                                          "output.json": {
+                                                            "type": "string"
+                                                          }
+                                                        }
+                                                      ],
+                                                      "required": [
+                                                        "output.json"
+                                                      ],
+                                                      "properties": {
+                                                        "output.json": {
+                                                          "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/responses/properties/200/properties/content/properties/multipart/form-data/properties/schema/properties/properties/properties/test/properties/properties/properties/anotherObject/properties/properties/properties/output.json",
+                                                          "type": "object",
+                                                          "title": "The output.json schema",
+                                                          "description": "An explanation about the purpose of this instance.",
+                                                          "default": {},
+                                                          "examples": [
+                                                            {
+                                                              "type": "string"
+                                                            }
+                                                          ],
+                                                          "required": [
+                                                            "type"
+                                                          ],
+                                                          "properties": {
+                                                            "type": {
+                                                              "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/responses/properties/200/properties/content/properties/multipart/form-data/properties/schema/properties/properties/properties/test/properties/properties/properties/anotherObject/properties/properties/properties/output.json/properties/type",
+                                                              "type": "string",
+                                                              "title": "The type schema",
+                                                              "description": "An explanation about the purpose of this instance.",
+                                                              "default": "",
+                                                              "examples": [
+                                                                "string"
+                                                              ]
+                                                            }
+                                                          },
+                                                          "additionalProperties": true
+                                                        }
+                                                      },
+                                                      "additionalProperties": true
+                                                    }
+                                                  },
+                                                  "additionalProperties": true
+                                                }
+                                              },
+                                              "additionalProperties": true
+                                            }
+                                          },
+                                          "additionalProperties": true
+                                        }
+                                      },
+                                      "additionalProperties": true
+                                    }
+                                  },
+                                  "additionalProperties": true
+                                }
+                              },
+                              "additionalProperties": true
+                            }
+                          },
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                "parameters": {
+                  "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/parameters",
+                  "type": "array",
+                  "title": "The parameters schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": [],
+                  "examples": [
+                    [
+                      {
+                        "name": "integer",
+                        "in": "path",
+                        "schema": {
+                          "type": "petId"
+                        },
+                        "required": true
+                      }
+                    ]
+                  ],
+                  "additionalItems": true,
+                  "items": {
+                    "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/parameters/items",
+                    "anyOf": [
+                      {
+                        "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/parameters/items/anyOf/0",
+                        "type": "object",
+                        "title": "The first anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": {},
+                        "examples": [
+                          {
+                            "name": "integer",
+                            "in": "path",
+                            "schema": {
+                              "type": "petId"
+                            },
+                            "required": true
+                          }
+                        ],
+                        "required": [
+                          "name",
+                          "in",
+                          "schema",
+                          "required"
+                        ],
+                        "properties": {
+                          "name": {
+                            "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/parameters/items/anyOf/0/properties/name",
+                            "type": "string",
+                            "title": "The name schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                              "integer"
+                            ]
+                          },
+                          "in": {
+                            "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/parameters/items/anyOf/0/properties/in",
+                            "type": "string",
+                            "title": "The in schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                              "path"
+                            ]
+                          },
+                          "schema": {
+                            "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/parameters/items/anyOf/0/properties/schema",
+                            "type": "object",
+                            "title": "The schema schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": {},
+                            "examples": [
+                              {
+                                "type": "petId"
+                              }
+                            ],
+                            "required": [
+                              "type"
+                            ],
+                            "properties": {
+                              "type": {
+                                "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/parameters/items/anyOf/0/properties/schema/properties/type",
+                                "type": "string",
+                                "title": "The type schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                  "petId"
+                                ]
+                              }
+                            },
+                            "additionalProperties": true
+                          },
+                          "required": {
+                            "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/parameters/items/anyOf/0/properties/required",
+                            "type": "boolean",
+                            "title": "The required schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": false,
+                            "examples": [
+                              true
+                            ]
+                          }
+                        },
+                        "additionalProperties": true
+                      }
+                    ]
+                  }
+                },
+                "requestBody": {
+                  "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/requestBody",
+                  "type": "object",
+                  "title": "The requestBody schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": {},
+                  "examples": [
+                    {
+                      "content": {
+                        "multipart/form-data": {
+                          "schema": {
+                            "type": "object",
+                            "properties": {
+                              "filename": {
+                                "type": "string"
+                              },
+                              "file": {
+                                "type": "string",
+                                "format": "binary"
+                              },
+                              "test": {
+                                "type": "object",
+                                "properties": {
+                                  "data": {
+                                    "type": "string"
+                                  },
+                                  "item": {
+                                    "type": "string"
+                                  },
+                                  "anotherObject": {
+                                    "type": "object",
+                                    "properties": {
+                                      "output.json": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "required": [
+                    "content"
+                  ],
+                  "properties": {
+                    "content": {
+                      "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/requestBody/properties/content",
+                      "type": "object",
+                      "title": "The content schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "multipart/form-data": {
+                            "schema": {
+                              "type": "object",
+                              "properties": {
+                                "filename": {
+                                  "type": "string"
+                                },
+                                "file": {
+                                  "type": "string",
+                                  "format": "binary"
+                                },
+                                "test": {
+                                  "type": "object",
+                                  "properties": {
+                                    "data": {
+                                      "type": "string"
+                                    },
+                                    "item": {
+                                      "type": "string"
+                                    },
+                                    "anotherObject": {
+                                      "type": "object",
+                                      "properties": {
+                                        "output.json": {
+                                          "type": "string"
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      ],
+                      "required": [
+                        "multipart/form-data"
+                      ],
+                      "properties": {
+                        "multipart/form-data": {
+                          "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/requestBody/properties/content/properties/multipart/form-data",
+                          "type": "object",
+                          "title": "The multipart/form-data schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": {},
+                          "examples": [
+                            {
+                              "schema": {
+                                "type": "object",
+                                "properties": {
+                                  "filename": {
+                                    "type": "string"
+                                  },
+                                  "file": {
+                                    "type": "string",
+                                    "format": "binary"
+                                  },
+                                  "test": {
+                                    "type": "object",
+                                    "properties": {
+                                      "data": {
+                                        "type": "string"
+                                      },
+                                      "item": {
+                                        "type": "string"
+                                      },
+                                      "anotherObject": {
+                                        "type": "object",
+                                        "properties": {
+                                          "output.json": {
+                                            "type": "string"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "required": [
+                            "schema"
+                          ],
+                          "properties": {
+                            "schema": {
+                              "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/requestBody/properties/content/properties/multipart/form-data/properties/schema",
+                              "type": "object",
+                              "title": "The schema schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": {},
+                              "examples": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "filename": {
+                                      "type": "string"
+                                    },
+                                    "file": {
+                                      "type": "string",
+                                      "format": "binary"
+                                    },
+                                    "test": {
+                                      "type": "object",
+                                      "properties": {
+                                        "data": {
+                                          "type": "string"
+                                        },
+                                        "item": {
+                                          "type": "string"
+                                        },
+                                        "anotherObject": {
+                                          "type": "object",
+                                          "properties": {
+                                            "output.json": {
+                                              "type": "string"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              ],
+                              "required": [
+                                "type",
+                                "properties"
+                              ],
+                              "properties": {
+                                "type": {
+                                  "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/requestBody/properties/content/properties/multipart/form-data/properties/schema/properties/type",
+                                  "type": "string",
+                                  "title": "The type schema",
+                                  "description": "An explanation about the purpose of this instance.",
+                                  "default": "",
+                                  "examples": [
+                                    "object"
+                                  ]
+                                },
+                                "properties": {
+                                  "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/requestBody/properties/content/properties/multipart/form-data/properties/schema/properties/properties",
+                                  "type": "object",
+                                  "title": "The properties schema",
+                                  "description": "An explanation about the purpose of this instance.",
+                                  "default": {},
+                                  "examples": [
+                                    {
+                                      "filename": {
+                                        "type": "string"
+                                      },
+                                      "file": {
+                                        "type": "string",
+                                        "format": "binary"
+                                      },
+                                      "test": {
+                                        "type": "object",
+                                        "properties": {
+                                          "data": {
+                                            "type": "string"
+                                          },
+                                          "item": {
+                                            "type": "string"
+                                          },
+                                          "anotherObject": {
+                                            "type": "object",
+                                            "properties": {
+                                              "output.json": {
+                                                "type": "string"
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  ],
+                                  "required": [
+                                    "filename",
+                                    "file",
+                                    "test"
+                                  ],
+                                  "properties": {
+                                    "filename": {
+                                      "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/requestBody/properties/content/properties/multipart/form-data/properties/schema/properties/properties/properties/filename",
+                                      "type": "object",
+                                      "title": "The filename schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": {},
+                                      "examples": [
+                                        {
+                                          "type": "string"
+                                        }
+                                      ],
+                                      "required": [
+                                        "type"
+                                      ],
+                                      "properties": {
+                                        "type": {
+                                          "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/requestBody/properties/content/properties/multipart/form-data/properties/schema/properties/properties/properties/filename/properties/type",
+                                          "type": "string",
+                                          "title": "The type schema",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "default": "",
+                                          "examples": [
+                                            "string"
+                                          ]
+                                        }
+                                      },
+                                      "additionalProperties": true
+                                    },
+                                    "file": {
+                                      "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/requestBody/properties/content/properties/multipart/form-data/properties/schema/properties/properties/properties/file",
+                                      "type": "object",
+                                      "title": "The file schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": {},
+                                      "examples": [
+                                        {
+                                          "type": "string",
+                                          "format": "binary"
+                                        }
+                                      ],
+                                      "required": [
+                                        "type",
+                                        "format"
+                                      ],
+                                      "properties": {
+                                        "type": {
+                                          "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/requestBody/properties/content/properties/multipart/form-data/properties/schema/properties/properties/properties/file/properties/type",
+                                          "type": "string",
+                                          "title": "The type schema",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "default": "",
+                                          "examples": [
+                                            "string"
+                                          ]
+                                        },
+                                        "format": {
+                                          "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/requestBody/properties/content/properties/multipart/form-data/properties/schema/properties/properties/properties/file/properties/format",
+                                          "type": "string",
+                                          "title": "The format schema",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "default": "",
+                                          "examples": [
+                                            "binary"
+                                          ]
+                                        }
+                                      },
+                                      "additionalProperties": true
+                                    },
+                                    "test": {
+                                      "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/requestBody/properties/content/properties/multipart/form-data/properties/schema/properties/properties/properties/test",
+                                      "type": "object",
+                                      "title": "The test schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": {},
+                                      "examples": [
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "data": {
+                                              "type": "string"
+                                            },
+                                            "item": {
+                                              "type": "string"
+                                            },
+                                            "anotherObject": {
+                                              "type": "object",
+                                              "properties": {
+                                                "output.json": {
+                                                  "type": "string"
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      ],
+                                      "required": [
+                                        "type",
+                                        "properties"
+                                      ],
+                                      "properties": {
+                                        "type": {
+                                          "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/requestBody/properties/content/properties/multipart/form-data/properties/schema/properties/properties/properties/test/properties/type",
+                                          "type": "string",
+                                          "title": "The type schema",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "default": "",
+                                          "examples": [
+                                            "object"
+                                          ]
+                                        },
+                                        "properties": {
+                                          "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/requestBody/properties/content/properties/multipart/form-data/properties/schema/properties/properties/properties/test/properties/properties",
+                                          "type": "object",
+                                          "title": "The properties schema",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "default": {},
+                                          "examples": [
+                                            {
+                                              "data": {
+                                                "type": "string"
+                                              },
+                                              "item": {
+                                                "type": "string"
+                                              },
+                                              "anotherObject": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "output.json": {
+                                                    "type": "string"
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          ],
+                                          "required": [
+                                            "data",
+                                            "item",
+                                            "anotherObject"
+                                          ],
+                                          "properties": {
+                                            "data": {
+                                              "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/requestBody/properties/content/properties/multipart/form-data/properties/schema/properties/properties/properties/test/properties/properties/properties/data",
+                                              "type": "object",
+                                              "title": "The data schema",
+                                              "description": "An explanation about the purpose of this instance.",
+                                              "default": {},
+                                              "examples": [
+                                                {
+                                                  "type": "string"
+                                                }
+                                              ],
+                                              "required": [
+                                                "type"
+                                              ],
+                                              "properties": {
+                                                "type": {
+                                                  "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/requestBody/properties/content/properties/multipart/form-data/properties/schema/properties/properties/properties/test/properties/properties/properties/data/properties/type",
+                                                  "type": "string",
+                                                  "title": "The type schema",
+                                                  "description": "An explanation about the purpose of this instance.",
+                                                  "default": "",
+                                                  "examples": [
+                                                    "string"
+                                                  ]
+                                                }
+                                              },
+                                              "additionalProperties": true
+                                            },
+                                            "item": {
+                                              "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/requestBody/properties/content/properties/multipart/form-data/properties/schema/properties/properties/properties/test/properties/properties/properties/item",
+                                              "type": "object",
+                                              "title": "The item schema",
+                                              "description": "An explanation about the purpose of this instance.",
+                                              "default": {},
+                                              "examples": [
+                                                {
+                                                  "type": "string"
+                                                }
+                                              ],
+                                              "required": [
+                                                "type"
+                                              ],
+                                              "properties": {
+                                                "type": {
+                                                  "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/requestBody/properties/content/properties/multipart/form-data/properties/schema/properties/properties/properties/test/properties/properties/properties/item/properties/type",
+                                                  "type": "string",
+                                                  "title": "The type schema",
+                                                  "description": "An explanation about the purpose of this instance.",
+                                                  "default": "",
+                                                  "examples": [
+                                                    "string"
+                                                  ]
+                                                }
+                                              },
+                                              "additionalProperties": true
+                                            },
+                                            "anotherObject": {
+                                              "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/requestBody/properties/content/properties/multipart/form-data/properties/schema/properties/properties/properties/test/properties/properties/properties/anotherObject",
+                                              "type": "object",
+                                              "title": "The anotherObject schema",
+                                              "description": "An explanation about the purpose of this instance.",
+                                              "default": {},
+                                              "examples": [
+                                                {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "output.json": {
+                                                      "type": "string"
+                                                    }
+                                                  }
+                                                }
+                                              ],
+                                              "required": [
+                                                "type",
+                                                "properties"
+                                              ],
+                                              "properties": {
+                                                "type": {
+                                                  "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/requestBody/properties/content/properties/multipart/form-data/properties/schema/properties/properties/properties/test/properties/properties/properties/anotherObject/properties/type",
+                                                  "type": "string",
+                                                  "title": "The type schema",
+                                                  "description": "An explanation about the purpose of this instance.",
+                                                  "default": "",
+                                                  "examples": [
+                                                    "object"
+                                                  ]
+                                                },
+                                                "properties": {
+                                                  "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/requestBody/properties/content/properties/multipart/form-data/properties/schema/properties/properties/properties/test/properties/properties/properties/anotherObject/properties/properties",
+                                                  "type": "object",
+                                                  "title": "The properties schema",
+                                                  "description": "An explanation about the purpose of this instance.",
+                                                  "default": {},
+                                                  "examples": [
+                                                    {
+                                                      "output.json": {
+                                                        "type": "string"
+                                                      }
+                                                    }
+                                                  ],
+                                                  "required": [
+                                                    "output.json"
+                                                  ],
+                                                  "properties": {
+                                                    "output.json": {
+                                                      "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/requestBody/properties/content/properties/multipart/form-data/properties/schema/properties/properties/properties/test/properties/properties/properties/anotherObject/properties/properties/properties/output.json",
+                                                      "type": "object",
+                                                      "title": "The output.json schema",
+                                                      "description": "An explanation about the purpose of this instance.",
+                                                      "default": {},
+                                                      "examples": [
+                                                        {
+                                                          "type": "string"
+                                                        }
+                                                      ],
+                                                      "required": [
+                                                        "type"
+                                                      ],
+                                                      "properties": {
+                                                        "type": {
+                                                          "$id": "#/properties/paths/properties//pet/%7BpetId%7D/uploadImage/properties/post/properties/requestBody/properties/content/properties/multipart/form-data/properties/schema/properties/properties/properties/test/properties/properties/properties/anotherObject/properties/properties/properties/output.json/properties/type",
+                                                          "type": "string",
+                                                          "title": "The type schema",
+                                                          "description": "An explanation about the purpose of this instance.",
+                                                          "default": "",
+                                                          "examples": [
+                                                            "string"
+                                                          ]
+                                                        }
+                                                      },
+                                                      "additionalProperties": true
+                                                    }
+                                                  },
+                                                  "additionalProperties": true
+                                                }
+                                              },
+                                              "additionalProperties": true
+                                            }
+                                          },
+                                          "additionalProperties": true
+                                        }
+                                      },
+                                      "additionalProperties": true
+                                    }
+                                  },
+                                  "additionalProperties": true
+                                }
+                              },
+                              "additionalProperties": true
+                            }
+                          },
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

@@ -33,13 +33,12 @@ class PetController
                 ],
             ],
         ]),
+
         Response(200, 'description',  contentType: 'multipart/form-data'),
         Property('success', 'boolean'),
         Property('test', PropertyType::OBJECT, properties: [
             'data' => PropertyType::STRING,
-            'item' => [
-                'type' => PropertyType::STRING,
-            ],
+            'item' => PropertyType::STRING,
             'anotherObject' => [
                 'type' => PropertyType::OBJECT,
                 'properties' => [

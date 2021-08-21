@@ -13,9 +13,14 @@ use OpenApiGenerator\Attributes\Route\Post;
 class MediaController
 {
     #[
-        Post('media/upload'),
+        Post('media/upload', contentType: 'multipart/form-data'),
         Property('file', Property::FILE),
-        Response(200),
+
+        Response(200, contentType: 'image/png'),
+        Property('file_response_success', Property::FILE),
+
+        Response(403, description: 'fail', contentType: 'image/jpg'),
+        Property('file_response_fail', Property::FILE),
     ]
     public function upload(): void
     {

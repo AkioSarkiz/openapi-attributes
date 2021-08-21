@@ -34,8 +34,8 @@ class SecurityScheme implements JsonSerializable
         private string $name,
         private string $in,
         private string $scheme,
-        private string $description = '',
         private string $bearerFormat = '',
+        private string $description = '',
     )
     {
         //

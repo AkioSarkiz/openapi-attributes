@@ -18,10 +18,10 @@ use OpenApiGenerator\Types\PropertyType;
         'title',
         '1.0.0',
         'description',
-        'url terms Of Service',
+        'https://example.com/termsOfService',
         [
             'name' => 'API Support',
-            'url' => 'https://www.output.json.com/support',
+            'url' => 'https://example.com/support',
             'email' => 'support@output.json.com'
         ],
         [
@@ -29,21 +29,22 @@ use OpenApiGenerator\Types\PropertyType;
             'url' => 'https://www.apache.org/licenses/LICENSE-2.0.html'
         ],
     ),
-    Server('same server1', 'same url1'),
-    Server('same server2', 'same url2'),
+    Server('same server1', 'https//example.com'),
+    Server('same server2', 'https//example.org'),
     SecurityScheme(
         'bearerAuth',
         'http',
         'bearerAuth',
         'header',
-        'JWT',
         'bearer',
+        'JWT',
     ),
 ]
 class Controller
 {
     #[
         Get('/path/{id}', ['Dummy'], 'Dummy path'),
+        Parameter('integer', 'id', description: 'id of dummy'),
         Property('test', PropertyType::OBJECT, properties: [
             'data' => PropertyType::STRING,
             'item' => [
@@ -58,9 +59,7 @@ class Controller
         ]),
         Response(200),
     ]
-    public function get(
-        #[Parameter(example: '2')] float $id
-    ): void {
+    public function get(float $id): void {
         //
     }
 }

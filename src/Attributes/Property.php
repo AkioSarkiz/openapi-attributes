@@ -28,6 +28,9 @@ class Property implements PropertyInterface, JsonSerializable, PropertyType
         private ?string $format = null,
         private ?array $enum = null,
         private mixed $properties = null,
+        private mixed $items = null,
+        private ?int $minItems = null,
+        private ?int $maxItems = null,
     ){
         //
     }
@@ -51,6 +54,9 @@ class Property implements PropertyInterface, JsonSerializable, PropertyType
             'format' => $this->getFormat(),
             'description' => $this->description,
             'enum' => $this->enum,
+            'items' => $this->items,
+            'minItems' => $this->minItems,
+            'maxItems' => $this->maxItems,
         ];
 
         // Create objects properties from array properties. Recursive serialize objects.
