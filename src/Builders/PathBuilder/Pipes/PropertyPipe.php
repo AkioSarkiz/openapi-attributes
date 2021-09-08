@@ -23,15 +23,24 @@ class PropertyPipe extends BasePipe
 
         if ($this->context->lastResponseData) {
             $schema = &$this->context->lastResponseData['content'][$this->context->lastResponseInstance->getContentType()]['schema'];
+            $prop = $this->context->lastResponseInstance->getChildProp();
 
             if (!$schema) {
                 $schema = [
                     'type' => $this->context->lastResponseInstance->getType(),
-                    'properties' => [],
+                    $prop => [],
                 ];
             }
 
-            $schema['properties'][$propInstance->getProperty()] = $propInstance->jsonSerialize();
+            switch ($prop) {
+                case 'items':
+                    $schema[$prop] = $propInstance->jsonSerialize();
+                    break;
+
+                default:
+                    $schema[$prop][$propInstance->getProperty()] = $propInstance->jsonSerialize();
+                    break;
+            }
         } else {
             $this->context->properties[$propInstance->getProperty()] = $propInstance->jsonSerialize();
         }

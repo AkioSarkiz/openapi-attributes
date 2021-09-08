@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace OpenApiGenerator\Attributes;
 
 use Attribute;
+use JetBrains\PhpStorm\Pure;
 use JsonSerializable;
 use OpenApiGenerator\Types\ItemsType;
+use OpenApiGenerator\Types\PropertyType;
 use OpenApiGenerator\Types\SchemaType;
 
 /**
@@ -64,5 +66,14 @@ class Response implements JsonSerializable
     public function getContentType(): string
     {
         return $this->contentType;
+    }
+
+    #[Pure]
+    public function getChildProp(): string
+    {
+        return match ($this->getType()) {
+            PropertyType::ARRAY => 'items',
+            default => 'properties',
+        };
     }
 }

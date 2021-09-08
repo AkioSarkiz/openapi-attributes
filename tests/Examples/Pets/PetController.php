@@ -19,9 +19,9 @@ class PetController
     #[
         Post('pet/{petId}/uploadImage', ['pet'], 'uploads an image', contentType: 'multipart/form-data'),
         Parameter('petId', 'integer'),
-        Property('filename', 'string'),
-        Property('file', 'file', format: 'binary'),
-        Property('test', PropertyType::OBJECT, properties: [
+        Property('string', 'filename'),
+        Property('file', 'file', description: 'binary', example: null, format: 'binary'),
+        Property(PropertyType::OBJECT, 'test', properties: [
             'data' => PropertyType::STRING,
             'item' => [
                 'type' => PropertyType::STRING,
@@ -35,8 +35,8 @@ class PetController
         ]),
 
         Response(200, 'description',  contentType: 'multipart/form-data'),
-        Property('success', 'boolean'),
-        Property('test', PropertyType::OBJECT, properties: [
+        Property('boolean', 'success'),
+        Property(PropertyType::OBJECT, 'test', properties: [
             'data' => PropertyType::STRING,
             'item' => PropertyType::STRING,
             'anotherObject' => [

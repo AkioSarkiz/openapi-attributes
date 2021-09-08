@@ -21,8 +21,8 @@ class Property implements PropertyInterface, JsonSerializable, PropertyType
     private ?PropertyItems $propertyItems = null;
 
     public function __construct(
-        private string $property,
         private string $type,
+        private string $property = '',
         private string $description = '',
         private mixed $example = null,
         private ?string $format = null,
@@ -102,12 +102,13 @@ class Property implements PropertyInterface, JsonSerializable, PropertyType
         return $format;
     }
 
+    #[Pure]
     public function createFromArray(array $data): self
     {
         $args = [];
         $format = [
-            'property' => '',
             'type' => '',
+            'property' => '',
             'description' => '',
             'example' => null,
             'format' => null,
