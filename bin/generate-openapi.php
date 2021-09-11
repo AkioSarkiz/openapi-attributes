@@ -1,24 +1,35 @@
-<?php
+$autoloadPath<?php
+
+/*
+ * Soruce file for generation openapi documentation. For more deteils see docs.
+ *
+ * @pacakge: akiosarkiz/openapi-attributes
+ * @author: akiosarkiz@gmail.com
+ *
+ * @example: php ./vendor/bin/generate-openapi.php ./tests/Examples/Controller/ .
+ */
 
 declare(strict_types=1);
 
 use Symfony\Component\Finder\Finder;
 
-$autoload_path = null;
+$autoloadPath = null;
 
-foreach ([__DIR__ . '/../../../autoload.php', __DIR__ . '/../vendor/autoload.php'] as $autoload) {
-    if (file_exists($autoload)) {
-        $autoload_path = $autoload;
+foreach (['/../../../autoload.php', '/../vendor/autoload.php'] as $path) {
+    $path = __DIR__ . $path;
+
+    if (file_exists($path)) {
+        $autoloadPath = $path;
         break;
     }
 }
 
-if (!$autoload_path) {
+if (!$autoloadPath) {
     echo 'Not found autoload file. Please, check composer packages.';
-    die;
+    exit(1);
 }
 
-require $autoload_path;
+require $autoloadPath;
 
 $files = Finder::create()->files()->name('*.php')->in($argv[1]);
 
