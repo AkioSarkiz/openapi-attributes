@@ -18,6 +18,8 @@ function removeEmptyValues(array $associatedValues): array
 }
 
 /**
+ * Set array value by path with dots.
+ *
  * @param array $arr
  * @param string $path
  * @param mixed $value

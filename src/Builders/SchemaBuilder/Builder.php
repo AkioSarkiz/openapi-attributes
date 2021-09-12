@@ -5,8 +5,12 @@ declare(strict_types=1);
 namespace OpenApiGenerator\Builders\SchemaBuilder;
 
 use JetBrains\PhpStorm\ArrayShape;
+use League\Pipeline\Pipeline;
 use OpenApiGenerator\Attributes\Property;
 use OpenApiGenerator\Attributes\Schema;
+use OpenApiGenerator\Builders\SchemaBuilder\Exceptions\SkipAnotherPipelines;
+use OpenApiGenerator\Builders\SchemaBuilder\Pipes\BaseSerializationPipe;
+use OpenApiGenerator\Builders\SchemaBuilder\Pipes\SchemaByModelPipe;
 use OpenApiGenerator\Interfaces\BuilderInterface;
 use ReflectionClass;
 
@@ -45,17 +49,32 @@ class Builder implements BuilderInterface
     {
         $schemas = [];
 
-         foreach ($this->stack as $class) {
-             $schema = $class->getAttributes(Schema::class)[0];
-             $dataSchema = $schema->newInstance()->jsonSerialize();
+        foreach ($this->stack as $class) {
+            $context = new SchemaBuilderContext();
+            $this->processPipes($context, $class);
+            $schemas[$context->name] = $context->schema;
+        }
 
-             foreach ($class->getAttributes(Property::class) as $property) {
-                 $dataSchema['properties'][] = $property->newInstance()->jsonSerialize();
-             }
+        return $schemas;
+    }
 
-             $schemas[] = $dataSchema;
-         }
+    /**
+     * Process pipeline and return result.
+     *
+     * @param SchemaBuilderContext $context
+     * @param mixed $payload
+     * @return mixed
+     */
+    public function processPipes(SchemaBuilderContext &$context, mixed $payload): mixed
+    {
+        $pipeline = (new Pipeline())
+            ->pipe(new SchemaByModelPipe($context))
+            ->pipe(new BaseSerializationPipe($context));
 
-         return $schemas;
+        try {
+            return $pipeline->process($payload);
+        } catch (SkipAnotherPipelines) {
+            return null;
+        }
     }
 }

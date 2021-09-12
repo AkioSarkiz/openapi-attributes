@@ -22,4 +22,12 @@ abstract class BasePipe
      * @throws SkipAnotherPipelines
      */
     abstract public function __invoke(ReflectionAttribute $attribute): ReflectionAttribute;
+
+    /**
+     * @throws SkipAnotherPipelines
+     */
+    protected function skipAnotherPipelines(): void
+    {
+        throw new SkipAnotherPipelines();
+    }
 }

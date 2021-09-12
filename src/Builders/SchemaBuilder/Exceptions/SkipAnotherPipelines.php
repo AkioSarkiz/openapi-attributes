@@ -1,6 +1,8 @@
 <?php
 
-namespace OpenApiGenerator\Builders\PathBuilder\Exceptions;
+declare(strict_types=1);
+
+namespace OpenApiGenerator\Builders\SchemaBuilder\Exceptions;
 
 use Exception;
 use JetBrains\PhpStorm\Pure;

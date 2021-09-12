@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace OpenApiGenerator\Builders\PathBuilder\Pipes;
 
 use OpenApiGenerator\Attributes\Property;
-use OpenApiGenerator\Builders\PathBuilder\Exceptions\SkipAnotherPipelines;
 use ReflectionAttribute;
 
 class PropertyPipe extends BasePipe
@@ -45,6 +44,6 @@ class PropertyPipe extends BasePipe
             $this->context->properties[$propInstance->getProperty()] = $propInstance->jsonSerialize();
         }
 
-        throw new SkipAnotherPipelines();
+        $this->skipAnotherPipelines();
     }
 }
