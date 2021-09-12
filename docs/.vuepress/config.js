@@ -19,7 +19,7 @@ module.exports = {
                 text: 'Guide',
                 link: '/guide/',
                 children: [
-                    '/getting-started',
+                    '/guide/getting-started',
                 ],
             },
         ],
