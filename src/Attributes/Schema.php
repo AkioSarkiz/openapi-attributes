@@ -72,6 +72,12 @@ class Schema implements JsonSerializable
             return $schema;
         }
 
+        dd( [
+            $this->getMediaType() => [
+                'schema' => $schema
+            ]
+        ]);
+
         return [
             $this->getMediaType() => [
                 'schema' => $schema
@@ -109,5 +115,10 @@ class Schema implements JsonSerializable
     public function setNoMedia(bool $noMedia): void
     {
         $this->noMedia = $noMedia;
+    }
+
+    public function isModelSchema(): bool
+    {
+        return $this->model;
     }
 }

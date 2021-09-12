@@ -1,0 +1,338 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "examples": [
+    {
+      "openapi": "3.0.0",
+      "components": {
+        "securitySchemes": [],
+        "schemas": {
+          "personalDataSchema": {
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "phone": {
+                "type": "string"
+              },
+              "age": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      },
+      "servers": [],
+      "info": {
+        "title": "test",
+        "version": "1.0.0"
+      },
+      "paths": []
+    }
+  ],
+  "required": [
+    "openapi",
+    "components",
+    "servers",
+    "info",
+    "paths"
+  ],
+  "properties": {
+    "openapi": {
+      "$id": "#/properties/openapi",
+      "type": "string",
+      "title": "The openapi schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": "",
+      "examples": [
+        "3.0.0"
+      ]
+    },
+    "components": {
+      "$id": "#/properties/components",
+      "type": "object",
+      "title": "The components schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": {},
+      "examples": [
+        {
+          "securitySchemes": [],
+          "schemas": {
+            "personalDataSchema": {
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "phone": {
+                  "type": "string"
+                },
+                "age": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "required": [
+        "securitySchemes",
+        "schemas"
+      ],
+      "properties": {
+        "securitySchemes": {
+          "$id": "#/properties/components/properties/securitySchemes",
+          "type": "array",
+          "title": "The securitySchemes schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": [],
+          "examples": [
+            []
+          ],
+          "additionalItems": true,
+          "items": {
+            "$id": "#/properties/components/properties/securitySchemes/items"
+          }
+        },
+        "schemas": {
+          "$id": "#/properties/components/properties/schemas",
+          "type": "object",
+          "title": "The schemas schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": {},
+          "examples": [
+            {
+              "personalDataSchema": {
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "string"
+                  },
+                  "age": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          ],
+          "required": [
+            "personalDataSchema"
+          ],
+          "properties": {
+            "personalDataSchema": {
+              "$id": "#/properties/components/properties/schemas/properties/personalDataSchema",
+              "type": "object",
+              "title": "The personalDataSchema schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": {},
+              "examples": [
+                {
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "phone": {
+                      "type": "string"
+                    },
+                    "age": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              ],
+              "required": [
+                "properties"
+              ],
+              "properties": {
+                "properties": {
+                  "$id": "#/properties/components/properties/schemas/properties/personalDataSchema/properties/properties",
+                  "type": "object",
+                  "title": "The properties schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": {},
+                  "examples": [
+                    {
+                      "name": {
+                        "type": "string"
+                      },
+                      "phone": {
+                        "type": "string"
+                      },
+                      "age": {
+                        "type": "integer"
+                      }
+                    }
+                  ],
+                  "required": [
+                    "name",
+                    "phone",
+                    "age"
+                  ],
+                  "properties": {
+                    "name": {
+                      "$id": "#/properties/components/properties/schemas/properties/personalDataSchema/properties/properties/properties/name",
+                      "type": "object",
+                      "title": "The name schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "required": [
+                        "type"
+                      ],
+                      "properties": {
+                        "type": {
+                          "$id": "#/properties/components/properties/schemas/properties/personalDataSchema/properties/properties/properties/name/properties/type",
+                          "type": "string",
+                          "title": "The type schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "string"
+                          ]
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "phone": {
+                      "$id": "#/properties/components/properties/schemas/properties/personalDataSchema/properties/properties/properties/phone",
+                      "type": "object",
+                      "title": "The phone schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "required": [
+                        "type"
+                      ],
+                      "properties": {
+                        "type": {
+                          "$id": "#/properties/components/properties/schemas/properties/personalDataSchema/properties/properties/properties/phone/properties/type",
+                          "type": "string",
+                          "title": "The type schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "string"
+                          ]
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "age": {
+                      "$id": "#/properties/components/properties/schemas/properties/personalDataSchema/properties/properties/properties/age",
+                      "type": "object",
+                      "title": "The age schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "type": "integer"
+                        }
+                      ],
+                      "required": [
+                        "type"
+                      ],
+                      "properties": {
+                        "type": {
+                          "$id": "#/properties/components/properties/schemas/properties/personalDataSchema/properties/properties/properties/age/properties/type",
+                          "type": "string",
+                          "title": "The type schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "integer"
+                          ]
+                        }
+                      },
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "servers": {
+      "$id": "#/properties/servers",
+      "type": "array",
+      "title": "The servers schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": [],
+      "examples": [
+        []
+      ],
+      "additionalItems": true,
+      "items": {
+        "$id": "#/properties/servers/items"
+      }
+    },
+    "info": {
+      "$id": "#/properties/info",
+      "type": "object",
+      "title": "The info schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": {},
+      "examples": [
+        {
+          "title": "test",
+          "version": "1.0.0"
+        }
+      ],
+      "required": [
+        "title",
+        "version"
+      ],
+      "properties": {
+        "title": {
+          "$id": "#/properties/info/properties/title",
+          "type": "string",
+          "title": "The title schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "test"
+          ]
+        },
+        "version": {
+          "$id": "#/properties/info/properties/version",
+          "type": "string",
+          "title": "The version schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "1.0.0"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "paths": {
+      "$id": "#/properties/paths",
+      "type": "array",
+      "title": "The paths schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": [],
+      "examples": [
+        []
+      ],
+      "additionalItems": true,
+      "items": {
+        "$id": "#/properties/paths/items"
+      }
+    }
+  },
+  "additionalProperties": true
+}

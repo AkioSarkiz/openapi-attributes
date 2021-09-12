@@ -17,14 +17,16 @@ class BaseSerializationPipe extends BasePipe
     {
         $schema = $class->getAttributes(Schema::class)[0];
         $classInstance = $schema->newInstance();
-        $dataSchema = $classInstance->jsonSerialize();
+        $dataSchema = [];
 
         foreach ($class->getAttributes(Property::class) as $property) {
-            $dataSchema['properties'][] = $property->newInstance()->jsonSerialize();
+            $propertyInstance = $property->newInstance();
+            $dataSchema['properties'][$propertyInstance->getProperty()] = $propertyInstance->jsonSerialize();
         }
 
         $this->context->name = $classInstance->getName();
         $this->context->schema = $dataSchema;
+
         $this->skipAnotherPipelines();
     }
 }

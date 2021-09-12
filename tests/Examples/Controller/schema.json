@@ -1,7 +1,5 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "https://example.com/Controller.json",
-  "type": "object",
   "examples": [
     {
       "openapi": "3.0.0",
