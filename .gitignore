@@ -8,3 +8,5 @@ buildnode_modules
 .temp
 .cache
 dist
+node_modules
+build
