@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OpenApiGenerator\Builders;
+namespace OpenApiGenerator\Builders\SchemaBuilder;
 
 use JetBrains\PhpStorm\ArrayShape;
 use OpenApiGenerator\Attributes\Property;
@@ -10,7 +10,7 @@ use OpenApiGenerator\Attributes\Schema;
 use OpenApiGenerator\Interfaces\BuilderInterface;
 use ReflectionClass;
 
-class SchemaBuilder implements BuilderInterface
+class Builder implements BuilderInterface
 {
     private array $stack = [];
 

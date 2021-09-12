@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace OpenApiGenerator;
 
 use OpenApiGenerator\Builders\InfoBuilder;
-use OpenApiGenerator\Builders\SchemaBuilder;
+use OpenApiGenerator\Builders\SchemaBuilder\Builder as SchemaBuilder;
 use OpenApiGenerator\Builders\SecuritySchemeBuilder;
 use OpenApiGenerator\Builders\ServerBuilder;
-use OpenApiGenerator\Builders\PathBuilder;
+use OpenApiGenerator\Builders\PathBuilder\Builder as PathBuilder;
 use OpenApiGenerator\Interfaces\BuilderInterface;
 
 class ManagerBuilders

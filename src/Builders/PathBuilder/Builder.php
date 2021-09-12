@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OpenApiGenerator\Builders;
+namespace OpenApiGenerator\Builders\PathBuilder;
 
 use Exception;
 use JetBrains\PhpStorm\ArrayShape;
@@ -22,7 +22,7 @@ use OpenApiGenerator\Interfaces\BuilderInterface;
 use ReflectionClass;
 use ReflectionMethod;
 
-class PathBuilder implements BuilderInterface
+class Builder implements BuilderInterface
 {
     private array $stack = [];
     private PathBuilderContext $context;
