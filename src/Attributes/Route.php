@@ -28,12 +28,13 @@ class Route implements JsonSerializable
     public function __construct(
         private string $method,
         private string $route,
-        private array $tags = [],
+        private array  $tags = [],
         private string $summary = '',
         private string $description = '',
-        private mixed $security = null,
+        private mixed  $security = null,
         private string $contentType = 'application/json',
-    ){
+    )
+    {
         //
     }
 

@@ -22,15 +22,16 @@ class Response implements JsonSerializable
     private ?Schema $schema = null;
 
     public function __construct(
-        private int $code = 200,
+        private int    $code = 200,
         private string $description = '',
         private string $type = SchemaType::OBJECT,
-        ?string $ref = null,
+        ?string        $ref = null,
         private string $contentType = 'application/json',
-    ){
+    )
+    {
         if ($ref) {
             $this->schema = new Schema(type: $type);
-            $this->schema->addProperty(match($type) {
+            $this->schema->addProperty(match ($type) {
                 SchemaType::OBJECT => new RefProperty($ref),
                 SchemaType::ARRAY => new PropertyItems(ItemsType::REF, $ref),
             });

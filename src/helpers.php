@@ -25,7 +25,7 @@ function removeEmptyValues(array $associatedValues): array
  * @param mixed $value
  * @param string $separator
  */
-function setArrayByPath(array &$arr, string $path, mixed $value, string $separator='.'): void
+function setArrayByPath(array &$arr, string $path, mixed $value, string $separator = '.'): void
 {
     $keys = explode($separator, $path);
 

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace OpenApiGenerator\Builders;
 
 use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\Pure;
 use OpenApiGenerator\Attributes\SecurityScheme;
 use OpenApiGenerator\Exceptions\SchemaException;
 use OpenApiGenerator\Interfaces\BuilderInterface;

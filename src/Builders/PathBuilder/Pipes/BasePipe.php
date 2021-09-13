@@ -12,7 +12,8 @@ abstract class BasePipe
 {
     public function __construct(
         protected PathBuilderContext &$context,
-    ){
+    )
+    {
         //
     }
 

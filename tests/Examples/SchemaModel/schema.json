@@ -1,0 +1,450 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "examples": [
+    {
+      "openapi": "3.0.0",
+      "components": {
+        "securitySchemes": [],
+        "schemas": {
+          "SchemaModel": {
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "is_banned": {
+                "type": "boolean"
+              },
+              "price": {
+                "type": "number",
+                "format": "float"
+              },
+              "age": {
+                "type": "number",
+                "format": "int32",
+                "description": "The age of person",
+                "example": 123
+              }
+            }
+          }
+        }
+      },
+      "servers": [],
+      "info": {
+        "title": "test",
+        "version": "1.0.0"
+      },
+      "paths": []
+    }
+  ],
+  "required": [
+    "openapi",
+    "components",
+    "servers",
+    "info",
+    "paths"
+  ],
+  "properties": {
+    "openapi": {
+      "$id": "#/properties/openapi",
+      "type": "string",
+      "title": "The openapi schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": "",
+      "examples": [
+        "3.0.0"
+      ]
+    },
+    "components": {
+      "$id": "#/properties/components",
+      "type": "object",
+      "title": "The components schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": {},
+      "examples": [
+        {
+          "securitySchemes": [],
+          "schemas": {
+            "SchemaModel": {
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "is_banned": {
+                  "type": "boolean"
+                },
+                "price": {
+                  "type": "number",
+                  "format": "float"
+                },
+                "age": {
+                  "type": "number",
+                  "format": "int32",
+                  "description": "The age of person",
+                  "example": 123
+                }
+              }
+            }
+          }
+        }
+      ],
+      "required": [
+        "securitySchemes",
+        "schemas"
+      ],
+      "properties": {
+        "securitySchemes": {
+          "$id": "#/properties/components/properties/securitySchemes",
+          "type": "array",
+          "title": "The securitySchemes schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": [],
+          "examples": [
+            []
+          ],
+          "additionalItems": true,
+          "items": {
+            "$id": "#/properties/components/properties/securitySchemes/items"
+          }
+        },
+        "schemas": {
+          "$id": "#/properties/components/properties/schemas",
+          "type": "object",
+          "title": "The schemas schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": {},
+          "examples": [
+            {
+              "SchemaModel": {
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "is_banned": {
+                    "type": "boolean"
+                  },
+                  "price": {
+                    "type": "number",
+                    "format": "float"
+                  },
+                  "age": {
+                    "type": "number",
+                    "format": "int32",
+                    "description": "The age of person",
+                    "example": 123
+                  }
+                }
+              }
+            }
+          ],
+          "required": [
+            "SchemaModel"
+          ],
+          "properties": {
+            "SchemaModel": {
+              "$id": "#/properties/components/properties/schemas/properties/SchemaModel",
+              "type": "object",
+              "title": "The SchemaModel schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": {},
+              "examples": [
+                {
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "is_banned": {
+                      "type": "boolean"
+                    },
+                    "price": {
+                      "type": "number",
+                      "format": "float"
+                    },
+                    "age": {
+                      "type": "number",
+                      "format": "int32",
+                      "description": "The age of person",
+                      "example": 123
+                    }
+                  }
+                }
+              ],
+              "required": [
+                "properties"
+              ],
+              "properties": {
+                "properties": {
+                  "$id": "#/properties/components/properties/schemas/properties/SchemaModel/properties/properties",
+                  "type": "object",
+                  "title": "The properties schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": {},
+                  "examples": [
+                    {
+                      "name": {
+                        "type": "string"
+                      },
+                      "is_banned": {
+                        "type": "boolean"
+                      },
+                      "price": {
+                        "type": "number",
+                        "format": "float"
+                      },
+                      "age": {
+                        "type": "number",
+                        "format": "int32",
+                        "description": "The age of person",
+                        "example": 123
+                      }
+                    }
+                  ],
+                  "required": [
+                    "name",
+                    "is_banned",
+                    "price",
+                    "age"
+                  ],
+                  "properties": {
+                    "name": {
+                      "$id": "#/properties/components/properties/schemas/properties/SchemaModel/properties/properties/properties/name",
+                      "type": "object",
+                      "title": "The name schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "required": [
+                        "type"
+                      ],
+                      "properties": {
+                        "type": {
+                          "$id": "#/properties/components/properties/schemas/properties/SchemaModel/properties/properties/properties/name/properties/type",
+                          "type": "string",
+                          "title": "The type schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "string"
+                          ]
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "is_banned": {
+                      "$id": "#/properties/components/properties/schemas/properties/SchemaModel/properties/properties/properties/is_banned",
+                      "type": "object",
+                      "title": "The is_banned schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "type": "boolean"
+                        }
+                      ],
+                      "required": [
+                        "type"
+                      ],
+                      "properties": {
+                        "type": {
+                          "$id": "#/properties/components/properties/schemas/properties/SchemaModel/properties/properties/properties/is_banned/properties/type",
+                          "type": "string",
+                          "title": "The type schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "boolean"
+                          ]
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "price": {
+                      "$id": "#/properties/components/properties/schemas/properties/SchemaModel/properties/properties/properties/price",
+                      "type": "object",
+                      "title": "The price schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "type": "number",
+                          "format": "float"
+                        }
+                      ],
+                      "required": [
+                        "type",
+                        "format"
+                      ],
+                      "properties": {
+                        "type": {
+                          "$id": "#/properties/components/properties/schemas/properties/SchemaModel/properties/properties/properties/price/properties/type",
+                          "type": "string",
+                          "title": "The type schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "number"
+                          ]
+                        },
+                        "format": {
+                          "$id": "#/properties/components/properties/schemas/properties/SchemaModel/properties/properties/properties/price/properties/format",
+                          "type": "string",
+                          "title": "The format schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "float"
+                          ]
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "age": {
+                      "$id": "#/properties/components/properties/schemas/properties/SchemaModel/properties/properties/properties/age",
+                      "type": "object",
+                      "title": "The age schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "type": "number",
+                          "format": "int32",
+                          "description": "The age of person",
+                          "example": 123
+                        }
+                      ],
+                      "required": [
+                        "type",
+                        "format",
+                        "description",
+                        "example"
+                      ],
+                      "properties": {
+                        "type": {
+                          "$id": "#/properties/components/properties/schemas/properties/SchemaModel/properties/properties/properties/age/properties/type",
+                          "type": "string",
+                          "title": "The type schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "number"
+                          ]
+                        },
+                        "format": {
+                          "$id": "#/properties/components/properties/schemas/properties/SchemaModel/properties/properties/properties/age/properties/format",
+                          "type": "string",
+                          "title": "The format schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "int32"
+                          ]
+                        },
+                        "description": {
+                          "$id": "#/properties/components/properties/schemas/properties/SchemaModel/properties/properties/properties/age/properties/description",
+                          "type": "string",
+                          "title": "The description schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "The age of person"
+                          ]
+                        },
+                        "example": {
+                          "$id": "#/properties/components/properties/schemas/properties/SchemaModel/properties/properties/properties/age/properties/example",
+                          "type": "integer",
+                          "title": "The example schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": 0,
+                          "examples": [
+                            123
+                          ]
+                        }
+                      },
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "servers": {
+      "$id": "#/properties/servers",
+      "type": "array",
+      "title": "The servers schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": [],
+      "examples": [
+        []
+      ],
+      "additionalItems": true,
+      "items": {
+        "$id": "#/properties/servers/items"
+      }
+    },
+    "info": {
+      "$id": "#/properties/info",
+      "type": "object",
+      "title": "The info schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": {},
+      "examples": [
+        {
+          "title": "test",
+          "version": "1.0.0"
+        }
+      ],
+      "required": [
+        "title",
+        "version"
+      ],
+      "properties": {
+        "title": {
+          "$id": "#/properties/info/properties/title",
+          "type": "string",
+          "title": "The title schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "test"
+          ]
+        },
+        "version": {
+          "$id": "#/properties/info/properties/version",
+          "type": "string",
+          "title": "The version schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "1.0.0"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "paths": {
+      "$id": "#/properties/paths",
+      "type": "array",
+      "title": "The paths schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": [],
+      "examples": [
+        []
+      ],
+      "additionalItems": true,
+      "items": {
+        "$id": "#/properties/paths/items"
+      }
+    }
+  },
+  "additionalProperties": true
+}

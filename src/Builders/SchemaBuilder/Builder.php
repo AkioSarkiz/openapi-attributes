@@ -6,7 +6,6 @@ namespace OpenApiGenerator\Builders\SchemaBuilder;
 
 use JetBrains\PhpStorm\ArrayShape;
 use League\Pipeline\Pipeline;
-use OpenApiGenerator\Attributes\Property;
 use OpenApiGenerator\Attributes\Schema;
 use OpenApiGenerator\Builders\SchemaBuilder\Exceptions\SkipAnotherPipelines;
 use OpenApiGenerator\Builders\SchemaBuilder\Pipes\BaseSerializationPipe;
@@ -58,6 +57,14 @@ class Builder implements BuilderInterface
         return $schemas;
     }
 
+    public function pipes(): array
+    {
+        return [
+            SchemaByModelPipe::class,
+            BaseSerializationPipe::class,
+        ];
+    }
+
     /**
      * Process pipeline and return result.
      *
@@ -67,9 +74,11 @@ class Builder implements BuilderInterface
      */
     public function processPipes(SchemaBuilderContext &$context, mixed $payload): mixed
     {
-        $pipeline = (new Pipeline())
-            ->pipe(new SchemaByModelPipe($context))
-            ->pipe(new BaseSerializationPipe($context));
+        $pipeline = new Pipeline();
+
+        foreach ($this->pipes() as $pipe) {
+            $pipeline = $pipeline->pipe(new $pipe($context));
+        }
 
         try {
             return $pipeline->process($payload);

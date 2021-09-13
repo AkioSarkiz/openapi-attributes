@@ -30,9 +30,9 @@ class Schema implements JsonSerializable
      */
     public function __construct(
         private ?string $name = null,
-        private ?array $required = null,
-        private string $type = SchemaType::OBJECT,
-        private bool $model = false,
+        private ?array  $required = null,
+        private string  $type = SchemaType::OBJECT,
+        private bool    $model = false,
     )
     {
         //
@@ -72,7 +72,7 @@ class Schema implements JsonSerializable
             return $schema;
         }
 
-        dd( [
+        dd([
             $this->getMediaType() => [
                 'schema' => $schema
             ]

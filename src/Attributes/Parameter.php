@@ -22,13 +22,13 @@ class Parameter implements JsonSerializable
     private array $schema = [];
 
     public function __construct(
-        private string $name,
-        private string $type,
+        private string  $name,
+        private string  $type,
         private ?string $description = null,
-        private string $in = 'path',
-        private ?bool $required = null,
-        private mixed $example = '',
-        private mixed $format = ''
+        private string  $in = 'path',
+        private ?bool   $required = null,
+        private mixed   $example = '',
+        private mixed   $format = ''
     )
     {
         if ($in === 'path') {

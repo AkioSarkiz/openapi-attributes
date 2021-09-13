@@ -34,7 +34,8 @@ class Generator
 
     public function __construct(
         private ManagerBuilders $managerBuilders
-    ){
+    )
+    {
         //
     }
 
@@ -64,7 +65,7 @@ class Generator
         foreach ($builders as $builder) {
             $builder = new $builder();
 
-            foreach($classes as $class) {
+            foreach ($classes as $class) {
                 try {
                     $builder->append(new ReflectionClass($class));
                 } catch (ReflectionException) {

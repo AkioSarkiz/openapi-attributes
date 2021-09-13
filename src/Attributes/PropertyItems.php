@@ -17,9 +17,9 @@ use OpenApiGenerator\Types\ItemsType;
 class PropertyItems implements PropertyInterface, JsonSerializable
 {
     public function __construct(
-        private string $type,
+        private string  $type,
         private ?string $ref = null,
-        private mixed $example = '',
+        private mixed   $example = '',
     )
     {
         if ($this->ref) {

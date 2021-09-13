@@ -6,14 +6,14 @@ namespace OpenApiGenerator\Builders\SchemaBuilder\Pipes;
 
 use OpenApiGenerator\Builders\SchemaBuilder\Exceptions\SkipAnotherPipelines;
 use OpenApiGenerator\Builders\SchemaBuilder\SchemaBuilderContext;
-use ReflectionAttribute;
 use ReflectionClass;
 
 abstract class BasePipe
 {
     public function __construct(
         protected SchemaBuilderContext &$context,
-    ){
+    )
+    {
         //
     }
 

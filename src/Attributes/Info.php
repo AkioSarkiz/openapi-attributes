@@ -27,12 +27,12 @@ class Info implements JsonSerializable
      * @param array|null $license The license information for the exposed API. (@see https://swagger.io/specification/#license-object)
      */
     public function __construct(
-        private string $title,
-        private string $version = '1.0.0',
+        private string  $title,
+        private string  $version = '1.0.0',
         private ?string $description = null,
         private ?string $termsOfService = null,
-        private ?array $contact = null,
-        private ?array $license = null,
+        private ?array  $contact = null,
+        private ?array  $license = null,
     )
     {
         //

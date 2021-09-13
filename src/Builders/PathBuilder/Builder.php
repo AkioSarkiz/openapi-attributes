@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace OpenApiGenerator\Builders\PathBuilder;
 
-use Exception;
 use JetBrains\PhpStorm\ArrayShape;
 use JetBrains\PhpStorm\Pure;
 use League\Pipeline\Pipeline;
@@ -14,7 +13,6 @@ use OpenApiGenerator\Attributes\Route\Patch;
 use OpenApiGenerator\Attributes\Route\Post;
 use OpenApiGenerator\Attributes\Route\Put;
 use OpenApiGenerator\Builders\PathBuilder\Exceptions\SkipAnotherPipelines;
-use OpenApiGenerator\Builders\PathBuilder\PathBuilderContext;
 use OpenApiGenerator\Builders\PathBuilder\Pipes\ParameterPipe;
 use OpenApiGenerator\Builders\PathBuilder\Pipes\PropertyPipe;
 use OpenApiGenerator\Builders\PathBuilder\Pipes\ResponsePipe;
@@ -60,7 +58,7 @@ class Builder implements BuilderInterface
             $methods = $class->getMethods();
 
             foreach ($methods as $method) {
-                $paths = array_merge_recursive($paths,  $this->handleMethod($method));
+                $paths = array_merge_recursive($paths, $this->handleMethod($method));
             }
         }
 
@@ -103,7 +101,7 @@ class Builder implements BuilderInterface
             'properties' => $this->context->properties,
         ]);
 
-       return $this->context->routeData;
+        return $this->context->routeData;
     }
 
     /**
