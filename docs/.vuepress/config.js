@@ -22,6 +22,14 @@ module.exports = {
                     '/guide/getting-started',
                 ],
             },
+            {
+                text: 'Schemas',
+                link: '/schemas',
+            },
+            {
+                text: 'Integrations',
+                link: '/integrations',
+            },
         ],
         displayAllHeaders: true,
         sidebarDepth: 2,

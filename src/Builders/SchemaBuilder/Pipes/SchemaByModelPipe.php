@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace OpenApiGenerator\Builders\SchemaBuilder\Pipes;
 
+use OpenApiGenerator\Attributes\Property;
 use OpenApiGenerator\Attributes\Schema;
 use ReflectionClass;
 
@@ -65,9 +66,18 @@ class SchemaByModelPipe extends BasePipe
         $properties = [];
 
         foreach ($this->class->getProperties() as $property) {
-            $properties[$property->getName()] = $this->formatTypeName(
+            $data = [];
+            $attributes = $property->getAttributes(Property::class);
+
+            if (count($attributes)) {
+                $data = $attributes[0]->newInstance()->jsonSerialize();
+            }
+
+            $formatType = $this->formatTypeName(
                 $property->getType()->getName()
             );
+
+            $properties[$property->getName()] = array_merge($formatType, $data);
         }
 
         return compact('properties');

@@ -3,8 +3,6 @@ lang: en-US
 title: Getting started
 ---
 
-### Get started
-
 #### 1 step: installation
 via composer
 ```bash
