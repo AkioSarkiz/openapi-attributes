@@ -23,6 +23,10 @@ module.exports = {
                 ],
             },
             {
+                text: 'Routes',
+                link: '/routes',
+            },
+            {
                 text: 'Schemas',
                 link: '/schemas',
             },
