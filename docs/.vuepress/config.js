@@ -34,6 +34,10 @@ module.exports = {
                 text: 'Integrations',
                 link: '/integrations',
             },
+            {
+                text: 'Others attributes',
+                link: '/other-attributes',
+            }
         ],
         displayAllHeaders: true,
         sidebarDepth: 2,

@@ -9,7 +9,7 @@ use OpenApiGenerator\Builders\PathBuilder\Builder as PathBuilder;
 use OpenApiGenerator\Builders\SchemaBuilder\Builder as SchemaBuilder;
 use OpenApiGenerator\Builders\SecuritySchemeBuilder;
 use OpenApiGenerator\Builders\ServerBuilder;
-use OpenApiGenerator\Interfaces\BuilderInterface;
+use OpenApiGenerator\Contracts\BuilderInterface;
 
 class ManagerBuilders
 {

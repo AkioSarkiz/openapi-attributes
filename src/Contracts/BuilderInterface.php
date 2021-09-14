@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OpenApiGenerator\Interfaces;
+namespace OpenApiGenerator\Contracts;
 
 use OpenApiGenerator\Exceptions\OpenapiException;
 use ReflectionClass;

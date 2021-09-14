@@ -7,7 +7,7 @@ namespace OpenApiGenerator\Builders;
 use JetBrains\PhpStorm\ArrayShape;
 use OpenApiGenerator\Attributes\SecurityScheme;
 use OpenApiGenerator\Exceptions\SchemaException;
-use OpenApiGenerator\Interfaces\BuilderInterface;
+use OpenApiGenerator\Contracts\BuilderInterface;
 use ReflectionClass;
 
 /**

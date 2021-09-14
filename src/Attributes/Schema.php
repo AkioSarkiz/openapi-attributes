@@ -6,7 +6,6 @@ namespace OpenApiGenerator\Attributes;
 
 use Attribute;
 use JsonSerializable;
-use OpenApiGenerator\Interfaces\PropertyInterface;
 use OpenApiGenerator\Types\SchemaType;
 
 /**
@@ -72,12 +71,6 @@ class Schema implements JsonSerializable
             return $schema;
         }
 
-        dd([
-            $this->getMediaType() => [
-                'schema' => $schema
-            ]
-        ]);
-
         return [
             $this->getMediaType() => [
                 'schema' => $schema
@@ -89,7 +82,7 @@ class Schema implements JsonSerializable
     {
         $hasMediaProp = array_filter(
             $this->properties,
-            fn(?PropertyInterface $property): bool => $property instanceof MediaProperty
+            fn(?Property $property): bool => $property instanceof MediaProperty
         );
 
         // Has a MediaProperty object, get the first - and normally only on - property
@@ -102,7 +95,7 @@ class Schema implements JsonSerializable
         return 'application/json';
     }
 
-    public function addProperty(PropertyInterface $property): void
+    public function addProperty(Property $property): void
     {
         $this->properties[] = $property;
     }

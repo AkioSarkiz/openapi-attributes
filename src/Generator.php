@@ -6,7 +6,7 @@ namespace OpenApiGenerator;
 
 use JetBrains\PhpStorm\Pure;
 use OpenApiGenerator\Exceptions\OpenapiException;
-use OpenApiGenerator\Interfaces\BuilderInterface;
+use OpenApiGenerator\Contracts\BuilderInterface;
 use ReflectionClass;
 use ReflectionException;
 use stdClass;

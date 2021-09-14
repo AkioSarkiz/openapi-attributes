@@ -16,7 +16,7 @@ use OpenApiGenerator\Builders\PathBuilder\Exceptions\SkipAnotherPipelines;
 use OpenApiGenerator\Builders\PathBuilder\Pipes\ParameterPipe;
 use OpenApiGenerator\Builders\PathBuilder\Pipes\PropertyPipe;
 use OpenApiGenerator\Builders\PathBuilder\Pipes\ResponsePipe;
-use OpenApiGenerator\Interfaces\BuilderInterface;
+use OpenApiGenerator\Contracts\BuilderInterface;
 use ReflectionClass;
 use ReflectionMethod;
 

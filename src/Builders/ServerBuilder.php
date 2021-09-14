@@ -6,7 +6,7 @@ namespace OpenApiGenerator\Builders;
 
 use JetBrains\PhpStorm\ArrayShape;
 use OpenApiGenerator\Attributes\Server;
-use OpenApiGenerator\Interfaces\BuilderInterface;
+use OpenApiGenerator\Contracts\BuilderInterface;
 use ReflectionClass;
 
 class ServerBuilder implements BuilderInterface

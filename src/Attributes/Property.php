@@ -7,7 +7,6 @@ namespace OpenApiGenerator\Attributes;
 use Attribute;
 use JetBrains\PhpStorm\Pure;
 use JsonSerializable;
-use OpenApiGenerator\Interfaces\PropertyInterface;
 use OpenApiGenerator\Types\PropertyType;
 
 /**
@@ -16,7 +15,7 @@ use OpenApiGenerator\Types\PropertyType;
  * If the property is an array, a PropertyItems must be set
  */
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_ALL)]
-class Property implements PropertyInterface, JsonSerializable, PropertyType
+class Property implements JsonSerializable, PropertyType
 {
     private ?PropertyItems $propertyItems = null;
 
@@ -36,20 +35,8 @@ class Property implements PropertyInterface, JsonSerializable, PropertyType
         //
     }
 
-    public function setPropertyItems(PropertyItems $propertyItems): void
-    {
-        $this->propertyItems = $propertyItems;
-        $this->propertyItems->setExample($this->example);
-    }
-
     public function jsonSerialize(): array
     {
-        if ($this->getType() === PropertyType::ARRAY) {
-            if ($this->propertyItems) {
-                return $this->propertyItems->jsonSerialize();
-            }
-        }
-
         $data = [
             'type' => $this->getType(),
             'format' => $this->getFormat(),

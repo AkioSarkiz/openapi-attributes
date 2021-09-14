@@ -10,7 +10,7 @@ use OpenApiGenerator\Attributes\Schema;
 use OpenApiGenerator\Builders\SchemaBuilder\Exceptions\SkipAnotherPipelines;
 use OpenApiGenerator\Builders\SchemaBuilder\Pipes\BaseSerializationPipe;
 use OpenApiGenerator\Builders\SchemaBuilder\Pipes\SchemaByModelPipe;
-use OpenApiGenerator\Interfaces\BuilderInterface;
+use OpenApiGenerator\Contracts\BuilderInterface;
 use ReflectionClass;
 
 class Builder implements BuilderInterface

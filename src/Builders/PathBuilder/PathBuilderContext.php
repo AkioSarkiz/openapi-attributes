@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace OpenApiGenerator\Builders\PathBuilder;
 
 /**
- * Context of build one path.
+ * Context of build path.
  */
 class PathBuilderContext
 {
