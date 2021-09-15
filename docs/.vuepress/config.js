@@ -31,12 +31,12 @@ module.exports = {
                 link: '/schemas',
             },
             {
-                text: 'Integrations',
-                link: '/integrations',
+                text: 'Others attributes',
+                link: '/others-attributes',
             },
             {
-                text: 'Others attributes',
-                link: '/other-attributes',
+                text: 'Integrations',
+                link: '/integrations',
             }
         ],
         displayAllHeaders: true,
