@@ -7,7 +7,6 @@ namespace OpenApiGenerator\Attributes;
 use Attribute;
 use JetBrains\PhpStorm\Pure;
 use JsonSerializable;
-use OpenApiGenerator\Types\ItemsType;
 use OpenApiGenerator\Types\PropertyType;
 use OpenApiGenerator\Types\SchemaType;
 
@@ -27,8 +26,7 @@ class Response implements JsonSerializable
         private string $type = SchemaType::OBJECT,
         ?string $ref = null,
         private string $contentType = 'application/json',
-    )
-    {
+    ) {
         //
     }
 

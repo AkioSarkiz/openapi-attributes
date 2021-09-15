@@ -12,13 +12,12 @@ abstract class BasePipe
 {
     public function __construct(
         protected SchemaBuilderContext &$context,
-    )
-    {
+    ) {
         //
     }
 
     /**
-     * @param ReflectionClass $class
+     * @param  ReflectionClass  $class
      * @return ReflectionClass
      * @throws SkipAnotherPipelines
      */

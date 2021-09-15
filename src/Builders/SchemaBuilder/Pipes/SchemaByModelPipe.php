@@ -84,7 +84,7 @@ class SchemaByModelPipe extends BasePipe
     }
 
     /**
-     * @param string $type
+     * @param  string  $type
      * @return array
      */
     private function formatTypeName(string $type): array

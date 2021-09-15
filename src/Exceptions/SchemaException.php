@@ -11,8 +11,7 @@ class SchemaException extends OpenapiException
     #[Pure]
     public static function duplicateSchemaName(
         string $schemaName
-    ): self
-    {
+    ): self {
         return new self("[Error] Duplicate schema name: $schemaName");
     }
 }

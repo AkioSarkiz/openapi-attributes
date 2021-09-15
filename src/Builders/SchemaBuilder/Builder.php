@@ -68,8 +68,8 @@ class Builder implements BuilderInterface
     /**
      * Process pipeline and return result.
      *
-     * @param SchemaBuilderContext $context
-     * @param mixed $payload
+     * @param  SchemaBuilderContext  $context
+     * @param  mixed  $payload
      * @return mixed
      */
     public function processPipes(SchemaBuilderContext &$context, mixed $payload): mixed

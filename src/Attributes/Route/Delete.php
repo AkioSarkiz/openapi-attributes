@@ -12,13 +12,12 @@ class Delete extends Route
 {
     public function __construct(
         string $route,
-        array  $tags = [],
+        array $tags = [],
         string $summary = '',
         string $description = '',
-        mixed  $security = null,
+        mixed $security = null,
         string $contentType = 'application/json',
-    )
-    {
+    ) {
         parent::__construct(Route::DELETE, $route, $tags, $summary, $description, $security, $contentType);
     }
 }

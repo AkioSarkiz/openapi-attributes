@@ -6,8 +6,8 @@ namespace OpenApiGenerator\Builders;
 
 use JetBrains\PhpStorm\ArrayShape;
 use OpenApiGenerator\Attributes\Info;
-use OpenApiGenerator\Exceptions\InfoException;
 use OpenApiGenerator\Contracts\BuilderInterface;
+use OpenApiGenerator\Exceptions\InfoException;
 use ReflectionAttribute;
 use ReflectionClass;
 
@@ -46,7 +46,8 @@ class InfoBuilder implements BuilderInterface
 
         return [
             'key' => 'info',
-            'data' => $this->stack[0]->getAttributes(Info::class, ReflectionAttribute::IS_INSTANCEOF)[0]->newInstance()->jsonSerialize(),
+            'data' => $this->stack[0]->getAttributes(Info::class,
+                ReflectionAttribute::IS_INSTANCEOF)[0]->newInstance()->jsonSerialize(),
         ];
     }
 }

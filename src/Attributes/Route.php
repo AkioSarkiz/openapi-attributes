@@ -28,13 +28,12 @@ class Route implements JsonSerializable
     public function __construct(
         private string $method,
         private string $route,
-        private array  $tags = [],
+        private array $tags = [],
         private string $summary = '',
         private string $description = '',
-        private mixed  $security = null,
+        private mixed $security = null,
         private string $contentType = 'application/json',
-    )
-    {
+    ) {
         //
     }
 
@@ -107,8 +106,8 @@ class Route implements JsonSerializable
 
     public function getRoute(): string
     {
-        // all routes must starting with /.
-        return substr($this->route, 0, 1) !== '/' ? '/' . $this->route : $this->route;
+        // all routes must start with /.
+        return substr($this->route, 0, 1) !== '/' ? '/'.$this->route : $this->route;
     }
 
     public function getContentType(): string

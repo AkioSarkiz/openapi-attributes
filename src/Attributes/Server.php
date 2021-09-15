@@ -16,21 +16,18 @@ use JsonSerializable;
 class Server implements JsonSerializable
 {
     /**
-     * Server constructor.
-     *
-     * @param string $url A URL to the target host.
+     * @param  string  $url  A URL to the target host.
      *      This URL supports Server Variables and MAY be relative,
      *      to indicate that the host location is relative to the location where the OpenAPI document is being served.
      *      Variable substitutions will be made when a variable is named in {brackets}.
      *
-     * @param string $description An optional string describing the host designated by the URL.
+     * @param  string  $description  An optional string describing the host designated by the URL.
      *      CommonMark syntax MAY be used for rich text representation.
      */
     public function __construct(
         private string $url,
         private string $description = '',
-    )
-    {
+    ) {
         //
     }
 

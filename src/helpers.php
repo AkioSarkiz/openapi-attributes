@@ -3,7 +3,7 @@
 /**
  * Removing empty values (null, '').
  *
- * @param array $associatedValues
+ * @param  array  $associatedValues
  * @return array
  */
 function removeEmptyValues(array $associatedValues): array
@@ -20,10 +20,10 @@ function removeEmptyValues(array $associatedValues): array
 /**
  * Set array value by path with dots.
  *
- * @param array $arr
- * @param string $path
- * @param mixed $value
- * @param string $separator
+ * @param  array  $arr
+ * @param  string  $path
+ * @param  mixed  $value
+ * @param  string  $separator
  */
 function setArrayByPath(array &$arr, string $path, mixed $value, string $separator = '.'): void
 {

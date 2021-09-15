@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace OpenApiGenerator;
 
 use JetBrains\PhpStorm\Pure;
-use OpenApiGenerator\Exceptions\OpenapiException;
 use OpenApiGenerator\Contracts\BuilderInterface;
+use OpenApiGenerator\Exceptions\OpenapiException;
 use ReflectionClass;
 use ReflectionException;
 use stdClass;
@@ -34,8 +34,7 @@ class Generator
 
     public function __construct(
         private ManagerBuilders $managerBuilders
-    )
-    {
+    ) {
         //
     }
 
@@ -69,7 +68,7 @@ class Generator
                 try {
                     $builder->append(new ReflectionClass($class));
                 } catch (ReflectionException) {
-                    echo 'Error reflection class: ' . $class;
+                    echo 'Error reflection class: '.$class;
                 }
             }
 
@@ -124,7 +123,7 @@ class Generator
      * Add class to scanning.
      * WARNING! it's method only for testing.
      *
-     * @param string|string[] $classes
+     * @param  string|string[]  $classes
      * @return self
      */
     public function addScanClass(string|array $classes): self
@@ -141,8 +140,8 @@ class Generator
     /**
      * Set generated key => value. Supported dots keys.
      *
-     * @param string $key
-     * @param array $data
+     * @param  string  $key
+     * @param  array  $data
      */
     private function set(string $key, array $data): void
     {

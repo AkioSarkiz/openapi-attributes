@@ -12,7 +12,7 @@ interface BuilderInterface
     /**
      * Add class to builder.
      *
-     * @param ReflectionClass $class
+     * @param  ReflectionClass  $class
      * @return BuilderInterface
      */
     public function append(ReflectionClass $class): BuilderInterface;

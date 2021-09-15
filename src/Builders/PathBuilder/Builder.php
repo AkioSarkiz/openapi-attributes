@@ -66,7 +66,7 @@ class Builder implements BuilderInterface
     }
 
     /**
-     * @param ReflectionMethod $method
+     * @param  ReflectionMethod  $method
      * @return array
      */
     private function handleMethod(ReflectionMethod $method): array
@@ -107,7 +107,7 @@ class Builder implements BuilderInterface
     /**
      * Check reflection method. Are supported him or not.
      *
-     * @param ReflectionMethod $method
+     * @param  ReflectionMethod  $method
      * @return bool
      */
     #[Pure]

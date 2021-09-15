@@ -12,13 +12,12 @@ abstract class BasePipe
 {
     public function __construct(
         protected PathBuilderContext &$context,
-    )
-    {
+    ) {
         //
     }
 
     /**
-     * @param ReflectionAttribute $attribute
+     * @param  ReflectionAttribute  $attribute
      * @return ReflectionAttribute
      * @throws SkipAnotherPipelines
      */

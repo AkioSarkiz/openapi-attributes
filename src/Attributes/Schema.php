@@ -20,20 +20,17 @@ class Schema implements JsonSerializable
     private bool $noMedia = false;
 
     /**
-     * Schema constructor.
-     *
-     * @param string|null $name
-     * @param array|null $required
-     * @param string $type
-     * @param bool $model
+     * @param  string|null  $name
+     * @param  array|null  $required
+     * @param  string  $type
+     * @param  bool  $model
      */
     public function __construct(
         private ?string $name = null,
-        private ?array  $required = null,
-        private string  $type = SchemaType::OBJECT,
-        private bool    $model = false,
-    )
-    {
+        private ?array $required = null,
+        private string $type = SchemaType::OBJECT,
+        private bool $model = false,
+    ) {
         //
     }
 
