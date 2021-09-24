@@ -10,7 +10,7 @@ use OpenApiGenerator\Types\PropertyType;
 use OpenApiGenerator\Contracts\Attribute as AttributeContract;
 
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_ALL)]
-class Property implements AttributeContract, PropertyType
+class Property implements AttributeContract
 {
     public function __construct(
         private string $type = '',
@@ -54,9 +54,9 @@ class Property implements AttributeContract, PropertyType
     public function getType(): string
     {
         if ($this->properties) {
-            return self::OBJECT;
+            return PropertyType::OBJECT;
         } elseif ($this->type === 'file') {
-            return self::STRING;
+            return PropertyType::STRING;
         } else {
             return $this->type;
         }
