@@ -35,11 +35,9 @@ class Server implements AttributeContract
 
     public function jsonSerialize(): array
     {
-        $data = [
+        return removeEmptyValues([
             'url' => $this->url,
             'description' => $this->description,
-        ];
-
-        return removeEmptyValues($data);
+        ]);
     }
 }

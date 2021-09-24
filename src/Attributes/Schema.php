@@ -17,7 +17,6 @@ use OpenApiGenerator\Contracts\Attribute as AttributeContract;
 class Schema implements AttributeContract
 {
     private array $properties = [];
-    private bool $noMedia = false;
 
     /**
      * Create new instance schema.
@@ -26,19 +25,16 @@ class Schema implements AttributeContract
      * @param  array  $required List of required properties.
      * @param  string  $type Schema type, supported types: array and object. By default, object.
      * @param  bool  $model Auto fetches all properties class and put them to schema.
+     * @param  string  $mediaType Media type of schema. For body, response request.
      */
     public function __construct(
         private string $name = '',
         private array $required = [],
         private string $type = SchemaType::OBJECT,
         private bool $model = false,
+        private string $mediaType = 'application/json',
     ) {
         //
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
     }
 
     public function jsonSerialize(): array
@@ -65,52 +61,20 @@ class Schema implements AttributeContract
             $schema += $array;
         }
 
-        // This is especially used for parameters which don't have media
-        if ($this->noMedia) {
-            return $schema;
-        }
-
         return [
-            $this->getMediaType() => [
+            $this->mediaType => [
                 'schema' => $schema
             ]
         ];
     }
 
-    private function getMediaType(): string
-    {
-        $hasMediaProp = array_filter(
-            $this->properties,
-            fn(?Property $property): bool => $property instanceof MediaProperty
-        );
-
-        // Has a MediaProperty object, get the first - and normally only on - property
-        if (count($hasMediaProp) > 0) {
-            $property = reset($this->properties);
-            return $property->getContentMediaType();
-        }
-
-        // By default, return json type
-        return 'application/json';
-    }
-
-    public function addProperty(Property $property): void
-    {
-        $this->properties[] = $property;
-    }
-
-    public function setName(string $name): void
-    {
-        $this->name = $name;
-    }
-
-    public function setNoMedia(bool $noMedia): void
-    {
-        $this->noMedia = $noMedia;
-    }
-
     public function isModelSchema(): bool
     {
         return $this->model;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
     }
 }

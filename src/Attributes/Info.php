@@ -51,15 +51,13 @@ class Info implements JsonSerializable
     ])]
     public function jsonSerialize(): array
     {
-        $data = [
+        return removeEmptyValues([
             'title' => $this->title,
             'version' => $this->version,
             'description' => $this->description,
             'termsOfService' => $this->termsOfService,
             'contact' => $this->contact,
             'license' => $this->license,
-        ];
-
-        return removeEmptyValues($data);
+        ]);
     }
 }

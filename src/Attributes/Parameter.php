@@ -68,15 +68,13 @@ class Parameter implements AttributeContract
     ])]
     public function jsonSerialize(): array
     {
-        $data = [
+        return removeEmptyValues([
             'name' => $this->name,
             'in' => $this->in,
             'schema' => $this->formatSchema(),
             'required' => $this->required,
             'description' => $this->description,
-        ];
-
-        return removeEmptyValues($data);
+        ]);
     }
 
     /**

@@ -45,7 +45,7 @@ class SecurityScheme implements AttributeContract
 
     public function jsonSerialize(): array
     {
-        $data = [
+        return removeEmptyValues([
             'securityKey' => $this->securityKey,
             'type' => $this->type,
             'name' => $this->name,
@@ -53,8 +53,6 @@ class SecurityScheme implements AttributeContract
             'scheme' => $this->scheme,
             'description' => $this->description,
             'bearerFormat' => $this->bearerFormat,
-        ];
-
-        return removeEmptyValues($data);
+        ]);
     }
 }
