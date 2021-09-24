@@ -8,7 +8,8 @@ use OpenApiGenerator\Attributes\Schema;
 use OpenApiGenerator\Types\PropertyType;
 
 #[
-    Info('test'),
+    Info('SimpleSchema'),
+
     Schema('personalDataSchema'),
     Property(PropertyType::STRING, 'name'),
     Property(PropertyType::STRING, 'phone'),

@@ -10,7 +10,9 @@ use OpenApiGenerator\Attributes\Response;
 use OpenApiGenerator\Attributes\Route\Post;
 use OpenApiGenerator\Types\PropertyType;
 
-#[Info('test')]
+#[
+    Info('MediaController')
+]
 class MediaController
 {
     #[

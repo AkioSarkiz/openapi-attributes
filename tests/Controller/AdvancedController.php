@@ -15,7 +15,7 @@ use OpenApiGenerator\Types\PropertyType;
 
 #[
     Info(
-        'title',
+        'AdvancedController',
         '1.0.0',
         'description',
         'https://example.com/termsOfService',
@@ -29,8 +29,10 @@ use OpenApiGenerator\Types\PropertyType;
             'url' => 'https://www.apache.org/licenses/LICENSE-2.0.html'
         ],
     ),
+
     Server('same server1', 'https//example.com'),
     Server('same server2', 'https//example.org'),
+
     SecurityScheme(
         'bearerAuth',
         'http',
@@ -40,7 +42,7 @@ use OpenApiGenerator\Types\PropertyType;
         'JWT',
     ),
 ]
-class Controller
+class AdvancedController
 {
     #[
         Get('/path/{id}', ['Dummy'], 'Dummy path'),
@@ -57,6 +59,7 @@ class Controller
                 ],
             ],
         ]),
+
         Response(200, 'description'),
     ]
     public function get(float $id): void {

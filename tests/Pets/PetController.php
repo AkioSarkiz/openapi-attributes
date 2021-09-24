@@ -12,7 +12,7 @@ use OpenApiGenerator\Attributes\Route\Post;
 use OpenApiGenerator\Types\PropertyType;
 
 #[
-    Info('Pet project')
+    Info('PetController')
 ]
 class PetController
 {

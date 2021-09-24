@@ -6,7 +6,7 @@ namespace OpenApiGenerator\Tests\ResponseArrayItems;
 
 use OpenApiGenerator\Tests\BaseJsonSchemaTest;
 
-class ControllerTest extends BaseJsonSchemaTest
+class ResponseArrayItemsTest extends BaseJsonSchemaTest
 {
     /**
      * @inheritDoc
@@ -14,7 +14,7 @@ class ControllerTest extends BaseJsonSchemaTest
     protected function getClassesScan(): array
     {
         return [
-            Controller::class,
+            ResponseArrayItems::class,
         ];
     }
 }

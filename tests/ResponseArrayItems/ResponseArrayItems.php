@@ -13,7 +13,7 @@ use OpenApiGenerator\Types\PropertyType;
 #[
     Info('ResponseArrayItems')
 ]
-class Controller
+class ResponseArrayItems
 {
     #[
         Get('/path/{id}', ['Dummy'], 'Dummy path'),

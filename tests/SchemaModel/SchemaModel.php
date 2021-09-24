@@ -9,7 +9,8 @@ use OpenApiGenerator\Attributes\Property;
 use OpenApiGenerator\Attributes\Schema;
 
 #[
-    Info('test'),
+    Info('SchemaModel'),
+
     Schema(model: true),
 ]
 class SchemaModel

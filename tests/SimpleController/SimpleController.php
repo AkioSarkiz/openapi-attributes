@@ -10,13 +10,16 @@ use OpenApiGenerator\Attributes\Response;
 use OpenApiGenerator\Attributes\Route\Get;
 use OpenApiGenerator\Types\PropertyType;
 
-#[Info('title')]
+#[
+    Info('SimpleController')
+]
 class SimpleController
 {
     #[
-        Get('/path', ['Dummy'], 'Dummy path'),
+        Get('simple', ['simple'], 'simple path'),
         Property(PropertyType::STRING, 'test'),
-        Response(200, 'test'),
+
+        Response(200, 'simple response'),
     ]
     public function get(): void
     {

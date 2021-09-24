@@ -14,7 +14,7 @@ class ControllerTest extends BaseJsonSchemaTest
     protected function getClassesScan(): array
     {
         return [
-            Controller::class,
+            AdvancedController::class,
         ];
     }
 }
