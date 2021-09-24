@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OpenApiGenerator\Tests\Examples\Pets;
+namespace OpenApiGenerator\Tests\Pets;
 
 use OpenApiGenerator\Attributes\Info;
 use OpenApiGenerator\Attributes\Parameter;

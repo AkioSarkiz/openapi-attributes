@@ -2,10 +2,8 @@
 
 declare(strict_types=1);
 
-namespace OpenApiGenerator\Tests\Examples\SchemaModel;
+namespace OpenApiGenerator\Tests\SchemaModel;
 
-use OpenApiGenerator\Attributes\Info;
-use OpenApiGenerator\Attributes\Schema;
 use OpenApiGenerator\Tests\BaseJsonSchemaTest;
 
 class SchemaModelTest extends BaseJsonSchemaTest

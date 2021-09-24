@@ -22,13 +22,13 @@ class Schema implements AttributeContract
     /**
      * Create new instance schema.
      *
-     * @param  string  $name Name of the schema.
+     * @param  string  $name Name of the schema. Using class name if not defined.
      * @param  array  $required List of required properties.
      * @param  string  $type Schema type, supported types: array and object. By default, object.
      * @param  bool  $model Auto fetches all properties class and put them to schema.
      */
     public function __construct(
-        private string $name,
+        private string $name = '',
         private array $required = [],
         private string $type = SchemaType::OBJECT,
         private bool $model = false,

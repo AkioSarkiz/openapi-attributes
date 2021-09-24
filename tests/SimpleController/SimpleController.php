@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OpenApiGenerator\Tests\Examples\SimpleController;
+namespace OpenApiGenerator\Tests\SimpleController;
 
 use OpenApiGenerator\Attributes\Info;
 use OpenApiGenerator\Attributes\Property;
@@ -16,7 +16,7 @@ class SimpleController
     #[
         Get('/path', ['Dummy'], 'Dummy path'),
         Property(PropertyType::STRING, 'test'),
-        Response(200),
+        Response(200, 'test'),
     ]
     public function get(): void
     {

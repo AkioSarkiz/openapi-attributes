@@ -1,10 +1,12 @@
 <?php
 
-namespace OpenApiGenerator\Tests\Examples\SimpleSchema;
+declare(strict_types=1);
+
+namespace OpenApiGenerator\Tests\Pets;
 
 use OpenApiGenerator\Tests\BaseJsonSchemaTest;
 
-class SimpleSchemaTest extends BaseJsonSchemaTest
+class PetControllerTest extends BaseJsonSchemaTest
 {
     /**
      * @inheritDoc
@@ -12,7 +14,7 @@ class SimpleSchemaTest extends BaseJsonSchemaTest
     protected function getClassesScan(): array
     {
         return [
-            SimpleSchema::class,
+            PetController::class,
         ];
     }
 }

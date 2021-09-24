@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OpenApiGenerator\Tests\Examples\SimpleController;
+namespace OpenApiGenerator\Tests\SimpleController;
 
 use OpenApiGenerator\Tests\BaseJsonSchemaTest;
 

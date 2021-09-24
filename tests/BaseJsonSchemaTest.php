@@ -39,7 +39,9 @@ abstract class BaseJsonSchemaTest extends TestCase
     {
         try {
             return dirname((new ReflectionClass(get_class($this)))->getFileName());
-        } catch (ReflectionException) {
+        } catch (ReflectionException $e) {
+            echo $e->getMessage();
+
             return '';
         }
     }

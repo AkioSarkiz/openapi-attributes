@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace OpenApiGenerator\Tests\Examples\Pets;
+namespace OpenApiGenerator\Tests\MediaController;
 
 use OpenApiGenerator\Tests\BaseJsonSchemaTest;
 
-class PetControllerTest extends BaseJsonSchemaTest
+class MediaControllerTest extends BaseJsonSchemaTest
 {
     /**
      * @inheritDoc
@@ -14,7 +14,7 @@ class PetControllerTest extends BaseJsonSchemaTest
     protected function getClassesScan(): array
     {
         return [
-            PetController::class,
+            MediaController::class
         ];
     }
 }

@@ -2,7 +2,7 @@ vendor
 .idea
 composer.lock
 openapi.json
-tests/Examples/*/out.json
+tests/*/out.json
 .phpunit.result.cache
 buildnode_modules
 .temp

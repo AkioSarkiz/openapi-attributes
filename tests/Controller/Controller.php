@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OpenApiGenerator\Tests\Examples\Controller;
+namespace OpenApiGenerator\Tests\Controller;
 
 use OpenApiGenerator\Attributes\Info;
 use OpenApiGenerator\Attributes\Parameter;
@@ -57,7 +57,7 @@ class Controller
                 ],
             ],
         ]),
-        Response(200),
+        Response(200, 'description'),
     ]
     public function get(float $id): void {
         //

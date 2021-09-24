@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OpenApiGenerator\Tests\Examples\MediaController;
+namespace OpenApiGenerator\Tests\MediaController;
 
 use OpenApiGenerator\Attributes\Info;
 use OpenApiGenerator\Attributes\Property;
@@ -17,7 +17,7 @@ class MediaController
         Post('media/upload', contentType: 'multipart/form-data'),
         Property(PropertyType::FILE, 'file'),
 
-        Response(200, contentType: 'image/png'),
+        Response(200, 'test', contentType: 'image/png'),
         Property(PropertyType::FILE, 'file_response_success'),
 
         Response(403, description: 'fail', contentType: 'image/jpg'),

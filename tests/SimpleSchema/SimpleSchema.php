@@ -1,6 +1,6 @@
 <?php
 
-namespace OpenApiGenerator\Tests\Examples\SimpleSchema;
+namespace OpenApiGenerator\Tests\SimpleSchema;
 
 use OpenApiGenerator\Attributes\Info;
 use OpenApiGenerator\Attributes\Property;
