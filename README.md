@@ -16,4 +16,4 @@ This CLI Tool is able to generate an OpenApi JSON file description according to 
 Just open an issue saying what's missing ! Feel free to open a PR but we recommend opening an issue beforehand. 
 
 
-### Documentation [link](/docs)
+### Documentation [link](https://akiosarkiz.github.io/openapi-attributes/)
