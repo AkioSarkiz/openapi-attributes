@@ -6,6 +6,7 @@ namespace OpenApiGenerator\Attributes;
 
 use Attribute;
 use OpenApiGenerator\Contracts\Attribute as AttributeContract;
+use OpenApiGenerator\Types\SchemaType;
 
 /**
  * Define path object.
@@ -52,6 +53,7 @@ class Route implements AttributeContract
         private string $description = '',
         private mixed $security = null,
         private string $contentType = 'application/json',
+        private string $schemaType = SchemaType::OBJECT,
     ) {
         //
     }
@@ -59,6 +61,16 @@ class Route implements AttributeContract
     public function getMethod(): string
     {
         return $this->method;
+    }
+
+    public function getSchemaType(): string
+    {
+        return $this->schemaType;
+    }
+
+    public function getSchemaTypeKey(): string
+    {
+        return $this->schemaType === SchemaType::OBJECT ? 'properties' : 'items';
     }
 
     public function jsonSerialize(): array

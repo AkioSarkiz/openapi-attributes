@@ -6,8 +6,8 @@ namespace OpenApiGenerator\Attributes;
 
 use Attribute;
 use JetBrains\PhpStorm\Pure;
-use OpenApiGenerator\Types\PropertyType;
 use OpenApiGenerator\Contracts\Attribute as AttributeContract;
+use OpenApiGenerator\Types\PropertyType;
 
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_ALL)]
 class Property implements AttributeContract
@@ -41,11 +41,14 @@ class Property implements AttributeContract
         ];
 
         // Create objects properties from array properties. Recursive serialize objects.
-        if ($this->getType() === PropertyType::OBJECT && $this->properties) {
+        if ($this->getType() === PropertyType::OBJECT) {
             foreach ($this->formatProperties() as $property) {
                 $propObject = $this->createFromArray($property);
                 $data['properties'][$propObject->getProperty()] = $propObject->jsonSerialize();
             }
+        }
+        elseif ($this->getType() === PropertyType::ARRAY) {
+            $data['items'] = is_array($this->items) ? $this->items : ['type' => $this->items];
         }
 
         return removeEmptyValues($data);
@@ -55,6 +58,8 @@ class Property implements AttributeContract
     {
         if ($this->properties) {
             return PropertyType::OBJECT;
+        } elseif ($this->items) {
+            return PropertyType::ARRAY;
         } elseif ($this->type === 'file') {
             return PropertyType::STRING;
         } else {
@@ -95,6 +100,9 @@ class Property implements AttributeContract
             'format' => null,
             'enum' => null,
             'properties' => null,
+            'items' => null,
+            'minItems' => null,
+            'maxItems' => null,
         ];
 
         foreach ($format as $key => $default) {

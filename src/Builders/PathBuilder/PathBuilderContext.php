@@ -4,13 +4,15 @@ declare(strict_types=1);
 
 namespace OpenApiGenerator\Builders\PathBuilder;
 
+use OpenApiGenerator\Attributes\Route;
+
 /**
  * Context of build path.
  */
 class PathBuilderContext
 {
     public array $attributes;
-    public object $routeInstance;
+    public Route $routeInstance;
     public array $routeData;
     public array $properties = [];
     public array $responses = [];

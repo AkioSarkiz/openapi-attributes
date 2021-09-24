@@ -17,6 +17,7 @@ use OpenApiGenerator\Builders\PathBuilder\Pipes\ParameterPipe;
 use OpenApiGenerator\Builders\PathBuilder\Pipes\PropertyPipe;
 use OpenApiGenerator\Builders\PathBuilder\Pipes\ResponsePipe;
 use OpenApiGenerator\Contracts\BuilderInterface;
+use OpenApiGenerator\Types\SchemaType;
 use ReflectionClass;
 use ReflectionMethod;
 
@@ -96,10 +97,18 @@ class Builder implements BuilderInterface
 
         setArrayByPath($root, 'responses', $this->context->responses);
         setArrayByPath($root, 'parameters', $this->context->parameters);
-        setArrayByPath($root, "requestBody.content.{$this->context->routeInstance->getContentType()}.schema", [
-            'type' => 'object',
-            'properties' => $this->context->properties,
-        ]);
+
+        if ($this->context->routeInstance->getSchemaType() === SchemaType::OBJECT) {
+            setArrayByPath($root, "requestBody.content.{$this->context->routeInstance->getContentType()}.schema", [
+                'type' => SchemaType::OBJECT,
+                'properties' => $this->context->properties,
+            ]);
+        } else {
+            setArrayByPath($root, "requestBody.content.{$this->context->routeInstance->getContentType()}.schema", [
+                'type' => SchemaType::ARRAY,
+                'items' => $this->formatPropertiesAsItems($this->context->properties),
+            ]);
+        }
 
         return $this->context->routeData;
     }
@@ -118,5 +127,20 @@ class Builder implements BuilderInterface
             || count($method->getAttributes(Post::class))
             || count($method->getAttributes(Patch::class))
             || count($method->getAttributes(Put::class));
+    }
+
+    /**
+     * @param  array  $properties
+     * @return array
+     */
+    private function formatPropertiesAsItems(array $properties): array
+    {
+        $items = [];
+
+        foreach ($properties as $property) {
+            $items = array_merge($property, $items);
+        }
+
+        return $items;
     }
 }
