@@ -6,16 +6,11 @@ namespace OpenApiGenerator\Attributes;
 
 use Attribute;
 use JetBrains\PhpStorm\Pure;
-use JsonSerializable;
 use OpenApiGenerator\Types\PropertyType;
+use OpenApiGenerator\Contracts\Attribute as AttributeContract;
 
-/**
- * This represents an open api property.
- * The property must have a type and a property name and can have a description and an example
- * If the property is an array, a PropertyItems must be set
- */
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_ALL)]
-class Property implements JsonSerializable, PropertyType
+class Property implements AttributeContract, PropertyType
 {
     public function __construct(
         private string $type = '',

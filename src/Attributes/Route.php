@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace OpenApiGenerator\Attributes;
 
 use Attribute;
-use JsonSerializable;
+use OpenApiGenerator\Contracts\Attribute as AttributeContract;
 
 /**
  * Define path object.
  *
  * @see https://swagger.io/specification/#paths-object
  */
-#[Attribute]
-class Route implements JsonSerializable
+#[Attribute(Attribute::TARGET_METHOD)]
+class Route implements AttributeContract
 {
     public const GET = 'get';
     public const POST = 'post';
@@ -21,10 +21,29 @@ class Route implements JsonSerializable
     public const PUT = 'put';
     public const DELETE = 'delete';
 
-    private array $getParams = [];
-    private ?Response $response = null;
-    private ?RequestBody $requestBody = null;
-
+    /**
+     * Create new instance route.
+     *
+     * @param  string  $method Http method.
+     * @param  string  $route Http path.
+     *
+     * @param  array  $tags A list of tags for API documentation control.
+     *      Tags can be used for logical grouping of operations by resources or any other qualifier.
+     *
+     * @param  string  $summary A short summary of what the operation does.
+     *
+     * @param  string  $description A verbose explanation of the operation behavior.
+     *      CommonMark syntax MAY be used for rich text representation.
+     *
+     * @param  mixed|null  $security A declaration of which security mechanisms can be used for this operation.
+     *      The list of values includes alternative security requirement objects that can be used.
+     *      Only one of the security requirement objects need to be satisfied to authorize a request.
+     *      To make security optional, an empty security requirement ({}) can be included in the array.
+     *      This definition overrides any declared top-level security.
+     *      To remove a top-level security declaration, an empty array can be used.
+     *
+     * @param  string  $contentType Http content type. By default application/json.
+     */
     public function __construct(
         private string $method,
         private string $route,
@@ -37,68 +56,21 @@ class Route implements JsonSerializable
         //
     }
 
-    public function addParam(Parameter $params): void
-    {
-        $this->getParams[] = $params;
-    }
-
-    public function setResponse(Response $response): void
-    {
-        $this->response = $response;
-    }
-
     public function getMethod(): string
     {
         return $this->method;
-    }
-
-    public function getGetParams(): array
-    {
-        return $this->getParams;
-    }
-
-    public function setGetParams(array $getParams): void
-    {
-        // Just check if it's an array of GetParam and add it
-        array_walk(
-            $getParams,
-            function (array $params) {
-                array_walk($params, fn(Parameter $param) => $this->getParams[] = $param);
-            }
-        );
     }
 
     public function jsonSerialize(): array
     {
         $array = [];
         $array[$this->getRoute()][$this->method] = [];
+        $route = &$array[$this->getRoute()][$this->method];
 
-        if ($this->tags) {
-            $array[$this->getRoute()][$this->method]['tags'] = $this->tags;
-        }
-
-        if ($this->summary) {
-            $array[$this->getRoute()][$this->method]['summary'] = $this->summary;
-        }
-
-        if (count($this->getParams) > 0) {
-            $array[$this->getRoute()][$this->method]['parameters'] = $this->getParams;
-        }
-
-        if ($this->requestBody && !$this->requestBody->empty()) {
-            $array[$this->getRoute()][$this->method]['requestBody'] = $this->requestBody;
-        }
-
-        if ($this->response) {
-            $array[$this->getRoute()][$this->method]['responses'] = $this->response;
-        }
-
-        if ($this->description) {
-            $array[$this->getRoute()][$this->method]['description'] = $this->description;
-        }
-
-        if ($this->security) {
-            $array[$this->getRoute()][$this->method]['security'] = $this->security;
+        foreach (['tags', 'summary', 'description', 'security',] as $prop) {
+            if ($value = $this->{$item}) {
+                $route[$prop] = $value;
+            }
         }
 
         return $array;

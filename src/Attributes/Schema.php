@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace OpenApiGenerator\Attributes;
 
 use Attribute;
-use JsonSerializable;
 use OpenApiGenerator\Types\SchemaType;
+use OpenApiGenerator\Contracts\Attribute as AttributeContract;
 
 /**
  * Define schema item.
@@ -14,20 +14,22 @@ use OpenApiGenerator\Types\SchemaType;
  * @see https://swagger.io/specification/#schema-object
  */
 #[Attribute(Attribute::TARGET_CLASS)]
-class Schema implements JsonSerializable
+class Schema implements AttributeContract
 {
     private array $properties = [];
     private bool $noMedia = false;
 
     /**
-     * @param  string|null  $name
-     * @param  array|null  $required
-     * @param  string  $type
-     * @param  bool  $model
+     * Create new instance schema.
+     *
+     * @param  string  $name Name of the schema.
+     * @param  array  $required List of required properties.
+     * @param  string  $type Schema type, supported types: array and object. By default, object.
+     * @param  bool  $model Auto fetches all properties class and put them to schema.
      */
     public function __construct(
-        private ?string $name = null,
-        private ?array $required = null,
+        private string $name,
+        private array $required = [],
         private string $type = SchemaType::OBJECT,
         private bool $model = false,
     ) {

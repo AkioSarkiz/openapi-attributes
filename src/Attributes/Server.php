@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace OpenApiGenerator\Attributes;
 
 use Attribute;
-use JsonSerializable;
+use OpenApiGenerator\Contracts\Attribute as AttributeContract;
 
 /**
  * Define server item.
@@ -13,9 +13,11 @@ use JsonSerializable;
  * @see https://swagger.io/specification/#server-object
  */
 #[Attribute(Attribute::TARGET_CLASS | Attribute::IS_REPEATABLE)]
-class Server implements JsonSerializable
+class Server implements AttributeContract
 {
     /**
+     * Create new instance server.
+     *
      * @param  string  $url  A URL to the target host.
      *      This URL supports Server Variables and MAY be relative,
      *      to indicate that the host location is relative to the location where the OpenAPI document is being served.
