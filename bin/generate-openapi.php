@@ -1,4 +1,4 @@
-$autoloadPath<?php
+<?php
 
 /*
  * Soruce file for generation openapi documentation. For more deteils see docs.
