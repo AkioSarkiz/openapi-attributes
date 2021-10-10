@@ -1,0 +1,2972 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "examples": [
+    {
+      "openapi": "3.0.0",
+      "components": {
+        "schemas": {
+          "User": {
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "secret": {
+                "type": "string"
+              }
+            }
+          },
+          "Another_User": {
+            "properties": {
+              "nameAlt": {
+                "type": "string"
+              },
+              "secretAlt": {
+                "type": "string"
+              }
+            }
+          },
+          "Book": {
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "rate": {
+                "type": "number",
+                "format": "int64"
+              },
+              "created_at": {
+                "type": "string"
+              },
+              "updated_at": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "info": {
+        "title": "Documentation",
+        "version": "1.0.0"
+      },
+      "paths": {
+        "/list": {
+          "get": {
+            "responses": {
+              "200": {
+                "description": "get list",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "example": "word",
+                        "minItems": 5,
+                        "maxItems": 500
+                      }
+                    }
+                  }
+                }
+              },
+              "201": {
+                "description": "success created",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                }
+              },
+              "500": {
+                "description": "server error",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "code": {
+                            "type": "integer"
+                          },
+                          "message": {
+                            "type": "string"
+                          },
+                          "stack": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "/books": {
+          "get": {
+            "responses": {
+              "200": {
+                "description": "get list books",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Book"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "/users": {
+          "get": {
+            "responses": {
+              "200": {
+                "description": "Get users",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Another_User"
+                      }
+                    }
+                  }
+                }
+              },
+              "201": {
+                "description": "Get users",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Another_User"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "/users_alt": {
+          "get": {
+            "responses": {
+              "200": {
+                "description": "Get alternative users",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/User"
+                      }
+                    }
+                  }
+                }
+              },
+              "201": {
+                "description": "Get alternative users",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/User"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "required": [
+    "openapi",
+    "components",
+    "info",
+    "paths"
+  ],
+  "properties": {
+    "openapi": {
+      "$id": "#/properties/openapi",
+      "type": "string",
+      "title": "The openapi schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": "",
+      "examples": [
+        "3.0.0"
+      ]
+    },
+    "components": {
+      "$id": "#/properties/components",
+      "type": "object",
+      "title": "The components schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": {},
+      "examples": [
+        {
+          "schemas": {
+            "User": {
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "secret": {
+                  "type": "string"
+                }
+              }
+            },
+            "Another_User": {
+              "properties": {
+                "nameAlt": {
+                  "type": "string"
+                },
+                "secretAlt": {
+                  "type": "string"
+                }
+              }
+            },
+            "Book": {
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "rate": {
+                  "type": "number",
+                  "format": "int64"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "updated_at": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "required": [
+        "schemas"
+      ],
+      "properties": {
+        "schemas": {
+          "$id": "#/properties/components/properties/schemas",
+          "type": "object",
+          "title": "The schemas schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": {},
+          "examples": [
+            {
+              "User": {
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "secret": {
+                    "type": "string"
+                  }
+                }
+              },
+              "Another_User": {
+                "properties": {
+                  "nameAlt": {
+                    "type": "string"
+                  },
+                  "secretAlt": {
+                    "type": "string"
+                  }
+                }
+              },
+              "Book": {
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "rate": {
+                    "type": "number",
+                    "format": "int64"
+                  },
+                  "created_at": {
+                    "type": "string"
+                  },
+                  "updated_at": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          ],
+          "required": [
+            "User",
+            "Another_User",
+            "Book"
+          ],
+          "properties": {
+            "User": {
+              "$id": "#/properties/components/properties/schemas/properties/User",
+              "type": "object",
+              "title": "The User schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": {},
+              "examples": [
+                {
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "secret": {
+                      "type": "string"
+                    }
+                  }
+                }
+              ],
+              "required": [
+                "properties"
+              ],
+              "properties": {
+                "properties": {
+                  "$id": "#/properties/components/properties/schemas/properties/User/properties/properties",
+                  "type": "object",
+                  "title": "The properties schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": {},
+                  "examples": [
+                    {
+                      "name": {
+                        "type": "string"
+                      },
+                      "secret": {
+                        "type": "string"
+                      }
+                    }
+                  ],
+                  "required": [
+                    "name",
+                    "secret"
+                  ],
+                  "properties": {
+                    "name": {
+                      "$id": "#/properties/components/properties/schemas/properties/User/properties/properties/properties/name",
+                      "type": "object",
+                      "title": "The name schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "required": [
+                        "type"
+                      ],
+                      "properties": {
+                        "type": {
+                          "$id": "#/properties/components/properties/schemas/properties/User/properties/properties/properties/name/properties/type",
+                          "type": "string",
+                          "title": "The type schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "string"
+                          ]
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "secret": {
+                      "$id": "#/properties/components/properties/schemas/properties/User/properties/properties/properties/secret",
+                      "type": "object",
+                      "title": "The secret schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "required": [
+                        "type"
+                      ],
+                      "properties": {
+                        "type": {
+                          "$id": "#/properties/components/properties/schemas/properties/User/properties/properties/properties/secret/properties/type",
+                          "type": "string",
+                          "title": "The type schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "string"
+                          ]
+                        }
+                      },
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              },
+              "additionalProperties": true
+            },
+            "Another_User": {
+              "$id": "#/properties/components/properties/schemas/properties/Another_User",
+              "type": "object",
+              "title": "The Another_User schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": {},
+              "examples": [
+                {
+                  "properties": {
+                    "nameAlt": {
+                      "type": "string"
+                    },
+                    "secretAlt": {
+                      "type": "string"
+                    }
+                  }
+                }
+              ],
+              "required": [
+                "properties"
+              ],
+              "properties": {
+                "properties": {
+                  "$id": "#/properties/components/properties/schemas/properties/Another_User/properties/properties",
+                  "type": "object",
+                  "title": "The properties schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": {},
+                  "examples": [
+                    {
+                      "nameAlt": {
+                        "type": "string"
+                      },
+                      "secretAlt": {
+                        "type": "string"
+                      }
+                    }
+                  ],
+                  "required": [
+                    "nameAlt",
+                    "secretAlt"
+                  ],
+                  "properties": {
+                    "nameAlt": {
+                      "$id": "#/properties/components/properties/schemas/properties/Another_User/properties/properties/properties/nameAlt",
+                      "type": "object",
+                      "title": "The nameAlt schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "required": [
+                        "type"
+                      ],
+                      "properties": {
+                        "type": {
+                          "$id": "#/properties/components/properties/schemas/properties/Another_User/properties/properties/properties/nameAlt/properties/type",
+                          "type": "string",
+                          "title": "The type schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "string"
+                          ]
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "secretAlt": {
+                      "$id": "#/properties/components/properties/schemas/properties/Another_User/properties/properties/properties/secretAlt",
+                      "type": "object",
+                      "title": "The secretAlt schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "required": [
+                        "type"
+                      ],
+                      "properties": {
+                        "type": {
+                          "$id": "#/properties/components/properties/schemas/properties/Another_User/properties/properties/properties/secretAlt/properties/type",
+                          "type": "string",
+                          "title": "The type schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "string"
+                          ]
+                        }
+                      },
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              },
+              "additionalProperties": true
+            },
+            "Book": {
+              "$id": "#/properties/components/properties/schemas/properties/Book",
+              "type": "object",
+              "title": "The Book schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": {},
+              "examples": [
+                {
+                  "properties": {
+                    "title": {
+                      "type": "string"
+                    },
+                    "rate": {
+                      "type": "number",
+                      "format": "int64"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "updated_at": {
+                      "type": "string"
+                    }
+                  }
+                }
+              ],
+              "required": [
+                "properties"
+              ],
+              "properties": {
+                "properties": {
+                  "$id": "#/properties/components/properties/schemas/properties/Book/properties/properties",
+                  "type": "object",
+                  "title": "The properties schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": {},
+                  "examples": [
+                    {
+                      "title": {
+                        "type": "string"
+                      },
+                      "rate": {
+                        "type": "number",
+                        "format": "int64"
+                      },
+                      "created_at": {
+                        "type": "string"
+                      },
+                      "updated_at": {
+                        "type": "string"
+                      }
+                    }
+                  ],
+                  "required": [
+                    "title",
+                    "rate",
+                    "created_at",
+                    "updated_at"
+                  ],
+                  "properties": {
+                    "title": {
+                      "$id": "#/properties/components/properties/schemas/properties/Book/properties/properties/properties/title",
+                      "type": "object",
+                      "title": "The title schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "required": [
+                        "type"
+                      ],
+                      "properties": {
+                        "type": {
+                          "$id": "#/properties/components/properties/schemas/properties/Book/properties/properties/properties/title/properties/type",
+                          "type": "string",
+                          "title": "The type schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "string"
+                          ]
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "rate": {
+                      "$id": "#/properties/components/properties/schemas/properties/Book/properties/properties/properties/rate",
+                      "type": "object",
+                      "title": "The rate schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "type": "number",
+                          "format": "int64"
+                        }
+                      ],
+                      "required": [
+                        "type",
+                        "format"
+                      ],
+                      "properties": {
+                        "type": {
+                          "$id": "#/properties/components/properties/schemas/properties/Book/properties/properties/properties/rate/properties/type",
+                          "type": "string",
+                          "title": "The type schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "number"
+                          ]
+                        },
+                        "format": {
+                          "$id": "#/properties/components/properties/schemas/properties/Book/properties/properties/properties/rate/properties/format",
+                          "type": "string",
+                          "title": "The format schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "int64"
+                          ]
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "created_at": {
+                      "$id": "#/properties/components/properties/schemas/properties/Book/properties/properties/properties/created_at",
+                      "type": "object",
+                      "title": "The created_at schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "required": [
+                        "type"
+                      ],
+                      "properties": {
+                        "type": {
+                          "$id": "#/properties/components/properties/schemas/properties/Book/properties/properties/properties/created_at/properties/type",
+                          "type": "string",
+                          "title": "The type schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "string"
+                          ]
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "updated_at": {
+                      "$id": "#/properties/components/properties/schemas/properties/Book/properties/properties/properties/updated_at",
+                      "type": "object",
+                      "title": "The updated_at schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "required": [
+                        "type"
+                      ],
+                      "properties": {
+                        "type": {
+                          "$id": "#/properties/components/properties/schemas/properties/Book/properties/properties/properties/updated_at/properties/type",
+                          "type": "string",
+                          "title": "The type schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "string"
+                          ]
+                        }
+                      },
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "info": {
+      "$id": "#/properties/info",
+      "type": "object",
+      "title": "The info schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": {},
+      "examples": [
+        {
+          "title": "Documentation",
+          "version": "1.0.0"
+        }
+      ],
+      "required": [
+        "title",
+        "version"
+      ],
+      "properties": {
+        "title": {
+          "$id": "#/properties/info/properties/title",
+          "type": "string",
+          "title": "The title schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "Documentation"
+          ]
+        },
+        "version": {
+          "$id": "#/properties/info/properties/version",
+          "type": "string",
+          "title": "The version schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "1.0.0"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "paths": {
+      "$id": "#/properties/paths",
+      "type": "object",
+      "title": "The paths schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": {},
+      "examples": [
+        {
+          "/list": {
+            "get": {
+              "responses": {
+                "200": {
+                  "description": "get list",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "example": "word",
+                          "minItems": 5,
+                          "maxItems": 500
+                        }
+                      }
+                    }
+                  }
+                },
+                "201": {
+                  "description": "success created",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "array",
+                        "items": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  }
+                },
+                "500": {
+                  "description": "server error",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "code": {
+                              "type": "integer"
+                            },
+                            "message": {
+                              "type": "string"
+                            },
+                            "stack": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/books": {
+            "get": {
+              "responses": {
+                "200": {
+                  "description": "get list books",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Book"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/users": {
+            "get": {
+              "responses": {
+                "200": {
+                  "description": "Get users",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Another_User"
+                        }
+                      }
+                    }
+                  }
+                },
+                "201": {
+                  "description": "Get users",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Another_User"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/users_alt": {
+            "get": {
+              "responses": {
+                "200": {
+                  "description": "Get alternative users",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/User"
+                        }
+                      }
+                    }
+                  }
+                },
+                "201": {
+                  "description": "Get alternative users",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/User"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "required": [
+        "/list",
+        "/books",
+        "/users",
+        "/users_alt"
+      ],
+      "properties": {
+        "/list": {
+          "$id": "#/properties/paths/properties//list",
+          "type": "object",
+          "title": "The /list schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": {},
+          "examples": [
+            {
+              "get": {
+                "responses": {
+                  "200": {
+                    "description": "get list",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "example": "word",
+                            "minItems": 5,
+                            "maxItems": 500
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "201": {
+                    "description": "success created",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "type": "array",
+                          "items": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "500": {
+                    "description": "server error",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "integer"
+                              },
+                              "message": {
+                                "type": "string"
+                              },
+                              "stack": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "required": [
+            "get"
+          ],
+          "properties": {
+            "get": {
+              "$id": "#/properties/paths/properties//list/properties/get",
+              "type": "object",
+              "title": "The get schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": {},
+              "examples": [
+                {
+                  "responses": {
+                    "200": {
+                      "description": "get list",
+                      "content": {
+                        "application/json": {
+                          "schema": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "example": "word",
+                              "minItems": 5,
+                              "maxItems": 500
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "201": {
+                      "description": "success created",
+                      "content": {
+                        "application/json": {
+                          "schema": {
+                            "type": "array",
+                            "items": {
+                              "type": "boolean"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "500": {
+                      "description": "server error",
+                      "content": {
+                        "application/json": {
+                          "schema": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "code": {
+                                  "type": "integer"
+                                },
+                                "message": {
+                                  "type": "string"
+                                },
+                                "stack": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "required": [
+                "responses"
+              ],
+              "properties": {
+                "responses": {
+                  "$id": "#/properties/paths/properties//list/properties/get/properties/responses",
+                  "type": "object",
+                  "title": "The responses schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": {},
+                  "examples": [
+                    {
+                      "200": {
+                        "description": "get list",
+                        "content": {
+                          "application/json": {
+                            "schema": {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "example": "word",
+                                "minItems": 5,
+                                "maxItems": 500
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "201": {
+                        "description": "success created",
+                        "content": {
+                          "application/json": {
+                            "schema": {
+                              "type": "array",
+                              "items": {
+                                "type": "boolean"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "500": {
+                        "description": "server error",
+                        "content": {
+                          "application/json": {
+                            "schema": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "code": {
+                                    "type": "integer"
+                                  },
+                                  "message": {
+                                    "type": "string"
+                                  },
+                                  "stack": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "required": [
+                    "200",
+                    "201",
+                    "500"
+                  ],
+                  "properties": {
+                    "200": {
+                      "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/200",
+                      "type": "object",
+                      "title": "The 200 schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "description": "get list",
+                          "content": {
+                            "application/json": {
+                              "schema": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "example": "word",
+                                  "minItems": 5,
+                                  "maxItems": 500
+                                }
+                              }
+                            }
+                          }
+                        }
+                      ],
+                      "required": [
+                        "description",
+                        "content"
+                      ],
+                      "properties": {
+                        "description": {
+                          "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/200/properties/description",
+                          "type": "string",
+                          "title": "The description schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "get list"
+                          ]
+                        },
+                        "content": {
+                          "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/200/properties/content",
+                          "type": "object",
+                          "title": "The content schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": {},
+                          "examples": [
+                            {
+                              "application/json": {
+                                "schema": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string",
+                                    "example": "word",
+                                    "minItems": 5,
+                                    "maxItems": 500
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "required": [
+                            "application/json"
+                          ],
+                          "properties": {
+                            "application/json": {
+                              "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/200/properties/content/properties/application/json",
+                              "type": "object",
+                              "title": "The application/json schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": {},
+                              "examples": [
+                                {
+                                  "schema": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string",
+                                      "example": "word",
+                                      "minItems": 5,
+                                      "maxItems": 500
+                                    }
+                                  }
+                                }
+                              ],
+                              "required": [
+                                "schema"
+                              ],
+                              "properties": {
+                                "schema": {
+                                  "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema",
+                                  "type": "object",
+                                  "title": "The schema schema",
+                                  "description": "An explanation about the purpose of this instance.",
+                                  "default": {},
+                                  "examples": [
+                                    {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "example": "word",
+                                        "minItems": 5,
+                                        "maxItems": 500
+                                      }
+                                    }
+                                  ],
+                                  "required": [
+                                    "type",
+                                    "items"
+                                  ],
+                                  "properties": {
+                                    "type": {
+                                      "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema/properties/type",
+                                      "type": "string",
+                                      "title": "The type schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": "",
+                                      "examples": [
+                                        "array"
+                                      ]
+                                    },
+                                    "items": {
+                                      "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema/properties/items",
+                                      "type": "object",
+                                      "title": "The items schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": {},
+                                      "examples": [
+                                        {
+                                          "type": "string",
+                                          "example": "word",
+                                          "minItems": 5,
+                                          "maxItems": 500
+                                        }
+                                      ],
+                                      "required": [
+                                        "type",
+                                        "example",
+                                        "minItems",
+                                        "maxItems"
+                                      ],
+                                      "properties": {
+                                        "type": {
+                                          "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema/properties/items/properties/type",
+                                          "type": "string",
+                                          "title": "The type schema",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "default": "",
+                                          "examples": [
+                                            "string"
+                                          ]
+                                        },
+                                        "example": {
+                                          "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema/properties/items/properties/example",
+                                          "type": "string",
+                                          "title": "The example schema",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "default": "",
+                                          "examples": [
+                                            "word"
+                                          ]
+                                        },
+                                        "minItems": {
+                                          "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema/properties/items/properties/minItems",
+                                          "type": "integer",
+                                          "title": "The minItems schema",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "default": 0,
+                                          "examples": [
+                                            5
+                                          ]
+                                        },
+                                        "maxItems": {
+                                          "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema/properties/items/properties/maxItems",
+                                          "type": "integer",
+                                          "title": "The maxItems schema",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "default": 0,
+                                          "examples": [
+                                            500
+                                          ]
+                                        }
+                                      },
+                                      "additionalProperties": true
+                                    }
+                                  },
+                                  "additionalProperties": true
+                                }
+                              },
+                              "additionalProperties": true
+                            }
+                          },
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "201": {
+                      "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/201",
+                      "type": "object",
+                      "title": "The 201 schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "description": "success created",
+                          "content": {
+                            "application/json": {
+                              "schema": {
+                                "type": "array",
+                                "items": {
+                                  "type": "boolean"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      ],
+                      "required": [
+                        "description",
+                        "content"
+                      ],
+                      "properties": {
+                        "description": {
+                          "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/201/properties/description",
+                          "type": "string",
+                          "title": "The description schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "success created"
+                          ]
+                        },
+                        "content": {
+                          "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/201/properties/content",
+                          "type": "object",
+                          "title": "The content schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": {},
+                          "examples": [
+                            {
+                              "application/json": {
+                                "schema": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "boolean"
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "required": [
+                            "application/json"
+                          ],
+                          "properties": {
+                            "application/json": {
+                              "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/201/properties/content/properties/application/json",
+                              "type": "object",
+                              "title": "The application/json schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": {},
+                              "examples": [
+                                {
+                                  "schema": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "boolean"
+                                    }
+                                  }
+                                }
+                              ],
+                              "required": [
+                                "schema"
+                              ],
+                              "properties": {
+                                "schema": {
+                                  "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/201/properties/content/properties/application/json/properties/schema",
+                                  "type": "object",
+                                  "title": "The schema schema",
+                                  "description": "An explanation about the purpose of this instance.",
+                                  "default": {},
+                                  "examples": [
+                                    {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "boolean"
+                                      }
+                                    }
+                                  ],
+                                  "required": [
+                                    "type",
+                                    "items"
+                                  ],
+                                  "properties": {
+                                    "type": {
+                                      "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/201/properties/content/properties/application/json/properties/schema/properties/type",
+                                      "type": "string",
+                                      "title": "The type schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": "",
+                                      "examples": [
+                                        "array"
+                                      ]
+                                    },
+                                    "items": {
+                                      "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/201/properties/content/properties/application/json/properties/schema/properties/items",
+                                      "type": "object",
+                                      "title": "The items schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": {},
+                                      "examples": [
+                                        {
+                                          "type": "boolean"
+                                        }
+                                      ],
+                                      "required": [
+                                        "type"
+                                      ],
+                                      "properties": {
+                                        "type": {
+                                          "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/201/properties/content/properties/application/json/properties/schema/properties/items/properties/type",
+                                          "type": "string",
+                                          "title": "The type schema",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "default": "",
+                                          "examples": [
+                                            "boolean"
+                                          ]
+                                        }
+                                      },
+                                      "additionalProperties": true
+                                    }
+                                  },
+                                  "additionalProperties": true
+                                }
+                              },
+                              "additionalProperties": true
+                            }
+                          },
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "500": {
+                      "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/500",
+                      "type": "object",
+                      "title": "The 500 schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "description": "server error",
+                          "content": {
+                            "application/json": {
+                              "schema": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "code": {
+                                      "type": "integer"
+                                    },
+                                    "message": {
+                                      "type": "string"
+                                    },
+                                    "stack": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      ],
+                      "required": [
+                        "description",
+                        "content"
+                      ],
+                      "properties": {
+                        "description": {
+                          "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/500/properties/description",
+                          "type": "string",
+                          "title": "The description schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "server error"
+                          ]
+                        },
+                        "content": {
+                          "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/500/properties/content",
+                          "type": "object",
+                          "title": "The content schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": {},
+                          "examples": [
+                            {
+                              "application/json": {
+                                "schema": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "code": {
+                                        "type": "integer"
+                                      },
+                                      "message": {
+                                        "type": "string"
+                                      },
+                                      "stack": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string"
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "required": [
+                            "application/json"
+                          ],
+                          "properties": {
+                            "application/json": {
+                              "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/500/properties/content/properties/application/json",
+                              "type": "object",
+                              "title": "The application/json schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": {},
+                              "examples": [
+                                {
+                                  "schema": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "code": {
+                                          "type": "integer"
+                                        },
+                                        "message": {
+                                          "type": "string"
+                                        },
+                                        "stack": {
+                                          "type": "array",
+                                          "items": {
+                                            "type": "string"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              ],
+                              "required": [
+                                "schema"
+                              ],
+                              "properties": {
+                                "schema": {
+                                  "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/500/properties/content/properties/application/json/properties/schema",
+                                  "type": "object",
+                                  "title": "The schema schema",
+                                  "description": "An explanation about the purpose of this instance.",
+                                  "default": {},
+                                  "examples": [
+                                    {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "code": {
+                                            "type": "integer"
+                                          },
+                                          "message": {
+                                            "type": "string"
+                                          },
+                                          "stack": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "string"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  ],
+                                  "required": [
+                                    "type",
+                                    "items"
+                                  ],
+                                  "properties": {
+                                    "type": {
+                                      "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/500/properties/content/properties/application/json/properties/schema/properties/type",
+                                      "type": "string",
+                                      "title": "The type schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": "",
+                                      "examples": [
+                                        "array"
+                                      ]
+                                    },
+                                    "items": {
+                                      "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/500/properties/content/properties/application/json/properties/schema/properties/items",
+                                      "type": "object",
+                                      "title": "The items schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": {},
+                                      "examples": [
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "code": {
+                                              "type": "integer"
+                                            },
+                                            "message": {
+                                              "type": "string"
+                                            },
+                                            "stack": {
+                                              "type": "array",
+                                              "items": {
+                                                "type": "string"
+                                              }
+                                            }
+                                          }
+                                        }
+                                      ],
+                                      "required": [
+                                        "type",
+                                        "properties"
+                                      ],
+                                      "properties": {
+                                        "type": {
+                                          "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/500/properties/content/properties/application/json/properties/schema/properties/items/properties/type",
+                                          "type": "string",
+                                          "title": "The type schema",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "default": "",
+                                          "examples": [
+                                            "object"
+                                          ]
+                                        },
+                                        "properties": {
+                                          "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/500/properties/content/properties/application/json/properties/schema/properties/items/properties/properties",
+                                          "type": "object",
+                                          "title": "The properties schema",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "default": {},
+                                          "examples": [
+                                            {
+                                              "code": {
+                                                "type": "integer"
+                                              },
+                                              "message": {
+                                                "type": "string"
+                                              },
+                                              "stack": {
+                                                "type": "array",
+                                                "items": {
+                                                  "type": "string"
+                                                }
+                                              }
+                                            }
+                                          ],
+                                          "required": [
+                                            "code",
+                                            "message",
+                                            "stack"
+                                          ],
+                                          "properties": {
+                                            "code": {
+                                              "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/500/properties/content/properties/application/json/properties/schema/properties/items/properties/properties/properties/code",
+                                              "type": "object",
+                                              "title": "The code schema",
+                                              "description": "An explanation about the purpose of this instance.",
+                                              "default": {},
+                                              "examples": [
+                                                {
+                                                  "type": "integer"
+                                                }
+                                              ],
+                                              "required": [
+                                                "type"
+                                              ],
+                                              "properties": {
+                                                "type": {
+                                                  "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/500/properties/content/properties/application/json/properties/schema/properties/items/properties/properties/properties/code/properties/type",
+                                                  "type": "string",
+                                                  "title": "The type schema",
+                                                  "description": "An explanation about the purpose of this instance.",
+                                                  "default": "",
+                                                  "examples": [
+                                                    "integer"
+                                                  ]
+                                                }
+                                              },
+                                              "additionalProperties": true
+                                            },
+                                            "message": {
+                                              "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/500/properties/content/properties/application/json/properties/schema/properties/items/properties/properties/properties/message",
+                                              "type": "object",
+                                              "title": "The message schema",
+                                              "description": "An explanation about the purpose of this instance.",
+                                              "default": {},
+                                              "examples": [
+                                                {
+                                                  "type": "string"
+                                                }
+                                              ],
+                                              "required": [
+                                                "type"
+                                              ],
+                                              "properties": {
+                                                "type": {
+                                                  "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/500/properties/content/properties/application/json/properties/schema/properties/items/properties/properties/properties/message/properties/type",
+                                                  "type": "string",
+                                                  "title": "The type schema",
+                                                  "description": "An explanation about the purpose of this instance.",
+                                                  "default": "",
+                                                  "examples": [
+                                                    "string"
+                                                  ]
+                                                }
+                                              },
+                                              "additionalProperties": true
+                                            },
+                                            "stack": {
+                                              "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/500/properties/content/properties/application/json/properties/schema/properties/items/properties/properties/properties/stack",
+                                              "type": "object",
+                                              "title": "The stack schema",
+                                              "description": "An explanation about the purpose of this instance.",
+                                              "default": {},
+                                              "examples": [
+                                                {
+                                                  "type": "array",
+                                                  "items": {
+                                                    "type": "string"
+                                                  }
+                                                }
+                                              ],
+                                              "required": [
+                                                "type",
+                                                "items"
+                                              ],
+                                              "properties": {
+                                                "type": {
+                                                  "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/500/properties/content/properties/application/json/properties/schema/properties/items/properties/properties/properties/stack/properties/type",
+                                                  "type": "string",
+                                                  "title": "The type schema",
+                                                  "description": "An explanation about the purpose of this instance.",
+                                                  "default": "",
+                                                  "examples": [
+                                                    "array"
+                                                  ]
+                                                },
+                                                "items": {
+                                                  "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/500/properties/content/properties/application/json/properties/schema/properties/items/properties/properties/properties/stack/properties/items",
+                                                  "type": "object",
+                                                  "title": "The items schema",
+                                                  "description": "An explanation about the purpose of this instance.",
+                                                  "default": {},
+                                                  "examples": [
+                                                    {
+                                                      "type": "string"
+                                                    }
+                                                  ],
+                                                  "required": [
+                                                    "type"
+                                                  ],
+                                                  "properties": {
+                                                    "type": {
+                                                      "$id": "#/properties/paths/properties//list/properties/get/properties/responses/properties/500/properties/content/properties/application/json/properties/schema/properties/items/properties/properties/properties/stack/properties/items/properties/type",
+                                                      "type": "string",
+                                                      "title": "The type schema",
+                                                      "description": "An explanation about the purpose of this instance.",
+                                                      "default": "",
+                                                      "examples": [
+                                                        "string"
+                                                      ]
+                                                    }
+                                                  },
+                                                  "additionalProperties": true
+                                                }
+                                              },
+                                              "additionalProperties": true
+                                            }
+                                          },
+                                          "additionalProperties": true
+                                        }
+                                      },
+                                      "additionalProperties": true
+                                    }
+                                  },
+                                  "additionalProperties": true
+                                }
+                              },
+                              "additionalProperties": true
+                            }
+                          },
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": true
+        },
+        "/books": {
+          "$id": "#/properties/paths/properties//books",
+          "type": "object",
+          "title": "The /books schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": {},
+          "examples": [
+            {
+              "get": {
+                "responses": {
+                  "200": {
+                    "description": "get list books",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Book"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "required": [
+            "get"
+          ],
+          "properties": {
+            "get": {
+              "$id": "#/properties/paths/properties//books/properties/get",
+              "type": "object",
+              "title": "The get schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": {},
+              "examples": [
+                {
+                  "responses": {
+                    "200": {
+                      "description": "get list books",
+                      "content": {
+                        "application/json": {
+                          "schema": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/components/schemas/Book"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "required": [
+                "responses"
+              ],
+              "properties": {
+                "responses": {
+                  "$id": "#/properties/paths/properties//books/properties/get/properties/responses",
+                  "type": "object",
+                  "title": "The responses schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": {},
+                  "examples": [
+                    {
+                      "200": {
+                        "description": "get list books",
+                        "content": {
+                          "application/json": {
+                            "schema": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/Book"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "required": [
+                    "200"
+                  ],
+                  "properties": {
+                    "200": {
+                      "$id": "#/properties/paths/properties//books/properties/get/properties/responses/properties/200",
+                      "type": "object",
+                      "title": "The 200 schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "description": "get list books",
+                          "content": {
+                            "application/json": {
+                              "schema": {
+                                "type": "array",
+                                "items": {
+                                  "$ref": "#/components/schemas/Book"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      ],
+                      "required": [
+                        "description",
+                        "content"
+                      ],
+                      "properties": {
+                        "description": {
+                          "$id": "#/properties/paths/properties//books/properties/get/properties/responses/properties/200/properties/description",
+                          "type": "string",
+                          "title": "The description schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "get list books"
+                          ]
+                        },
+                        "content": {
+                          "$id": "#/properties/paths/properties//books/properties/get/properties/responses/properties/200/properties/content",
+                          "type": "object",
+                          "title": "The content schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": {},
+                          "examples": [
+                            {
+                              "application/json": {
+                                "schema": {
+                                  "type": "array",
+                                  "items": {
+                                    "$ref": "#/components/schemas/Book"
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "required": [
+                            "application/json"
+                          ],
+                          "properties": {
+                            "application/json": {
+                              "$id": "#/properties/paths/properties//books/properties/get/properties/responses/properties/200/properties/content/properties/application/json",
+                              "type": "object",
+                              "title": "The application/json schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": {},
+                              "examples": [
+                                {
+                                  "schema": {
+                                    "type": "array",
+                                    "items": {
+                                      "$ref": "#/components/schemas/Book"
+                                    }
+                                  }
+                                }
+                              ],
+                              "required": [
+                                "schema"
+                              ],
+                              "properties": {
+                                "schema": {
+                                  "$id": "#/properties/paths/properties//books/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema",
+                                  "type": "object",
+                                  "title": "The schema schema",
+                                  "description": "An explanation about the purpose of this instance.",
+                                  "default": {},
+                                  "examples": [
+                                    {
+                                      "type": "array",
+                                      "items": {
+                                        "$ref": "#/components/schemas/Book"
+                                      }
+                                    }
+                                  ],
+                                  "required": [
+                                    "type",
+                                    "items"
+                                  ],
+                                  "properties": {
+                                    "type": {
+                                      "$id": "#/properties/paths/properties//books/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema/properties/type",
+                                      "type": "string",
+                                      "title": "The type schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": "",
+                                      "examples": [
+                                        "array"
+                                      ]
+                                    },
+                                    "items": {
+                                      "$id": "#/properties/paths/properties//books/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema/properties/items",
+                                      "type": "object",
+                                      "title": "The items schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": {},
+                                      "examples": [
+                                        {
+                                          "$ref": "#/components/schemas/Book"
+                                        }
+                                      ],
+                                      "required": [
+                                        "$ref"
+                                      ],
+                                      "properties": {
+                                        "$ref": {
+                                          "$id": "#/properties/paths/properties//books/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema/properties/items/properties/%24ref",
+                                          "type": "string",
+                                          "title": "The $ref schema",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "default": "",
+                                          "examples": [
+                                            "#/components/schemas/Book"
+                                          ]
+                                        }
+                                      },
+                                      "additionalProperties": true
+                                    }
+                                  },
+                                  "additionalProperties": true
+                                }
+                              },
+                              "additionalProperties": true
+                            }
+                          },
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": true
+        },
+        "/users": {
+          "$id": "#/properties/paths/properties//users",
+          "type": "object",
+          "title": "The /users schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": {},
+          "examples": [
+            {
+              "get": {
+                "responses": {
+                  "200": {
+                    "description": "Get users",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Another_User"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "201": {
+                    "description": "Get users",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Another_User"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "required": [
+            "get"
+          ],
+          "properties": {
+            "get": {
+              "$id": "#/properties/paths/properties//users/properties/get",
+              "type": "object",
+              "title": "The get schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": {},
+              "examples": [
+                {
+                  "responses": {
+                    "200": {
+                      "description": "Get users",
+                      "content": {
+                        "application/json": {
+                          "schema": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/components/schemas/Another_User"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "201": {
+                      "description": "Get users",
+                      "content": {
+                        "application/json": {
+                          "schema": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/components/schemas/Another_User"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "required": [
+                "responses"
+              ],
+              "properties": {
+                "responses": {
+                  "$id": "#/properties/paths/properties//users/properties/get/properties/responses",
+                  "type": "object",
+                  "title": "The responses schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": {},
+                  "examples": [
+                    {
+                      "200": {
+                        "description": "Get users",
+                        "content": {
+                          "application/json": {
+                            "schema": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/Another_User"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "201": {
+                        "description": "Get users",
+                        "content": {
+                          "application/json": {
+                            "schema": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/Another_User"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "required": [
+                    "200",
+                    "201"
+                  ],
+                  "properties": {
+                    "200": {
+                      "$id": "#/properties/paths/properties//users/properties/get/properties/responses/properties/200",
+                      "type": "object",
+                      "title": "The 200 schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "description": "Get users",
+                          "content": {
+                            "application/json": {
+                              "schema": {
+                                "type": "array",
+                                "items": {
+                                  "$ref": "#/components/schemas/Another_User"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      ],
+                      "required": [
+                        "description",
+                        "content"
+                      ],
+                      "properties": {
+                        "description": {
+                          "$id": "#/properties/paths/properties//users/properties/get/properties/responses/properties/200/properties/description",
+                          "type": "string",
+                          "title": "The description schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "Get users"
+                          ]
+                        },
+                        "content": {
+                          "$id": "#/properties/paths/properties//users/properties/get/properties/responses/properties/200/properties/content",
+                          "type": "object",
+                          "title": "The content schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": {},
+                          "examples": [
+                            {
+                              "application/json": {
+                                "schema": {
+                                  "type": "array",
+                                  "items": {
+                                    "$ref": "#/components/schemas/Another_User"
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "required": [
+                            "application/json"
+                          ],
+                          "properties": {
+                            "application/json": {
+                              "$id": "#/properties/paths/properties//users/properties/get/properties/responses/properties/200/properties/content/properties/application/json",
+                              "type": "object",
+                              "title": "The application/json schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": {},
+                              "examples": [
+                                {
+                                  "schema": {
+                                    "type": "array",
+                                    "items": {
+                                      "$ref": "#/components/schemas/Another_User"
+                                    }
+                                  }
+                                }
+                              ],
+                              "required": [
+                                "schema"
+                              ],
+                              "properties": {
+                                "schema": {
+                                  "$id": "#/properties/paths/properties//users/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema",
+                                  "type": "object",
+                                  "title": "The schema schema",
+                                  "description": "An explanation about the purpose of this instance.",
+                                  "default": {},
+                                  "examples": [
+                                    {
+                                      "type": "array",
+                                      "items": {
+                                        "$ref": "#/components/schemas/Another_User"
+                                      }
+                                    }
+                                  ],
+                                  "required": [
+                                    "type",
+                                    "items"
+                                  ],
+                                  "properties": {
+                                    "type": {
+                                      "$id": "#/properties/paths/properties//users/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema/properties/type",
+                                      "type": "string",
+                                      "title": "The type schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": "",
+                                      "examples": [
+                                        "array"
+                                      ]
+                                    },
+                                    "items": {
+                                      "$id": "#/properties/paths/properties//users/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema/properties/items",
+                                      "type": "object",
+                                      "title": "The items schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": {},
+                                      "examples": [
+                                        {
+                                          "$ref": "#/components/schemas/Another_User"
+                                        }
+                                      ],
+                                      "required": [
+                                        "$ref"
+                                      ],
+                                      "properties": {
+                                        "$ref": {
+                                          "$id": "#/properties/paths/properties//users/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema/properties/items/properties/%24ref",
+                                          "type": "string",
+                                          "title": "The $ref schema",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "default": "",
+                                          "examples": [
+                                            "#/components/schemas/Another_User"
+                                          ]
+                                        }
+                                      },
+                                      "additionalProperties": true
+                                    }
+                                  },
+                                  "additionalProperties": true
+                                }
+                              },
+                              "additionalProperties": true
+                            }
+                          },
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "201": {
+                      "$id": "#/properties/paths/properties//users/properties/get/properties/responses/properties/201",
+                      "type": "object",
+                      "title": "The 201 schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "description": "Get users",
+                          "content": {
+                            "application/json": {
+                              "schema": {
+                                "type": "array",
+                                "items": {
+                                  "$ref": "#/components/schemas/Another_User"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      ],
+                      "required": [
+                        "description",
+                        "content"
+                      ],
+                      "properties": {
+                        "description": {
+                          "$id": "#/properties/paths/properties//users/properties/get/properties/responses/properties/201/properties/description",
+                          "type": "string",
+                          "title": "The description schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "Get users"
+                          ]
+                        },
+                        "content": {
+                          "$id": "#/properties/paths/properties//users/properties/get/properties/responses/properties/201/properties/content",
+                          "type": "object",
+                          "title": "The content schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": {},
+                          "examples": [
+                            {
+                              "application/json": {
+                                "schema": {
+                                  "type": "array",
+                                  "items": {
+                                    "$ref": "#/components/schemas/Another_User"
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "required": [
+                            "application/json"
+                          ],
+                          "properties": {
+                            "application/json": {
+                              "$id": "#/properties/paths/properties//users/properties/get/properties/responses/properties/201/properties/content/properties/application/json",
+                              "type": "object",
+                              "title": "The application/json schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": {},
+                              "examples": [
+                                {
+                                  "schema": {
+                                    "type": "array",
+                                    "items": {
+                                      "$ref": "#/components/schemas/Another_User"
+                                    }
+                                  }
+                                }
+                              ],
+                              "required": [
+                                "schema"
+                              ],
+                              "properties": {
+                                "schema": {
+                                  "$id": "#/properties/paths/properties//users/properties/get/properties/responses/properties/201/properties/content/properties/application/json/properties/schema",
+                                  "type": "object",
+                                  "title": "The schema schema",
+                                  "description": "An explanation about the purpose of this instance.",
+                                  "default": {},
+                                  "examples": [
+                                    {
+                                      "type": "array",
+                                      "items": {
+                                        "$ref": "#/components/schemas/Another_User"
+                                      }
+                                    }
+                                  ],
+                                  "required": [
+                                    "type",
+                                    "items"
+                                  ],
+                                  "properties": {
+                                    "type": {
+                                      "$id": "#/properties/paths/properties//users/properties/get/properties/responses/properties/201/properties/content/properties/application/json/properties/schema/properties/type",
+                                      "type": "string",
+                                      "title": "The type schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": "",
+                                      "examples": [
+                                        "array"
+                                      ]
+                                    },
+                                    "items": {
+                                      "$id": "#/properties/paths/properties//users/properties/get/properties/responses/properties/201/properties/content/properties/application/json/properties/schema/properties/items",
+                                      "type": "object",
+                                      "title": "The items schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": {},
+                                      "examples": [
+                                        {
+                                          "$ref": "#/components/schemas/Another_User"
+                                        }
+                                      ],
+                                      "required": [
+                                        "$ref"
+                                      ],
+                                      "properties": {
+                                        "$ref": {
+                                          "$id": "#/properties/paths/properties//users/properties/get/properties/responses/properties/201/properties/content/properties/application/json/properties/schema/properties/items/properties/%24ref",
+                                          "type": "string",
+                                          "title": "The $ref schema",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "default": "",
+                                          "examples": [
+                                            "#/components/schemas/Another_User"
+                                          ]
+                                        }
+                                      },
+                                      "additionalProperties": true
+                                    }
+                                  },
+                                  "additionalProperties": true
+                                }
+                              },
+                              "additionalProperties": true
+                            }
+                          },
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": true
+        },
+        "/users_alt": {
+          "$id": "#/properties/paths/properties//users_alt",
+          "type": "object",
+          "title": "The /users_alt schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": {},
+          "examples": [
+            {
+              "get": {
+                "responses": {
+                  "200": {
+                    "description": "Get alternative users",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/User"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "201": {
+                    "description": "Get alternative users",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/User"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "required": [
+            "get"
+          ],
+          "properties": {
+            "get": {
+              "$id": "#/properties/paths/properties//users_alt/properties/get",
+              "type": "object",
+              "title": "The get schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": {},
+              "examples": [
+                {
+                  "responses": {
+                    "200": {
+                      "description": "Get alternative users",
+                      "content": {
+                        "application/json": {
+                          "schema": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/components/schemas/User"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "201": {
+                      "description": "Get alternative users",
+                      "content": {
+                        "application/json": {
+                          "schema": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/components/schemas/User"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "required": [
+                "responses"
+              ],
+              "properties": {
+                "responses": {
+                  "$id": "#/properties/paths/properties//users_alt/properties/get/properties/responses",
+                  "type": "object",
+                  "title": "The responses schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": {},
+                  "examples": [
+                    {
+                      "200": {
+                        "description": "Get alternative users",
+                        "content": {
+                          "application/json": {
+                            "schema": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/User"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "201": {
+                        "description": "Get alternative users",
+                        "content": {
+                          "application/json": {
+                            "schema": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/User"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "required": [
+                    "200",
+                    "201"
+                  ],
+                  "properties": {
+                    "200": {
+                      "$id": "#/properties/paths/properties//users_alt/properties/get/properties/responses/properties/200",
+                      "type": "object",
+                      "title": "The 200 schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "description": "Get alternative users",
+                          "content": {
+                            "application/json": {
+                              "schema": {
+                                "type": "array",
+                                "items": {
+                                  "$ref": "#/components/schemas/User"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      ],
+                      "required": [
+                        "description",
+                        "content"
+                      ],
+                      "properties": {
+                        "description": {
+                          "$id": "#/properties/paths/properties//users_alt/properties/get/properties/responses/properties/200/properties/description",
+                          "type": "string",
+                          "title": "The description schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "Get alternative users"
+                          ]
+                        },
+                        "content": {
+                          "$id": "#/properties/paths/properties//users_alt/properties/get/properties/responses/properties/200/properties/content",
+                          "type": "object",
+                          "title": "The content schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": {},
+                          "examples": [
+                            {
+                              "application/json": {
+                                "schema": {
+                                  "type": "array",
+                                  "items": {
+                                    "$ref": "#/components/schemas/User"
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "required": [
+                            "application/json"
+                          ],
+                          "properties": {
+                            "application/json": {
+                              "$id": "#/properties/paths/properties//users_alt/properties/get/properties/responses/properties/200/properties/content/properties/application/json",
+                              "type": "object",
+                              "title": "The application/json schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": {},
+                              "examples": [
+                                {
+                                  "schema": {
+                                    "type": "array",
+                                    "items": {
+                                      "$ref": "#/components/schemas/User"
+                                    }
+                                  }
+                                }
+                              ],
+                              "required": [
+                                "schema"
+                              ],
+                              "properties": {
+                                "schema": {
+                                  "$id": "#/properties/paths/properties//users_alt/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema",
+                                  "type": "object",
+                                  "title": "The schema schema",
+                                  "description": "An explanation about the purpose of this instance.",
+                                  "default": {},
+                                  "examples": [
+                                    {
+                                      "type": "array",
+                                      "items": {
+                                        "$ref": "#/components/schemas/User"
+                                      }
+                                    }
+                                  ],
+                                  "required": [
+                                    "type",
+                                    "items"
+                                  ],
+                                  "properties": {
+                                    "type": {
+                                      "$id": "#/properties/paths/properties//users_alt/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema/properties/type",
+                                      "type": "string",
+                                      "title": "The type schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": "",
+                                      "examples": [
+                                        "array"
+                                      ]
+                                    },
+                                    "items": {
+                                      "$id": "#/properties/paths/properties//users_alt/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema/properties/items",
+                                      "type": "object",
+                                      "title": "The items schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": {},
+                                      "examples": [
+                                        {
+                                          "$ref": "#/components/schemas/User"
+                                        }
+                                      ],
+                                      "required": [
+                                        "$ref"
+                                      ],
+                                      "properties": {
+                                        "$ref": {
+                                          "$id": "#/properties/paths/properties//users_alt/properties/get/properties/responses/properties/200/properties/content/properties/application/json/properties/schema/properties/items/properties/%24ref",
+                                          "type": "string",
+                                          "title": "The $ref schema",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "default": "",
+                                          "examples": [
+                                            "#/components/schemas/User"
+                                          ]
+                                        }
+                                      },
+                                      "additionalProperties": true
+                                    }
+                                  },
+                                  "additionalProperties": true
+                                }
+                              },
+                              "additionalProperties": true
+                            }
+                          },
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "201": {
+                      "$id": "#/properties/paths/properties//users_alt/properties/get/properties/responses/properties/201",
+                      "type": "object",
+                      "title": "The 201 schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "description": "Get alternative users",
+                          "content": {
+                            "application/json": {
+                              "schema": {
+                                "type": "array",
+                                "items": {
+                                  "$ref": "#/components/schemas/User"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      ],
+                      "required": [
+                        "description",
+                        "content"
+                      ],
+                      "properties": {
+                        "description": {
+                          "$id": "#/properties/paths/properties//users_alt/properties/get/properties/responses/properties/201/properties/description",
+                          "type": "string",
+                          "title": "The description schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "Get alternative users"
+                          ]
+                        },
+                        "content": {
+                          "$id": "#/properties/paths/properties//users_alt/properties/get/properties/responses/properties/201/properties/content",
+                          "type": "object",
+                          "title": "The content schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": {},
+                          "examples": [
+                            {
+                              "application/json": {
+                                "schema": {
+                                  "type": "array",
+                                  "items": {
+                                    "$ref": "#/components/schemas/User"
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "required": [
+                            "application/json"
+                          ],
+                          "properties": {
+                            "application/json": {
+                              "$id": "#/properties/paths/properties//users_alt/properties/get/properties/responses/properties/201/properties/content/properties/application/json",
+                              "type": "object",
+                              "title": "The application/json schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": {},
+                              "examples": [
+                                {
+                                  "schema": {
+                                    "type": "array",
+                                    "items": {
+                                      "$ref": "#/components/schemas/User"
+                                    }
+                                  }
+                                }
+                              ],
+                              "required": [
+                                "schema"
+                              ],
+                              "properties": {
+                                "schema": {
+                                  "$id": "#/properties/paths/properties//users_alt/properties/get/properties/responses/properties/201/properties/content/properties/application/json/properties/schema",
+                                  "type": "object",
+                                  "title": "The schema schema",
+                                  "description": "An explanation about the purpose of this instance.",
+                                  "default": {},
+                                  "examples": [
+                                    {
+                                      "type": "array",
+                                      "items": {
+                                        "$ref": "#/components/schemas/User"
+                                      }
+                                    }
+                                  ],
+                                  "required": [
+                                    "type",
+                                    "items"
+                                  ],
+                                  "properties": {
+                                    "type": {
+                                      "$id": "#/properties/paths/properties//users_alt/properties/get/properties/responses/properties/201/properties/content/properties/application/json/properties/schema/properties/type",
+                                      "type": "string",
+                                      "title": "The type schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": "",
+                                      "examples": [
+                                        "array"
+                                      ]
+                                    },
+                                    "items": {
+                                      "$id": "#/properties/paths/properties//users_alt/properties/get/properties/responses/properties/201/properties/content/properties/application/json/properties/schema/properties/items",
+                                      "type": "object",
+                                      "title": "The items schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": {},
+                                      "examples": [
+                                        {
+                                          "$ref": "#/components/schemas/User"
+                                        }
+                                      ],
+                                      "required": [
+                                        "$ref"
+                                      ],
+                                      "properties": {
+                                        "$ref": {
+                                          "$id": "#/properties/paths/properties//users_alt/properties/get/properties/responses/properties/201/properties/content/properties/application/json/properties/schema/properties/items/properties/%24ref",
+                                          "type": "string",
+                                          "title": "The $ref schema",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "default": "",
+                                          "examples": [
+                                            "#/components/schemas/User"
+                                          ]
+                                        }
+                                      },
+                                      "additionalProperties": true
+                                    }
+                                  },
+                                  "additionalProperties": true
+                                }
+                              },
+                              "additionalProperties": true
+                            }
+                          },
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
