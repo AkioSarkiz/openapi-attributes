@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace OpenApiGenerator;
 
 use JetBrains\PhpStorm\Pure;
-use OpenApiGenerator\Contracts\BuilderInterface;
+use OpenApiGenerator\Builders\SharedStore;
+use OpenApiGenerator\Contracts\Builder;
+use OpenApiGenerator\Contracts\ManagerBuilders as ManagerBuildersContract;
 use OpenApiGenerator\Exceptions\OpenapiException;
 use ReflectionClass;
 use ReflectionException;
@@ -33,7 +35,7 @@ class Generator
     ];
 
     public function __construct(
-        private ManagerBuilders $managerBuilders
+        private ManagerBuildersContract $managerBuilders
     ) {
         //
     }
@@ -59,10 +61,12 @@ class Generator
     {
         $classes = count($this->classesScan) ? $this->classesScan : get_declared_classes();
         $builders = $this->managerBuilders->getAvailableBuilders();
+        $sharedStore = new SharedStore();
 
-        /** @var BuilderInterface $builder */
+        /** @var Builder $builder */
         foreach ($builders as $builder) {
             $builder = new $builder();
+            $builder->setSharedStore($sharedStore);
 
             foreach ($classes as $class) {
                 try {
@@ -73,7 +77,10 @@ class Generator
             }
 
             $buildData = $builder->build();
-            $this->set($buildData['key'], $buildData['data']);
+
+            if (count($buildData)) {
+                $this->set($buildData['key'], $buildData['data']);
+            }
         }
 
         return $this;

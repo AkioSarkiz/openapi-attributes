@@ -7,11 +7,12 @@ namespace OpenApiGenerator\Tests\SchemaModel;
 use OpenApiGenerator\Attributes\Info;
 use OpenApiGenerator\Attributes\Property;
 use OpenApiGenerator\Attributes\Schema;
+use OpenApiGenerator\Attributes\Schema\Model;
 
 #[
     Info('SchemaModel'),
 
-    Schema(model: true),
+    Model,
 ]
 class SchemaModel
 {

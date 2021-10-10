@@ -8,7 +8,7 @@ use OpenApiGenerator\Builders\PathBuilder\Exceptions\SkipAnotherPipelines;
 use OpenApiGenerator\Builders\PathBuilder\PathBuilderContext;
 use ReflectionAttribute;
 
-abstract class BasePipe
+abstract class Pipe
 {
     public function __construct(
         protected PathBuilderContext &$context,

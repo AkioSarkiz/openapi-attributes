@@ -5,13 +5,22 @@ declare(strict_types=1);
 namespace OpenApiGenerator\Attributes;
 
 use Attribute;
+use JetBrains\PhpStorm\ArrayShape;
 use JetBrains\PhpStorm\Pure;
+use OpenApiGenerator\Builders\SchemaBuilder\Common as CommonSchemaBuilder;
 use OpenApiGenerator\Contracts\Attribute as AttributeContract;
 use OpenApiGenerator\Types\PropertyType;
 
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_ALL)]
 class Property implements AttributeContract
 {
+    /**
+     * Common namespace from SchemaBuilder.
+     *
+     * @var string|null
+     */
+    private ?string $commonNamespacePath = null;
+
     public function __construct(
         private string $type = '',
         private string $property = '',
@@ -23,12 +32,17 @@ class Property implements AttributeContract
         private mixed $items = null,
         private ?int $minItems = null,
         private ?int $maxItems = null,
+        private ?string $ref = null,
     ) {
         //
     }
 
     public function jsonSerialize(): array
     {
+        if ($this->ref) {
+            return $this->formatRef();
+        }
+
         $data = [
             'type' => $this->getType(),
             'format' => $this->getFormat(),
@@ -46,8 +60,7 @@ class Property implements AttributeContract
                 $propObject = $this->createFromArray($property);
                 $data['properties'][$propObject->getProperty()] = $propObject->jsonSerialize();
             }
-        }
-        elseif ($this->getType() === PropertyType::ARRAY) {
+        } elseif ($this->getType() === PropertyType::ARRAY) {
             $data['items'] = is_array($this->items) ? $this->items : ['type' => $this->items];
         }
 
@@ -121,5 +134,31 @@ class Property implements AttributeContract
     private function getFormat(): ?string
     {
         return $this->type === 'file' ? 'binary' : $this->format;
+    }
+
+    /**
+     * @return array
+     */
+    #[ArrayShape(['$ref' => "string"])]
+    private function formatRef(): array
+    {
+        if (class_exists($this->ref)) {
+            $this->ref = $this->commonNamespacePath
+                ? CommonSchemaBuilder::formatSchemaName($this->ref, $this->commonNamespacePath)
+                : str_replace('\\', '_', $this->ref);
+        }
+
+        if (!str_starts_with($this->ref, '#/components/schemas/')) {
+            $this->ref = "#/components/schemas/{$this->ref}";
+        }
+
+        return [
+            '$ref' => $this->ref,
+        ];
+    }
+
+    public function setCommonNamespace(?string $commonNamespacePath): void
+    {
+        $this->commonNamespacePath = $commonNamespacePath;
     }
 }

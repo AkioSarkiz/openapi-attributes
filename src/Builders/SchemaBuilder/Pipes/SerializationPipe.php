@@ -8,7 +8,7 @@ use OpenApiGenerator\Attributes\Property;
 use OpenApiGenerator\Attributes\Schema;
 use ReflectionClass;
 
-class BaseSerializationPipe extends BasePipe
+class SerializationPipe extends Pipe
 {
     /**
      * @inheritDoc

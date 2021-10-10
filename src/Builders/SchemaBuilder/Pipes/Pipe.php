@@ -8,7 +8,7 @@ use OpenApiGenerator\Builders\SchemaBuilder\Exceptions\SkipAnotherPipelines;
 use OpenApiGenerator\Builders\SchemaBuilder\SchemaBuilderContext;
 use ReflectionClass;
 
-abstract class BasePipe
+abstract class Pipe
 {
     public function __construct(
         protected SchemaBuilderContext &$context,

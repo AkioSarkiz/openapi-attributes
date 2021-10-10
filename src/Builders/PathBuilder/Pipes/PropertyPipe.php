@@ -7,19 +7,20 @@ namespace OpenApiGenerator\Builders\PathBuilder\Pipes;
 use OpenApiGenerator\Attributes\Property;
 use ReflectionAttribute;
 
-class PropertyPipe extends BasePipe
+class PropertyPipe extends Pipe
 {
     /**
      * @inheritDoc
      */
     public function __invoke(ReflectionAttribute $attribute): ReflectionAttribute
     {
-        if ($attribute->getName() !== Property::class) {
+        if (!$attribute->newInstance() instanceof Property) {
             return $attribute;
         }
 
         /** @var Property $propInstance */
         $propInstance = $attribute->newInstance();
+        $propInstance->setCommonNamespace($this->context->commonNamespacePath);
 
         if ($this->context->lastResponseData) {
             $this->handleWithResponse($propInstance);
@@ -62,11 +63,11 @@ class PropertyPipe extends BasePipe
     /**
      * Handle prop when not exists response.
      *
-     * @param  Property  $instance
+     * @param  Property  $prop
      * @return void
      */
-    private function handleWithoutResponse(Property $instance): void
+    private function handleWithoutResponse(Property $prop): void
     {
-        $this->context->properties[$instance->getProperty()] = $instance->jsonSerialize();
+        $this->context->properties[$prop->getProperty()] = $prop->jsonSerialize();
     }
 }

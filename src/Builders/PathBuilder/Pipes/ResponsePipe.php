@@ -7,7 +7,7 @@ namespace OpenApiGenerator\Builders\PathBuilder\Pipes;
 use OpenApiGenerator\Attributes\Response;
 use ReflectionAttribute;
 
-class ResponsePipe extends BasePipe
+class ResponsePipe extends Pipe
 {
     /**
      * @inheritDoc

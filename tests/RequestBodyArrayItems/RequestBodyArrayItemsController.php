@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace OpenApiGenerator\Tests\RequestBodyArrayItems;
 use OpenApiGenerator\Attributes\Info;
 use OpenApiGenerator\Attributes\Property;
+use OpenApiGenerator\Attributes\Property\Obj;
+use OpenApiGenerator\Attributes\Property\Str;
 use OpenApiGenerator\Attributes\Route\Get;
 use OpenApiGenerator\Attributes\Route\Post;
 use OpenApiGenerator\Types\PropertyType;
@@ -17,7 +19,7 @@ class RequestBodyArrayItemsController
 {
     #[
         Get('path/{id}', schemaType: SchemaType::ARRAY),
-        Property(PropertyType::STRING),
+        Str,
     ]
     public function getString(float $id): void
     {
@@ -26,7 +28,7 @@ class RequestBodyArrayItemsController
 
     #[
         Post('path/{id}', schemaType: SchemaType::ARRAY),
-        Property(PropertyType::OBJECT, properties: [
+        Obj(properties: [
             'key' => PropertyType::STRING,
             'value' => PropertyType::STRING,
 

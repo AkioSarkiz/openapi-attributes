@@ -6,9 +6,11 @@ namespace OpenApiGenerator\Builders\SchemaBuilder\Pipes;
 
 use OpenApiGenerator\Attributes\Property;
 use OpenApiGenerator\Attributes\Schema;
+use OpenApiGenerator\Builders\SchemaBuilder\Common;
+use ReflectionAttribute;
 use ReflectionClass;
 
-class SchemaByModelPipe extends BasePipe
+class SchemaByModelPipe extends Pipe
 {
     private ReflectionClass $class;
     private Schema $instanceAttribute;
@@ -19,7 +21,7 @@ class SchemaByModelPipe extends BasePipe
     public function __invoke(ReflectionClass $class): ReflectionClass
     {
         $this->class = $class;
-        $instance = $class->getAttributes(Schema::class)[0]->newInstance();
+        $instance = $class->getAttributes(Schema::class, ReflectionAttribute::IS_INSTANCEOF)[0]->newInstance();
 
         // Only Schema attribute is supported.
         if (!$instance instanceof Schema) {
@@ -51,9 +53,11 @@ class SchemaByModelPipe extends BasePipe
             return $name;
         }
 
-        $path = explode('\\', $this->class->getName());
-
-        return array_pop($path);
+        if ($this->context->commonNamespacePath) {
+            return Common::formatSchemaName($this->class->getName(), $this->context->commonNamespacePath);
+        } else {
+            return str_replace('\\', '_', $this->class->getName());
+        }
     }
 
     /**

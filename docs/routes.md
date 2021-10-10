@@ -6,13 +6,15 @@ title: Definition routes
 #### Define simple routes
 
 ```php
+use OpenApiGenerator\Attributes\Property\Str;
+
 class SimpleController
 {
     #[
         Get('/path', ['Dummy'], 'path'),
-        Property(PropertyType::STRING, 'test'),
+        Str('test'),
         
-        Response(200),
+        Response(200, 'the description'),
     ]
     public function get(): void
     {
@@ -22,12 +24,16 @@ class SimpleController
 ```
 #### Define advanced routes
 ```php
+use OpenApiGenerator\Attributes\Property\Number;
+use OpenApiGenerator\Attributes\Property\Obj;
+use OpenApiGenerator\Attributes\Property\Boolean;
+
 class Controller
 {
     #[
         Get('/path/{id}', ['Dummy'], 'Dummy path'),
-        Parameter('id', 'integer', description: 'id of dummy'),
-        Property(PropertyType::OBJECT, 'test', properties: [
+        Number('id', 'integer', description: 'id of dummy'),
+        Obj('test', properties: [
             'data' => PropertyType::STRING,
             'item' => [
                 'type' => PropertyType::STRING,
@@ -40,8 +46,8 @@ class Controller
             ],
         ]),
         
-        Response(200),
-        Property(PropertyType::BOOLEAN, 'success'),
+        Response(200, 'the description'),
+        Boolean('success'),
     ]
     public function get(float $id): void {
         //
@@ -53,23 +59,27 @@ class Controller
 ##### Response array
 
 ```php
+use OpenApiGenerator\Attributes\Property\Str;
+use OpenApiGenerator\Attributes\Property\Obj;
+use OpenApiGenerator\Attributes\Property\Number;
+
 class Controller
 {
     #[
         Get('/path/{id}', ['Dummy'], 'Dummy path'),
 
         Response(200, type: 'array'),
-        Property(PropertyType::OBJECT, properties: [
+        Obj(properties: [
             'name' => PropertyType::STRING,
             'password' => PropertyType::STRING,
             'age' => PropertyType::INT,
         ]),
 
         Response(400, type: 'array'),
-        Property(PropertyType::STRING),
+        Str,
 
-        Response(500, type: 'array'),
-        Property(PropertyType::INT),
+        Response(500, 'the description', type: 'array'),
+        Number,
     ]
     public function get(float $id): void {
         //

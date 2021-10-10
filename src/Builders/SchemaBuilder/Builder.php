@@ -8,21 +8,25 @@ use JetBrains\PhpStorm\ArrayShape;
 use League\Pipeline\Pipeline;
 use OpenApiGenerator\Attributes\Schema;
 use OpenApiGenerator\Builders\SchemaBuilder\Exceptions\SkipAnotherPipelines;
-use OpenApiGenerator\Builders\SchemaBuilder\Pipes\BaseSerializationPipe;
+use OpenApiGenerator\Builders\SchemaBuilder\Pipes\SerializationPipe;
 use OpenApiGenerator\Builders\SchemaBuilder\Pipes\SchemaByModelPipe;
-use OpenApiGenerator\Contracts\BuilderInterface;
+use OpenApiGenerator\Builders\SharedStore;
+use OpenApiGenerator\Contracts\Builder as BuilderContract;
+use ReflectionAttribute;
 use ReflectionClass;
 
-class Builder implements BuilderInterface
+class Builder implements BuilderContract
 {
+    /** @var ReflectionClass[] */
     private array $stack = [];
+    private SharedStore $sharedStore;
 
     /**
      * @inheritDoc
      */
-    public function append(ReflectionClass $class): BuilderInterface
+    public function append(ReflectionClass $class): Builder
     {
-        if ($class->getAttributes(Schema::class)) {
+        if ($class->getAttributes(Schema::class, ReflectionAttribute::IS_INSTANCEOF)) {
             $this->stack[] = $class;
         }
 
@@ -35,9 +39,15 @@ class Builder implements BuilderInterface
     #[ArrayShape(['key' => "string", 'data' => "array"])]
     public function build(): array
     {
+        $schema = $this->getSchemas();
+
+        if (!count($schema)) {
+            return [];
+        }
+
         return [
             'key' => 'components.schemas',
-            'data' => $this->getSchemas(),
+            'data' => $schema,
         ];
     }
 
@@ -47,9 +57,12 @@ class Builder implements BuilderInterface
     private function getSchemas(): array
     {
         $schemas = [];
+        $commonNamespacePath = $this->getCommonNamespace();
+        $this->sharedStore->set('schema:common_namespace', $commonNamespacePath);
 
         foreach ($this->stack as $class) {
             $context = new SchemaBuilderContext();
+            $context->commonNamespacePath = $commonNamespacePath;
             $this->processPipes($context, $class);
             $schemas[$context->name] = $context->schema;
         }
@@ -61,7 +74,7 @@ class Builder implements BuilderInterface
     {
         return [
             SchemaByModelPipe::class,
-            BaseSerializationPipe::class,
+            SerializationPipe::class,
         ];
     }
 
@@ -85,5 +98,50 @@ class Builder implements BuilderInterface
         } catch (SkipAnotherPipelines) {
             return null;
         }
+    }
+
+    /**
+     * @return string|null
+     */
+    private function getCommonNamespace(): ?string
+    {
+        $countStack = count($this->stack);
+        $common = null;
+
+        if ($countStack === 1) {
+            $model = current($this->stack);
+
+            return $model->inNamespace() ? $model->getNamespaceName() : null;
+        } elseif ($countStack >= 2) {
+            $common = null;
+
+            for ($i = 1; $i < $countStack; $i++) {
+                $stackItem1 = $this->stack[$i - 1];
+                $stackItem2 = $this->stack[$i];
+
+                if (!$stackItem1->inNamespace() || !$stackItem2->inNamespace()) {
+                    $common = null;
+                    break;
+                }
+
+                $stackItemsCommon = getCommonNamespace($stackItem1->getNamespaceName(), $stackItem2->getNamespaceName());
+
+                if ($common) {
+                    $common = getCommonNamespace($stackItemsCommon, $common);
+                } else {
+                    $common = $stackItemsCommon;
+                }
+            }
+        }
+
+        return $common;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setSharedStore(SharedStore $store): void
+    {
+        $this->sharedStore = $store;
     }
 }

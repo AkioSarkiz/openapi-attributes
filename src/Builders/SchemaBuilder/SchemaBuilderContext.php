@@ -11,4 +11,5 @@ class SchemaBuilderContext
 {
     public string $name;
     public array $schema;
+    public ?string $commonNamespacePath = null;
 }

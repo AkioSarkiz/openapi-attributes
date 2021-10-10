@@ -4,24 +4,25 @@ declare(strict_types=1);
 
 namespace OpenApiGenerator;
 
-use OpenApiGenerator\Builders\InfoBuilder;
+use OpenApiGenerator\Builders\InfoBuilder\Builder as InfoBuilder;
 use OpenApiGenerator\Builders\PathBuilder\Builder as PathBuilder;
 use OpenApiGenerator\Builders\SchemaBuilder\Builder as SchemaBuilder;
-use OpenApiGenerator\Builders\SecuritySchemeBuilder;
-use OpenApiGenerator\Builders\ServerBuilder;
-use OpenApiGenerator\Contracts\BuilderInterface;
+use OpenApiGenerator\Builders\SecurityScheme\Builder as SecuritySchemeBuilder;
+use OpenApiGenerator\Builders\ServerBuilder\Builder as ServerBuilder;
+use OpenApiGenerator\Contracts\Builder;
+use OpenApiGenerator\Contracts\ManagerBuilders as ManagerBuildersContract;
 
-class ManagerBuilders
+class ManagerBuilders implements ManagerBuildersContract
 {
     /**
      * Cached builders.
      *
-     * @var array
+     * @var Builder[]
      */
     private array $cache;
 
     /**
-     * @return array
+     * @return Builder[]
      */
     public function define(): array
     {
@@ -35,7 +36,7 @@ class ManagerBuilders
     }
 
     /**
-     * @return BuilderInterface[]
+     * @return Builder[]
      */
     public function getAvailableBuilders(): array
     {

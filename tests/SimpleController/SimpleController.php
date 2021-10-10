@@ -6,6 +6,7 @@ namespace OpenApiGenerator\Tests\SimpleController;
 
 use OpenApiGenerator\Attributes\Info;
 use OpenApiGenerator\Attributes\Property;
+use OpenApiGenerator\Attributes\Property\Str;
 use OpenApiGenerator\Attributes\Response;
 use OpenApiGenerator\Attributes\Route\Get;
 use OpenApiGenerator\Types\PropertyType;
@@ -17,7 +18,7 @@ class SimpleController
 {
     #[
         Get('simple', ['simple'], 'simple path'),
-        Property(PropertyType::STRING, 'test'),
+        Str('test'),
 
         Response(200, 'simple response'),
     ]

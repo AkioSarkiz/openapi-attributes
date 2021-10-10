@@ -6,7 +6,7 @@ namespace OpenApiGenerator\Tests\Controller;
 
 use OpenApiGenerator\Attributes\Info;
 use OpenApiGenerator\Attributes\Parameter;
-use OpenApiGenerator\Attributes\Property;
+use OpenApiGenerator\Attributes\Property\Obj;
 use OpenApiGenerator\Attributes\Response;
 use OpenApiGenerator\Attributes\Route\Get;
 use OpenApiGenerator\Attributes\SecurityScheme;
@@ -47,7 +47,7 @@ class AdvancedController
     #[
         Get('/path/{id}', ['Dummy'], 'Dummy path'),
         Parameter('id', 'integer', description: 'id of dummy'),
-        Property(PropertyType::OBJECT, 'test', properties: [
+        Obj('test', properties: [
             'data' => PropertyType::STRING,
             'item' => [
                 'type' => PropertyType::STRING,

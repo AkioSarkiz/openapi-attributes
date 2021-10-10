@@ -2,26 +2,24 @@
 
 declare(strict_types=1);
 
-namespace OpenApiGenerator\Builders;
+namespace OpenApiGenerator\Builders\InfoBuilder;
 
 use JetBrains\PhpStorm\ArrayShape;
 use OpenApiGenerator\Attributes\Info;
-use OpenApiGenerator\Contracts\BuilderInterface;
-use OpenApiGenerator\Exceptions\InfoException;
+use OpenApiGenerator\Builders\InfoBuilder\Exceptions\InfoException;
+use OpenApiGenerator\Builders\SharedStore;
+use OpenApiGenerator\Contracts\Builder as BuilderContract;
 use ReflectionAttribute;
 use ReflectionClass;
 
-class InfoBuilder implements BuilderInterface
+class Builder implements BuilderContract
 {
-    /**
-     * @var array
-     */
     private array $stack = [];
 
     /**
      * @inheritDoc
      */
-    public function append(ReflectionClass $class): BuilderInterface
+    public function append(ReflectionClass $class): BuilderContract
     {
         if ($class->getAttributes(Info::class, ReflectionAttribute::IS_INSTANCEOF)) {
             $this->stack[] = $class;
@@ -46,8 +44,17 @@ class InfoBuilder implements BuilderInterface
 
         return [
             'key' => 'info',
-            'data' => $this->stack[0]->getAttributes(Info::class,
-                ReflectionAttribute::IS_INSTANCEOF)[0]->newInstance()->jsonSerialize(),
+            'data' => $this->stack[0]->getAttributes(
+                Info::class, ReflectionAttribute::IS_INSTANCEOF
+            )[0]->newInstance()->jsonSerialize(),
         ];
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setSharedStore(SharedStore $store): void
+    {
+        // no supported.
     }
 }

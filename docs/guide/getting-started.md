@@ -13,7 +13,8 @@ composer require akiosarkiz/openpapi-attributes
 Write documentation for your code. For example, simple controller:
 
 ```php
-use OpenApiGenerator\Attributes\Info;use OpenApiGenerator\Attributes\Parameter;
+use OpenApiGenerator\Attributes\Info;
+use OpenApiGenerator\Attributes\Property\Number;
 use OpenApiGenerator\Attributes\Response;
 use OpenApiGenerator\Attributes\Route\Get;
 
@@ -22,10 +23,10 @@ class SimpleController
 {
     #[
         Get('users/{id}'),
-        Parameter('id', 'integer'),
+        Number('id'),
         Response(200)
     ]    
-    public function show(int $id): void {
+    public function show(): void {
         //
     }
 }

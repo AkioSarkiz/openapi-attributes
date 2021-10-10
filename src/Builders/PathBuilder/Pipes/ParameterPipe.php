@@ -7,7 +7,7 @@ namespace OpenApiGenerator\Builders\PathBuilder\Pipes;
 use OpenApiGenerator\Attributes\Parameter;
 use ReflectionAttribute;
 
-class ParameterPipe extends BasePipe
+class ParameterPipe extends Pipe
 {
     /**
      * @inheritDoc

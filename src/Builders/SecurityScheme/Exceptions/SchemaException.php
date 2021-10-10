@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace OpenApiGenerator\Exceptions;
+namespace OpenApiGenerator\Builders\SecurityScheme\Exceptions;
 
 use JetBrains\PhpStorm\Pure;
+use OpenApiGenerator\Exceptions\OpenapiException;
 
 class SchemaException extends OpenapiException
 {

@@ -16,20 +16,22 @@ use OpenApiGenerator\Builders\PathBuilder\Exceptions\SkipAnotherPipelines;
 use OpenApiGenerator\Builders\PathBuilder\Pipes\ParameterPipe;
 use OpenApiGenerator\Builders\PathBuilder\Pipes\PropertyPipe;
 use OpenApiGenerator\Builders\PathBuilder\Pipes\ResponsePipe;
-use OpenApiGenerator\Contracts\BuilderInterface;
+use OpenApiGenerator\Builders\SharedStore;
+use OpenApiGenerator\Contracts\Builder as BuilderContract;
 use OpenApiGenerator\Types\SchemaType;
 use ReflectionClass;
 use ReflectionMethod;
 
-class Builder implements BuilderInterface
+class Builder implements BuilderContract
 {
     private array $stack = [];
     private PathBuilderContext $context;
+    private SharedStore $sharedStore;
 
     /**
      * @inheritDoc
      */
-    public function append(ReflectionClass $class): BuilderInterface
+    public function append(ReflectionClass $class): Builder
     {
         $this->stack[] = $class;
 
@@ -42,9 +44,15 @@ class Builder implements BuilderInterface
     #[ArrayShape(['key' => "string", 'data' => "array"])]
     public function build(): array
     {
+        $paths = $this->getPaths();
+
+        if (!count($paths)) {
+            return [];
+        }
+
         return [
             'key' => 'paths',
-            'data' => $this->getPaths(),
+            'data' => $paths,
         ];
     }
 
@@ -77,6 +85,7 @@ class Builder implements BuilderInterface
         }
 
         $this->context = new PathBuilderContext();
+        $this->formatContext();
         $this->context->attributes = $method->getAttributes();
         $this->context->routeInstance = array_shift($this->context->attributes)->newInstance();
         $this->context->routeData = $this->context->routeInstance->jsonSerialize();
@@ -95,20 +104,9 @@ class Builder implements BuilderInterface
 
         $root = &$this->context->routeData[$this->context->routeInstance->getRoute()][$this->context->routeInstance->getMethod()];
 
-        setArrayByPath($root, 'responses', $this->context->responses);
-        setArrayByPath($root, 'parameters', $this->context->parameters);
-
-        if ($this->context->routeInstance->getSchemaType() === SchemaType::OBJECT) {
-            setArrayByPath($root, "requestBody.content.{$this->context->routeInstance->getContentType()}.schema", [
-                'type' => SchemaType::OBJECT,
-                'properties' => $this->context->properties,
-            ]);
-        } else {
-            setArrayByPath($root, "requestBody.content.{$this->context->routeInstance->getContentType()}.schema", [
-                'type' => SchemaType::ARRAY,
-                'items' => $this->formatPropertiesAsItems($this->context->properties),
-            ]);
-        }
+        $this->setResponses($root);
+        $this->setParameters($root);
+        $this->setProperties($root);
 
         return $this->context->routeData;
     }
@@ -142,5 +140,82 @@ class Builder implements BuilderInterface
         }
 
         return $items;
+    }
+
+    /**
+     * Set properties for route.
+     *
+     * @param  array  $root
+     * @return void
+     */
+    private function setProperties(array &$root): void
+    {
+        if (!count($this->context->properties)) {
+            return;
+        }
+
+        if ($this->context->routeInstance->getSchemaType() === SchemaType::OBJECT) {
+            setArrayByPath($root, "requestBody.content.{$this->context->routeInstance->getContentType()}.schema", [
+                'type' => SchemaType::OBJECT,
+                'properties' => $this->context->properties,
+            ]);
+        } else {
+            setArrayByPath($root, "requestBody.content.{$this->context->routeInstance->getContentType()}.schema", [
+                'type' => SchemaType::ARRAY,
+                'items' => $this->formatPropertiesAsItems($this->context->properties),
+            ]);
+        }
+    }
+
+    /**
+     * Set parameters for route.
+     *
+     * @param  array  $root
+     * @return void
+     */
+    private function setParameters(array &$root): void
+    {
+        if (!count($this->context->parameters)) {
+            return;
+        }
+
+        setArrayByPath($root, 'parameters', $this->context->parameters);
+    }
+
+    /**
+     * Set responses for route.
+     *
+     * @param  array  $root
+     * @return void
+     */
+    private function setResponses(array &$root): void
+    {
+        if (!count($this->context->responses)) {
+            return;
+        }
+
+        setArrayByPath($root, 'responses', $this->context->responses);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setSharedStore(SharedStore $store): void
+    {
+        $this->sharedStore = $store;
+    }
+
+    /**
+     * Format current object context.
+     *
+     * @return void
+     */
+    private function formatContext(): void
+    {
+        $commonNamespacePath = $this->sharedStore->get('schema:common_namespace');
+
+        if ($commonNamespacePath) {
+            $this->context->commonNamespacePath = $commonNamespacePath;
+        }
     }
 }
