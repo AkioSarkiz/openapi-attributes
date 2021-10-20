@@ -77,9 +77,11 @@ class SchemaByModelPipe extends Pipe
                 $data = $attributes[0]->newInstance()->jsonSerialize();
             }
 
-            $formatType = $this->formatTypeName(
-                $property->getType()->getName()
-            );
+            if ($property->hasType()) {
+                $formatType = $this->formatTypeName(
+                    $property->getType()->getName()
+                );
+            }
 
             $properties[$property->getName()] = array_merge($formatType, $data);
         }
