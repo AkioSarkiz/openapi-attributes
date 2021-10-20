@@ -74,7 +74,14 @@ class SchemaByModelPipe extends Pipe
             $attributes = $property->getAttributes(Property::class);
 
             if (count($attributes)) {
-                $data = $attributes[0]->newInstance()->jsonSerialize();
+                /** @var Property $propInstance */
+                $propInstance = $attributes[0]->newInstance();
+
+                if ($this->context->commonNamespacePath) {
+                    $propInstance->setCommonNamespace($this->context->commonNamespacePath);
+                }
+
+                $data = $propInstance->jsonSerialize();
             }
 
             if ($property->hasType()) {
