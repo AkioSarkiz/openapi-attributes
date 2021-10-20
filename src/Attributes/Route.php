@@ -47,7 +47,7 @@ class Route implements AttributeContract
      *
      * @param  string  $schemaType
      *
-     * @param  bool|array  $required
+     * @param  array  $required
      */
     public function __construct(
         private string $method,
@@ -58,7 +58,7 @@ class Route implements AttributeContract
         private mixed $security = null,
         private string $contentType = 'application/json',
         private string $schemaType = SchemaType::OBJECT,
-        private bool|array $required = true,
+        private array $required = [],
     ) {
         //
     }
@@ -106,7 +106,7 @@ class Route implements AttributeContract
         return $this->contentType;
     }
 
-    public function getRequired(): array|bool
+    public function getRequired(): array
     {
         return $this->required;
     }
