@@ -21,7 +21,8 @@ class Put extends Route
         mixed $security = null,
         string $contentType = 'application/json',
         string $schemaType = SchemaType::OBJECT,
+        private array $required = [],
     ) {
-        parent::__construct(Route::PUT, $route, $tags, $summary, $description, $security, $contentType, $schemaType);
+        parent::__construct(Route::PUT, $route, $tags, $summary, $description, $security, $contentType, $schemaType, $required);
     }
 }

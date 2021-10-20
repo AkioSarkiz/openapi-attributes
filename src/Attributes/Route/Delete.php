@@ -21,7 +21,8 @@ class Delete extends Route
         mixed $security = null,
         string $contentType = 'application/json',
         string $schemaType = SchemaType::OBJECT,
+        private array $required = [],
     ) {
-        parent::__construct(Route::DELETE, $route, $tags, $summary, $description, $security, $contentType, $schemaType);
+        parent::__construct(Route::DELETE, $route, $tags, $summary, $description, $security, $contentType, $schemaType, $this->required);
     }
 }
