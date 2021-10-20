@@ -157,6 +157,7 @@ class Builder implements BuilderContract
         if ($this->context->routeInstance->getSchemaType() === SchemaType::OBJECT) {
             setArrayByPath($root, "requestBody.content.{$this->context->routeInstance->getContentType()}.schema", [
                 'type' => SchemaType::OBJECT,
+                'required' => $this->context->routeInstance->getRequired(),
                 'properties' => $this->context->properties,
             ]);
         } else {

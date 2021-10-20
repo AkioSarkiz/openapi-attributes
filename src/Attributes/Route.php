@@ -84,7 +84,7 @@ class Route implements AttributeContract
         $array[$this->getRoute()][$this->method] = [];
         $route = &$array[$this->getRoute()][$this->method];
 
-        foreach (['tags', 'summary', 'description', 'security', 'required'] as $prop) {
+        foreach (['tags', 'summary', 'description', 'security'] as $prop) {
             $value = $this->$prop;
 
             if ($value !== null) {
@@ -104,5 +104,10 @@ class Route implements AttributeContract
     public function getContentType(): string
     {
         return $this->contentType;
+    }
+
+    public function getRequired(): array|bool
+    {
+        return $this->required;
     }
 }
