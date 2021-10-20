@@ -25,25 +25,29 @@ class Route implements AttributeContract
     /**
      * Create new instance route.
      *
-     * @param  string  $method Http method.
-     * @param  string  $route Http path.
+     * @param  string  $method  Http method.
+     * @param  string  $route  Http path.
      *
-     * @param  array  $tags A list of tags for API documentation control.
+     * @param  array  $tags  A list of tags for API documentation control.
      *      Tags can be used for logical grouping of operations by resources or any other qualifier.
      *
-     * @param  string  $summary A short summary of what the operation does.
+     * @param  string  $summary  A short summary of what the operation does.
      *
-     * @param  string  $description A verbose explanation of the operation behavior.
+     * @param  string  $description  A verbose explanation of the operation behavior.
      *      CommonMark syntax MAY be used for rich text representation.
      *
-     * @param  mixed|null  $security A declaration of which security mechanisms can be used for this operation.
+     * @param  mixed|null  $security  A declaration of which security mechanisms can be used for this operation.
      *      The list of values includes alternative security requirement objects that can be used.
      *      Only one of the security requirement objects need to be satisfied to authorize a request.
      *      To make security optional, an empty security requirement ({}) can be included in the array.
      *      This definition overrides any declared top-level security.
      *      To remove a top-level security declaration, an empty array can be used.
      *
-     * @param  string  $contentType Http content type. By default application/json.
+     * @param  string  $contentType  Http content type. By default application/json.
+     *
+     * @param  string  $schemaType
+     *
+     * @param  bool|array  $required
      */
     public function __construct(
         private string $method,
@@ -54,6 +58,7 @@ class Route implements AttributeContract
         private mixed $security = null,
         private string $contentType = 'application/json',
         private string $schemaType = SchemaType::OBJECT,
+        private bool|array $required = true,
     ) {
         //
     }
@@ -79,8 +84,10 @@ class Route implements AttributeContract
         $array[$this->getRoute()][$this->method] = [];
         $route = &$array[$this->getRoute()][$this->method];
 
-        foreach (['tags', 'summary', 'description', 'security',] as $prop) {
-            if ($value = $this->$prop) {
+        foreach (['tags', 'summary', 'description', 'security', 'required'] as $prop) {
+            $value = $this->$prop;
+
+            if ($value !== null) {
                 $route[$prop] = $value;
             }
         }
