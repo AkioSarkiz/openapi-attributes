@@ -22,9 +22,9 @@ class CollectTest extends BaseJsonSchemaTest
         return [
             // controllers
             Controller::class,
-//            ListController::class,
+            ListController::class,
             BookController::class,
-//            UserController::class,
+            UserController::class,
 
             // schemas
             User::class,
