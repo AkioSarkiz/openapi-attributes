@@ -23,9 +23,9 @@ class Response implements AttributeContract
     /**
      * @param  int  $code  Http code of response.
      * @param  string  $description  A short description of the response. CommonMark syntax MAY be used for rich text representation.
-     * @param  string  $type Type of response. Supported types array and object. Use SchemaType class.
-     * @param  string  $ref Reference of response.
-     * @param  string  $contentType Mime content type of response.
+     * @param  string  $type  Type of response. Supported types array and object. Use SchemaType class.
+     * @param  string|null  $ref  Reference of response.
+     * @param  string  $contentType  Mime content type of response.
      *
      * @param  array  $headers  Maps a header name to its definition. RFC7230 states header names are case insensitive.
      *      If a response header is defined with the name "Content-Type", it SHALL be ignored.
@@ -34,7 +34,7 @@ class Response implements AttributeContract
         private int $code,
         private string $description,
         private string $type = SchemaType::OBJECT,
-        string $ref = '',
+        private ?string $ref = null,
         private string $contentType = 'application/json',
         private array $headers = [],
     ) {
@@ -79,5 +79,10 @@ class Response implements AttributeContract
             PropertyType::ARRAY => 'items',
             default => 'properties',
         };
+    }
+
+    public function getRef(): ?string
+    {
+        return $this->ref;
     }
 }

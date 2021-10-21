@@ -11,7 +11,7 @@ use ReflectionAttribute;
 abstract class Pipe
 {
     public function __construct(
-        protected PathBuilderContext &$context,
+        protected PathBuilderContext $context,
     ) {
         //
     }

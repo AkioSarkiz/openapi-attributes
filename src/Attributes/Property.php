@@ -106,6 +106,7 @@ class Property implements AttributeContract
     {
         $args = [];
         $format = [
+            // key => default value
             'type' => '',
             'property' => '',
             'description' => '',
@@ -116,6 +117,7 @@ class Property implements AttributeContract
             'items' => null,
             'minItems' => null,
             'maxItems' => null,
+            'ref' => null,
         ];
 
         foreach ($format as $key => $default) {

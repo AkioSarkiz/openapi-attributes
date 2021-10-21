@@ -27,4 +27,6 @@ class PathBuilderContext
      * @var string|null
      */
     public ?string $commonNamespacePath = null;
+
+    public array $responseRef = [];
 }

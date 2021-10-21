@@ -14,7 +14,9 @@ class BookController extends Controller
         Get('books'),
 
         Response(200, 'get list books', type: SchemaType::ARRAY),
-        Property(ref: Book::class)
+        Property(ref: Book::class),
+
+        Response(422, 'test', ref: Book::class),
     ]
     public function getList(): void
     {

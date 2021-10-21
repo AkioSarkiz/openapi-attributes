@@ -16,6 +16,7 @@ use OpenApiGenerator\Builders\PathBuilder\Exceptions\SkipAnotherPipelines;
 use OpenApiGenerator\Builders\PathBuilder\Pipes\ParameterPipe;
 use OpenApiGenerator\Builders\PathBuilder\Pipes\PropertyPipe;
 use OpenApiGenerator\Builders\PathBuilder\Pipes\ResponsePipe;
+use OpenApiGenerator\Builders\SchemaBuilder\Common;
 use OpenApiGenerator\Builders\SharedStore;
 use OpenApiGenerator\Contracts\Builder as BuilderContract;
 use OpenApiGenerator\Types\SchemaType;
@@ -193,6 +194,12 @@ class Builder implements BuilderContract
     {
         if (!count($this->context->responses)) {
             return;
+        }
+
+        foreach ($this->context->responseRef as $code => $ref) {
+            $this->context->responses[$code]['content']['application/json']['schema']['$ref'] = $this->context->commonNamespacePath
+                ? '#/components/schemas/' . Common::formatSchemaName($ref, $this->context->commonNamespacePath)
+                : $ref;
         }
 
         setArrayByPath($root, 'responses', $this->context->responses);
