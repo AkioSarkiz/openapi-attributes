@@ -196,12 +196,6 @@ class Builder implements BuilderContract
             return;
         }
 
-        foreach ($this->context->responseRef as $code => $ref) {
-            $this->context->responses[$code]['content']['application/json']['schema']['$ref'] = $this->context->commonNamespacePath
-                ? '#/components/schemas/' . Common::formatSchemaName($ref, $this->context->commonNamespacePath)
-                : $ref;
-        }
-
         setArrayByPath($root, 'responses', $this->context->responses);
     }
 
