@@ -8,6 +8,7 @@ use JetBrains\PhpStorm\ArrayShape;
 use JetBrains\PhpStorm\Pure;
 use League\Pipeline\Pipeline;
 use OpenApiGenerator\Attributes\Route;
+use OpenApiGenerator\Attributes\Route\Delete;
 use OpenApiGenerator\Attributes\Route\Get;
 use OpenApiGenerator\Attributes\Route\Patch;
 use OpenApiGenerator\Attributes\Route\Post;
@@ -20,6 +21,7 @@ use OpenApiGenerator\Builders\SchemaBuilder\Common;
 use OpenApiGenerator\Builders\SharedStore;
 use OpenApiGenerator\Contracts\Builder as BuilderContract;
 use OpenApiGenerator\Types\SchemaType;
+use ReflectionAttribute;
 use ReflectionClass;
 use ReflectionMethod;
 
@@ -121,11 +123,12 @@ class Builder implements BuilderContract
     #[Pure]
     private function isSupportedMethod(ReflectionMethod $method): bool
     {
-        return count($method->getAttributes(Route::class))
+        return count($method->getAttributes(Route::class, ReflectionAttribute::IS_INSTANCEOF))
             || count($method->getAttributes(Get::class))
             || count($method->getAttributes(Post::class))
             || count($method->getAttributes(Patch::class))
-            || count($method->getAttributes(Put::class));
+            || count($method->getAttributes(Put::class))
+            || count($method->getAttributes(Delete::class));
     }
 
     /**
