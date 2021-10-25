@@ -36,7 +36,7 @@ class ManagerBuilders implements ManagerBuildersContract
     }
 
     /**
-     * @return Builder[]
+     * @return string[]
      */
     public function getAvailableBuilders(): array
     {

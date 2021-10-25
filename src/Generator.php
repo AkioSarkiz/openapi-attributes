@@ -59,15 +59,43 @@ class Generator
      */
     public function generate(): self
     {
-        $classes = count($this->classesScan) ? $this->classesScan : get_declared_classes();
-        $builders = $this->managerBuilders->getAvailableBuilders();
         $sharedStore = new SharedStore();
+        $buildersClasses = $this->managerBuilders->getAvailableBuilders();
+        $buildersInstances = $this->generateBuildersInstances($buildersClasses, $sharedStore);
+
+        $this->runBootBuilders($buildersInstances);
+        $this->runBuildBuilders($buildersInstances);
+
+        return $this;
+    }
+
+    /**
+     * @param  array  $buildersInstances
+     * @return void
+     * @throws OpenapiException
+     */
+    private function runBuildBuilders(array $buildersInstances): void
+    {
+        /** @var Builder $builder */
+        foreach ($buildersInstances as $builder) {
+            $buildData = $builder->build();
+
+            if (count($buildData)) {
+                $this->set($buildData['key'], $buildData['data']);
+            }
+        }
+    }
+
+    /**
+     * @param  array  $buildersInstances
+     * @return void
+     */
+    private function runBootBuilders(array $buildersInstances): void
+    {
+        $classes = count($this->classesScan) ? $this->classesScan : get_declared_classes();
 
         /** @var Builder $builder */
-        foreach ($builders as $builder) {
-            $builder = new $builder();
-            $builder->setSharedStore($sharedStore);
-
+        foreach($buildersInstances as $builder) {
             foreach ($classes as $class) {
                 try {
                     $builder->append(new ReflectionClass($class));
@@ -76,14 +104,28 @@ class Generator
                 }
             }
 
-            $buildData = $builder->build();
+            $builder->boot();
+        }
+    }
 
-            if (count($buildData)) {
-                $this->set($buildData['key'], $buildData['data']);
-            }
+    /**
+     * @param  array  $builderClasses
+     * @param  SharedStore  $sharedStore
+     * @return array
+     */
+    private function generateBuildersInstances(array $builderClasses, SharedStore $sharedStore): array
+    {
+        $instances = [];
+
+        // initialization builders.
+        foreach ($builderClasses as $builder) {
+            /** @var Builder $builder */
+            $builderInstance = new $builder();
+            $builderInstance->setSharedStore($sharedStore);
+            $instances[] = $builderInstance;
         }
 
-        return $this;
+        return $instances;
     }
 
     /**
@@ -150,7 +192,7 @@ class Generator
      * @param  string  $key
      * @param  array  $data
      */
-    private function set(string $key, array $data): void
+    private function set(string $key, mixed $data): void
     {
         $formatArray = [];
         setArrayByPath($formatArray, $key, $data);

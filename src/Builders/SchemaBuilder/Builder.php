@@ -57,12 +57,10 @@ class Builder implements BuilderContract
     private function getSchemas(): array
     {
         $schemas = [];
-        $commonNamespacePath = $this->getCommonNamespace();
-        $this->sharedStore->set('schema:common_namespace', $commonNamespacePath);
 
         foreach ($this->stack as $class) {
             $context = new SchemaBuilderContext();
-            $context->commonNamespacePath = $commonNamespacePath;
+            $context->commonNamespacePath = $this->sharedStore->get('schema:common_namespace');
             $this->processPipes($context, $class);
             $schemas[$context->name] = $context->schema;
         }
@@ -143,5 +141,13 @@ class Builder implements BuilderContract
     public function setSharedStore(SharedStore $store): void
     {
         $this->sharedStore = $store;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function boot(): void
+    {
+        $this->sharedStore->set('schema:common_namespace', $this->getCommonNamespace());
     }
 }

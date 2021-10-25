@@ -57,4 +57,12 @@ class Builder implements BuilderContract
     {
         // no supported.
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function boot(): void
+    {
+        // no supported.
+    }
 }

@@ -68,6 +68,14 @@ class Builder implements BuilderContract
      */
     public function setSharedStore(SharedStore $store): void
     {
-        // no supported
+        // no supported.
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function boot(): void
+    {
+        // not supported.
     }
 }

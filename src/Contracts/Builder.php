@@ -43,4 +43,11 @@ interface Builder
      * @return void
      */
     public function setSharedStore(SharedStore $store): void;
+
+    /**
+     * Register dependencies & set share data.
+     *
+     * @return void
+     */
+    public function boot(): void;
 }

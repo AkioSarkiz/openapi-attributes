@@ -223,4 +223,12 @@ class Builder implements BuilderContract
             $this->context->commonNamespacePath = $commonNamespacePath;
         }
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function boot(): void
+    {
+        // no supported.
+    }
 }

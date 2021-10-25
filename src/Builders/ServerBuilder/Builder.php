@@ -30,7 +30,7 @@ class Builder implements BuilderContract
     /**
      * @inheritDoc
      */
-    #[ArrayShape(['key' => "string", 'data' => "array"])]
+    #[ArrayShape(['key' => 'string', 'data' => 'array'])]
     public function build(): array
     {
         $servers = [];
@@ -39,7 +39,7 @@ class Builder implements BuilderContract
             $serverAttributes = $class->getAttributes(Server::class, ReflectionAttribute::IS_INSTANCEOF);
 
             foreach ($serverAttributes as $item) {
-                $servers[] = $item->newInstance()->jsonSerialize();
+                $servers[] = $item->newInstance();
             }
         }
 
@@ -52,5 +52,13 @@ class Builder implements BuilderContract
     public function setSharedStore(SharedStore $store): void
     {
         // no supported
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function boot(): void
+    {
+        // no supported.
     }
 }

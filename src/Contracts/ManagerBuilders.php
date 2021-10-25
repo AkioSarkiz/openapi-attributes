@@ -7,7 +7,7 @@ namespace OpenApiGenerator\Contracts;
 interface ManagerBuilders
 {
     /**
-     * @return Builder[]
+     * @return string[]
      */
     public function getAvailableBuilders(): array;
 }
