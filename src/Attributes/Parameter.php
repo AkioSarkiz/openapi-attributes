@@ -44,6 +44,9 @@ class Parameter implements AttributeContract
      *      the examples field. Furthermore, if referencing a schema that contains an example, the example value
      *      SHALL override the example provided by the schema. To represent examples of media types that cannot naturally
      *      be represented in JSON or YAML, a string value can contain the example with escaping where necessary.
+     *
+     * @param mixed $enum  You can restrict a parameter to a fixed set of values by adding the enum to the parameter’s schema.
+     *      The enum values must be of the same type as the parameter data type.
      */
     public function __construct(
         private string $name,
@@ -52,7 +55,8 @@ class Parameter implements AttributeContract
         private ?string $description = null,
         private ?bool $required = null,
         private mixed $example = '',
-        private mixed   $format = ''
+        private mixed $format = '',
+        private mixed $enum = null,
     ) {
         if ($in === 'path') {
             $this->required = true;
@@ -74,6 +78,7 @@ class Parameter implements AttributeContract
             'schema' => $this->formatSchema(),
             'required' => $this->required,
             'description' => $this->description,
+            'enum' => $this->enum,
         ]);
     }
 
