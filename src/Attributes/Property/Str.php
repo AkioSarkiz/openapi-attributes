@@ -21,6 +21,7 @@ class Str extends Property
         mixed $items = null,
         ?int $minItems = null,
         ?int $maxItems = null,
+        ?string $ref = null,
     ) {
         parent::__construct(
             PropertyType::STRING,
@@ -32,7 +33,8 @@ class Str extends Property
             $properties,
             $items,
             $minItems,
-            $maxItems
+            $maxItems,
+            $ref,
         );
     }
 }

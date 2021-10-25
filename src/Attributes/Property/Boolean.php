@@ -21,6 +21,7 @@ class Boolean extends Property
         mixed $items = null,
         ?int $minItems = null,
         ?int $maxItems = null,
+        ?string $ref = null,
     ) {
         parent::__construct(
             PropertyType::BOOLEAN,
@@ -32,7 +33,8 @@ class Boolean extends Property
             $properties,
             $items,
             $minItems,
-            $maxItems
+            $maxItems,
+            $ref,
         );
     }
 }

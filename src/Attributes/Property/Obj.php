@@ -21,6 +21,7 @@ class Obj extends Property
         mixed $items = null,
         ?int $minItems = null,
         ?int $maxItems = null,
+        ?string $ref = null,
     ) {
         parent::__construct(
             PropertyType::OBJECT,
@@ -32,7 +33,8 @@ class Obj extends Property
             $properties,
             $items,
             $minItems,
-            $maxItems
+            $maxItems,
+            $ref,
         );
     }
 }

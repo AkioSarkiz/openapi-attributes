@@ -21,6 +21,7 @@ class Arr extends Property
         mixed $items = null,
         ?int $minItems = null,
         ?int $maxItems = null,
+        ?string $ref = null,
     ) {
         parent::__construct(
             PropertyType::ARRAY,
@@ -32,7 +33,8 @@ class Arr extends Property
             $properties,
             $items,
             $minItems,
-            $maxItems
+            $maxItems,
+            $ref,
         );
     }
 }
