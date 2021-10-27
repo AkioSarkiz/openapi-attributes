@@ -84,6 +84,14 @@ class Route implements AttributeContract
         $array[$this->getRoute()][$this->method] = [];
         $route = &$array[$this->getRoute()][$this->method];
 
+        if ($this->security) {
+            if (is_string($this->security)) {
+                foreach(explode('|', $this->security) as $guard) {
+                    $this->security[][$guard] = [];
+                }
+            }
+        }
+
         foreach (['tags', 'summary', 'description', 'security'] as $prop) {
             $value = $this->$prop;
 
