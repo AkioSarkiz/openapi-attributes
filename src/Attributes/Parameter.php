@@ -78,7 +78,6 @@ class Parameter implements AttributeContract
             'schema' => $this->formatSchema(),
             'required' => $this->required,
             'description' => $this->description,
-            'enum' => $this->enum,
         ]);
     }
 
@@ -93,6 +92,7 @@ class Parameter implements AttributeContract
         $schema['type'] = $this->type;
         $schema['format'] = $this->format ?? $schema['format'];
         $schema['example'] = $this->example;
+        $schema['enum'] = $this->enum;
 
         return removeEmptyValues($schema);
     }
