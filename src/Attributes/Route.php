@@ -86,7 +86,10 @@ class Route implements AttributeContract
 
         if ($this->security) {
             if (is_string($this->security)) {
-                foreach(explode('|', $this->security) as $guard) {
+                $guards = explode('|', $this->security);
+                $this->security = [];
+
+                foreach($guards as $guard) {
                     $this->security[][$guard] = [];
                 }
             }
